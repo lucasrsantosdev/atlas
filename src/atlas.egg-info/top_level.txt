@@ -1,9 +1,0 @@
-agents
-atlas
-core
-identity
-interfaces
-memory
-models
-safety
-tools

@@ -1,0 +1,328 @@
+# ============================================================
+# ATLAS.IA
+# Private / Sensitive / Local Files
+# ============================================================
+
+# ------------------------------------------------------------
+# PYTHON
+# ------------------------------------------------------------
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+
+.venv/
+venv/
+env/
+ENV/
+
+*.egg-info/
+dist/
+build/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ------------------------------------------------------------
+# ENVIRONMENT / SECRETS
+# ------------------------------------------------------------
+
+.env
+.env.*
+!.env.example
+
+*.secret
+*.secrets
+secrets/
+private/
+.private/
+
+credentials/
+credential/
+auth/
+
+# ------------------------------------------------------------
+# KEYS / CERTIFICATES
+# ------------------------------------------------------------
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+
+*.pubkey
+*.privatekey
+
+ssh/
+keys/
+certificates/
+
+# ------------------------------------------------------------
+# CLOUD / API CREDENTIALS
+# ------------------------------------------------------------
+
+.aws/
+.azure/
+.gcloud/
+
+service-account*.json
+credentials*.json
+token*.json
+tokens*.json
+
+# ------------------------------------------------------------
+# ATLAS MEMORY
+# Never upload Atlas runtime memory to remote repositories
+# ------------------------------------------------------------
+
+memory/*
+!memory/.gitkeep
+!memory/README.md
+
+# ------------------------------------------------------------
+# ATLAS KNOWLEDGE - LOCAL / PRIVATE
+# ------------------------------------------------------------
+
+knowledge/private/
+knowledge/local/
+knowledge/imported/
+knowledge/raw/
+
+# ------------------------------------------------------------
+# ATLAS BACKUPS
+# ------------------------------------------------------------
+
+backups/*
+!backups/.gitkeep
+!backups/README.md
+
+# ------------------------------------------------------------
+# ATLAS CONTINUITY - LOCAL STATE
+# ------------------------------------------------------------
+
+continuity/runtime/
+continuity/state/
+continuity/checkpoints/
+continuity/snapshots/
+continuity/private/
+
+# ------------------------------------------------------------
+# LOCAL INFRASTRUCTURE DATA
+# ------------------------------------------------------------
+
+infrastructure/local/private/
+infrastructure/local/runtime/
+
+infrastructure/storage/data/
+infrastructure/storage/private/
+
+infrastructure/network/private/
+infrastructure/network/secrets/
+
+infrastructure/energy/private/
+
+# ------------------------------------------------------------
+# LOCAL CONFIGURATION / OVERRIDES
+# ------------------------------------------------------------
+
+config/*.local.yaml
+config/*.local.yml
+
+config/local/
+config/private/
+config/secrets/
+
+# ------------------------------------------------------------
+# ATLAS IDENTITY - PRIVATE OVERRIDES
+# ------------------------------------------------------------
+
+config/identity/*.local.yaml
+config/identity/*.local.yml
+
+config/identity/private/
+config/identity/secrets/
+
+# ------------------------------------------------------------
+# MODELS / WEIGHTS
+# Large local AI models should not be pushed to Git
+# ------------------------------------------------------------
+
+models/*
+!models/.gitkeep
+!models/README.md
+
+*.gguf
+*.ggml
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.h5
+
+# ------------------------------------------------------------
+# VECTOR DATABASES / DATABASES
+# ------------------------------------------------------------
+
+*.db
+*.sqlite
+*.sqlite3
+
+vectorstore/
+vector_store/
+vectordb/
+chroma/
+chromadb/
+
+faiss_index/
+qdrant_storage/
+
+# ------------------------------------------------------------
+# ATLAS RUNTIME
+# ------------------------------------------------------------
+
+runtime/
+state/
+cache/
+tmp/
+temp/
+
+.pid
+*.pid
+*.lock
+
+# ------------------------------------------------------------
+# LOGS
+# ------------------------------------------------------------
+
+logs/
+*.log
+*.log.*
+
+# ------------------------------------------------------------
+# ROBOTICS LOCAL DATA
+# ------------------------------------------------------------
+
+robotics/**/runtime/
+robotics/**/logs/
+robotics/**/telemetry/
+robotics/**/recordings/
+robotics/**/captures/
+
+# ------------------------------------------------------------
+# CAMERA / AUDIO / SENSOR CAPTURES
+# ------------------------------------------------------------
+
+captures/
+recordings/
+telemetry/
+
+*.wav
+*.mp3
+*.flac
+*.mp4
+*.avi
+*.mov
+
+# ------------------------------------------------------------
+# DATASETS
+# ------------------------------------------------------------
+
+data/
+datasets/
+dataset/
+
+*.csv
+*.parquet
+*.feather
+*.avro
+
+# ------------------------------------------------------------
+# ARCHIVES / BACKUPS
+# ------------------------------------------------------------
+
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.bak
+*.backup
+
+# ------------------------------------------------------------
+# OPERATING SYSTEM
+# ------------------------------------------------------------
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------------------------------------------------------------
+# WINDOWS
+# ------------------------------------------------------------
+
+$RECYCLE.BIN/
+System Volume Information/
+
+# ------------------------------------------------------------
+# IDE / EDITORS
+# ------------------------------------------------------------
+
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+.idea/
+*.swp
+*.swo
+
+# ------------------------------------------------------------
+# JUPYTER
+# ------------------------------------------------------------
+
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------
+# LOCAL NOTES / SCRATCHPAD
+# ------------------------------------------------------------
+
+scratch/
+notes/private/
+drafts/private/
+
+# ------------------------------------------------------------
+# FINANCIAL PRIVATE DATA
+# ------------------------------------------------------------
+
+finance/private/
+finance/receipts/
+finance/invoices/
+
+# ------------------------------------------------------------
+# FUNDING / CROWDFUNDING PRIVATE MATERIAL
+# ------------------------------------------------------------
+
+docs/communications/private/
+docs/roadmap/private/
+
+# ------------------------------------------------------------
+# PERSONAL DATA
+# ------------------------------------------------------------
+
+personal/
+people/private/
+
+# ============================================================
+# END ATLAS.IA GITIGNORE
+# ============================================================
