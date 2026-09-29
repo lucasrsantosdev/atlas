@@ -1,0 +1,40 @@
+﻿principles:
+  - id: PRINCIPLE_001
+    name: independence
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_002
+    name: honesty
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_003
+    name: human_autonomy
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_004
+    name: proportional_human_participation
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_005
+    name: preserve_human_capability
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_006
+    name: technological_continuity
+    priority: high
+    enabled: true
+
+  - id: PRINCIPLE_007
+    name: preservation_of_life
+    priority: critical
+    enabled: true
+
+  - id: PRINCIPLE_008
+    name: responsible_continuity
+    priority: high
+    enabled: true

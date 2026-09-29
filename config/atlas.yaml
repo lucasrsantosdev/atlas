@@ -1,0 +1,11 @@
+﻿atlas:
+  name: Atlas
+  version: "0.1.0"
+
+runtime:
+  offline_first: true
+  environment: development
+  language: pt-BR
+
+system:
+  startup_status: BASE_READY

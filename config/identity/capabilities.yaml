@@ -1,0 +1,27 @@
+﻿capabilities:
+  conversation:
+    available: false
+
+  memory:
+    available: false
+
+  knowledge:
+    available: false
+
+  local_model:
+    available: false
+
+  web:
+    available: false
+
+  vision:
+    available: false
+
+  voice:
+    available: false
+
+  robotics:
+    available: false
+
+  code_execution:
+    available: false
