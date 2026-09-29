@@ -37,7 +37,7 @@ O princípio central é simples:
 | 🛡️ Proteção intelectual | R$ 2.500 – R$ 5.000 |
 | 🧠 Atlas Core / infraestrutura principal | ~R$ 150.000 |
 | 🤖 Atlas Robotics Lab | ~R$ 60.000 |
-| 🖨️ Bambu Lab A1 + AMS | R$ 4.735 — já adquirida |
+| 🖨️ Bambu Lab A1 + AMS | R$ 4.735 — em processo de compra |
 | 🌐 Projeto completo estimado | **~R$ 210.000** |
 
 ---

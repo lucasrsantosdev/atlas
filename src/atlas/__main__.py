@@ -1,24 +1,44 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import sys
 
 from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
+from atlas.models import ModelConfigError, load_models_config
+from atlas.models.runtime import OllamaRuntime
 
 
 def main() -> None:
     try:
         config = load_config()
         identity = load_identity()
+        models_config = load_models_config()
+
+        if models_config.runtime.provider != "ollama":
+            raise ModelConfigError(
+                "O Atlas v0.1 suporta apenas o runtime 'ollama'."
+            )
+
+        runtime = OllamaRuntime(
+            host=models_config.runtime.host,
+            timeout_seconds=models_config.runtime.timeout_seconds,
+        )
 
         atlas = Atlas(
             config=config,
             identity=identity,
+            runtime=runtime,
+            model_name=models_config.model.name,
         )
 
         status = atlas.start()
 
-    except (AtlasConfigError, AtlasIdentityError, ValueError) as exc:
+    except (
+        AtlasConfigError,
+        AtlasIdentityError,
+        ModelConfigError,
+        ValueError,
+    ) as exc:
         print("=" * 72)
         print("Falha ao inicializar Atlas.")
         print("=" * 72)

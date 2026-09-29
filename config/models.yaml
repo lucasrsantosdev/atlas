@@ -1,0 +1,8 @@
+﻿runtime:
+  provider: ollama
+  host: "http://127.0.0.1:11434"
+  timeout_seconds: 120
+
+model:
+  name: "qwen2.5:3b"
+  role: primary

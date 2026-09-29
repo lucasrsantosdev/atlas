@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass
 
@@ -6,6 +6,11 @@ from atlas.core.config import AtlasConfig
 from atlas.core.registry import ComponentRegistry
 from atlas.core.status import ComponentState, SystemState
 from atlas.identity import AtlasIdentity
+from atlas.models.runtime import (
+    GenerationResult,
+    ModelRuntime,
+    ModelRuntimeError,
+)
 
 
 @dataclass(frozen=True)
@@ -32,31 +37,37 @@ class Atlas:
     - receber configuração validada;
     - receber identidade validada;
     - registrar componentes;
-    - calcular saúde do sistema;
-    - fornecer estado geral do núcleo.
+    - monitorar saúde do sistema;
+    - utilizar um runtime cognitivo local;
+    - executar um modelo local.
 
-    Componentes ainda não implementados:
-    - runtime local;
-    - modelo de IA;
+    Ainda não implementado:
+    - Model Router;
     - memória persistente;
-    - RAG;
-    - ferramentas.
+    - Knowledge/RAG;
+    - ferramentas;
+    - interfaces avançadas.
     """
 
     def __init__(
         self,
         config: AtlasConfig,
         identity: AtlasIdentity,
+        runtime: ModelRuntime | None = None,
+        model_name: str | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
+        self.runtime = runtime
+        self.model_name = model_name
         self.registry = ComponentRegistry()
 
         self._validate_identity_consistency()
-        self._register_base_components()
 
         self.name = identity.name
         self.version = identity.version
+
+        self._register_components()
 
     def _validate_identity_consistency(self) -> None:
         if self.config.atlas.name != self.identity.name:
@@ -69,7 +80,7 @@ class Atlas:
                 "Versão da configuração e identidade são diferentes."
             )
 
-    def _register_base_components(self) -> None:
+    def _register_components(self) -> None:
         self.registry.register(
             "configuration",
             ComponentState.READY,
@@ -98,12 +109,49 @@ class Atlas:
             detail="Conhecimento/RAG ainda não implementado.",
         )
 
-        self.registry.register(
-            "model_runtime",
-            ComponentState.DISABLED,
-            critical=False,
-            detail="Runtime local ainda não implementado.",
-        )
+        if self.runtime is None:
+            self.registry.register(
+                "model_runtime",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Runtime local não configurado.",
+            )
+
+            self.registry.register(
+                "local_model",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Modelo local não configurado.",
+            )
+
+        else:
+            runtime_health = self.runtime.health()
+
+            self.registry.register(
+                "model_runtime",
+                (
+                    ComponentState.READY
+                    if runtime_health.available
+                    else ComponentState.UNAVAILABLE
+                ),
+                critical=False,
+                detail=runtime_health.detail,
+            )
+
+            if runtime_health.available and self.model_name:
+                self.registry.register(
+                    "local_model",
+                    ComponentState.READY,
+                    critical=False,
+                    detail=f"Modelo configurado: {self.model_name}.",
+                )
+            else:
+                self.registry.register(
+                    "local_model",
+                    ComponentState.UNAVAILABLE,
+                    critical=False,
+                    detail="Modelo local indisponível.",
+                )
 
         self.registry.register(
             "model_router",
@@ -128,4 +176,20 @@ class Atlas:
             principles_loaded=len(self.identity.principles),
             ready_components=system_status.ready_components,
             total_components=system_status.total_components,
+        )
+
+    def generate(self, prompt: str) -> GenerationResult:
+        if self.runtime is None:
+            raise ModelRuntimeError(
+                "Nenhum runtime cognitivo foi configurado."
+            )
+
+        if not self.model_name:
+            raise ModelRuntimeError(
+                "Nenhum modelo local foi configurado."
+            )
+
+        return self.runtime.generate(
+            model=self.model_name,
+            prompt=prompt,
         )
