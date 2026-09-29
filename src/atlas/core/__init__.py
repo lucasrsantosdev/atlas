@@ -7,6 +7,13 @@ from atlas.core.config import (
     SystemConfig,
     load_config,
 )
+from atlas.core.registry import ComponentRegistry
+from atlas.core.status import (
+    AtlasSystemStatus,
+    ComponentState,
+    ComponentStatus,
+    SystemState,
+)
 
 __all__ = [
     "Atlas",
@@ -17,4 +24,9 @@ __all__ = [
     "RuntimeConfig",
     "SystemConfig",
     "load_config",
+    "ComponentRegistry",
+    "AtlasSystemStatus",
+    "ComponentState",
+    "ComponentStatus",
+    "SystemState",
 ]
