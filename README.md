@@ -361,16 +361,194 @@ Atlas deverá distinguir:
 
 Atlas não deverá possuir apenas um corpo.
 
-Ele deverá possuir **um protocolo para operar diferentes corpos**.
+A robótica será uma extensão física do sistema Atlas, permitindo que a mesma inteligência possa operar diferentes máquinas, sensores, atuadores e corpos robóticos.
+
+> **A inteligência pertence ao Atlas. O corpo é uma interface substituível.**
+
+---
+
+## 🧠 Arquitetura robótica
+
+O **Atlas Core** continuará responsável pelas funções cognitivas de alto nível:
+
+- inteligência artificial;
+- identidade;
+- memória;
+- conhecimento;
+- planejamento;
+- visão;
+- voz;
+- aprendizado;
+- tomada de decisão assistida.
+
+Os microcontroladores serão responsáveis pela interação de baixo nível com o mundo físico.
 
 ```mermaid
 flowchart TB
 
     CORE["🧠 ATLAS CORE"]
 
+    HAL["🔌 Hardware Abstraction Layer"]
+
+    RP["🤖 Atlas Robotics Protocol"]
+
+    CORE --> HAL
+    HAL --> RP
+
+    RP --> ESP["📡 ESP32"]
+    RP --> ARD["⚙️ Arduino"]
+    RP --> FUT["🔌 Outros Controladores"]
+
+    ESP --> SENSOR["👁️ Sensores"]
+    ESP --> MOTOR["⚙️ Motores"]
+    ESP --> SERVO["🦾 Servos"]
+    ESP --> TELEMETRY["📡 Telemetria"]
+
+    ARD --> SIMPLE["🔧 Controle dedicado"]
+
+    FUT --> HARDWARE["🧩 Hardware futuro"]
+
+    SENSOR --> BODY["🤖 Corpo Robótico"]
+    MOTOR --> BODY
+    SERVO --> BODY
+    SIMPLE --> BODY
+    HARDWARE --> BODY
+```
+
+---
+
+## 🔌 Hardware Abstraction Layer
+
+Entre o Atlas Core e o hardware físico existirá uma camada de abstração:
+
+**Hardware Abstraction Layer — HAL**
+
+Sua função será impedir que Atlas dependa permanentemente de uma placa, fabricante ou arquitetura eletrônica específica.
+
+```text
+🧠 ATLAS CORE
+       │
+       ▼
+🔌 HARDWARE ABSTRACTION LAYER
+       │
+       ▼
+🤖 ROBOTICS PROTOCOL
+       │
+   ┌───┼───────────────┐
+   ▼   ▼               ▼
+ ESP32 Arduino    Outros controladores
+   │   │               │
+   └───┼───────────────┘
+       ▼
+  SENSORES / ATUADORES
+       │
+       ▼
+   🤖 CORPO FÍSICO
+```
+
+Isso permitirá substituir componentes eletrônicos sem alterar a identidade, memória ou arquitetura cognitiva do Atlas.
+
+---
+
+## 📡 ESP32
+
+O **ESP32 será a plataforma embarcada de referência inicial do Atlas Robotics**.
+
+Ele poderá ser utilizado para:
+
+- comunicação Wi-Fi;
+- comunicação Bluetooth;
+- telemetria;
+- leitura de sensores;
+- controle de motores;
+- controle de servos;
+- iluminação;
+- áudio embarcado;
+- comunicação entre módulos;
+- comunicação com o Atlas Core;
+- automações locais;
+- controle de dispositivos físicos.
+
+```text
+                 📡 ESP32
+                    │
+       ┌────────────┼────────────┐
+       ▼            ▼            ▼
+   👁️ Sensores   ⚙️ Motores   🦾 Servos
+       │            │            │
+       └────────────┼────────────┘
+                    ▼
+               🤖 ROBÔ
+```
+
+O ESP32 será inicialmente o principal elo entre o software Atlas e seus corpos físicos.
+
+---
+
+## ⚙️ Arduino
+
+**Arduino também será suportado pelo ecossistema Atlas.**
+
+Sua utilização será especialmente adequada para:
+
+- módulos simples;
+- protótipos;
+- controle dedicado;
+- sensores;
+- servomotores;
+- motores;
+- sistemas auxiliares;
+- experiências educacionais;
+- módulos que não necessitem comunicação ou processamento mais avançados.
+
+Arduino e ESP32 poderão coexistir dentro de um mesmo corpo Atlas.
+
+---
+
+## 🔄 Independência de hardware
+
+ESP32 e Arduino serão plataformas de referência.
+
+**Não serão dependências permanentes do Atlas.**
+
+A arquitetura deverá permitir futuramente a integração com:
+
+- outros microcontroladores;
+- SBCs;
+- controladores industriais;
+- hardware desenvolvido especificamente para Atlas;
+- novas arquiteturas ainda inexistentes.
+
+> [!IMPORTANT]
+> **Nenhuma placa deverá se tornar a identidade do Atlas.**
+>
+> ESP32 poderá ser substituído.
+>
+> Arduino poderá ser substituído.
+>
+> O computador poderá ser substituído.
+>
+> O corpo poderá ser substituído.
+>
+> **Atlas deverá continuar sendo Atlas.**
+
+---
+
+## 🤖 Corpos Atlas
+
+O Atlas Robotics Protocol deverá permitir diferentes corpos especializados.
+
+```mermaid
+flowchart TB
+
+    ATLAS["🧠 ATLAS"]
+
+    HAL["🔌 Hardware Abstraction Layer"]
+
     RP["🤖 Robotics Protocol"]
 
-    CORE --> RP
+    ATLAS --> HAL
+    HAL --> RP
 
     RP --> MINI["🤖 Atlas Mini"]
     RP --> AIR["🚁 Atlas Air"]
@@ -381,41 +559,112 @@ flowchart TB
     RP --> COMMUNITY["🧩 Community Robots"]
 ```
 
-### 🖨️ Robótica fabricável
+| Corpo | Objetivo |
+|---|---|
+| 🤖 **Atlas Mini** | companheiro físico e plataforma inicial |
+| 🏠 **Atlas House** | automação e interação residencial |
+| 🚁 **Atlas Air** | plataforma aérea e observação |
+| 🚙 **Atlas Rover** | mobilidade terrestre |
+| 🔧 **Atlas Work** | oficina, fabricação e assistência técnica |
+| 🌱 **Atlas Garden** | agricultura, plantas e monitoramento ambiental |
+| 🧩 **Community Robots** | corpos desenvolvidos pela comunidade |
 
-Partes dos corpos físicos poderão ser produzidas utilizando impressão 3D.
+---
+
+## 🖨️ Robótica fabricável
+
+Uma parte importante da filosofia Atlas será permitir a construção física de seus próprios corpos.
+
+Peças estruturais poderão ser produzidas utilizando **impressão 3D**.
 
 ```text
 MODELO 3D
-    ↓
-IMPRESSÃO
-    ↓
-ELETRÔNICA
-    ↓
-FIRMWARE
-    ↓
-HARDWARE PROFILE
-    ↓
-ROBOTICS PROTOCOL
-    ↓
-ATLAS
+    │
+    ▼
+🖨️ IMPRESSÃO
+    │
+    ▼
+🔩 MONTAGEM
+    │
+    ▼
+⚡ ELETRÔNICA
+    │
+    ▼
+📡 ESP32 / ARDUINO
+    │
+    ▼
+💾 FIRMWARE
+    │
+    ▼
+🔌 HARDWARE PROFILE
+    │
+    ▼
+🤖 ROBOTICS PROTOCOL
+    │
+    ▼
+🧠 ATLAS
 ```
 
 O ecossistema deverá permitir:
 
 - modelos oficiais Atlas;
+- modelos 3D documentados;
 - peças substituíveis;
 - componentes acessíveis;
 - documentação de montagem;
+- esquemas eletrônicos;
 - perfis de hardware;
 - firmware versionado;
-- modelos criados pela comunidade;
+- ESP32;
+- Arduino;
+- sensores e atuadores padronizados;
+- modelos desenvolvidos pela comunidade;
 - corpos experimentais;
-- integração com sensores e atuadores.
-
-> **O corpo é uma interface. A identidade pertence ao Atlas.**
+- adaptação para novos hardwares.
 
 ---
+
+## 🧩 Robótica aberta
+
+Atlas não deverá exigir que uma pessoa compre obrigatoriamente um robô oficial.
+
+A visão é permitir dois caminhos:
+
+| 🏭 Atlas Oficial | 🧩 Atlas Community |
+|---|---|
+| corpos desenvolvidos pelo projeto | corpos desenvolvidos pela comunidade |
+| hardware documentado | hardware compatível |
+| firmware oficial | firmware compatível |
+| modelos 3D oficiais | modelos 3D próprios |
+| montagem padronizada | experimentação e criação |
+
+Uma pessoa poderá futuramente:
+
+```text
+BAIXAR / CRIAR MODELO
+          ↓
+IMPRIMIR AS PEÇAS
+          ↓
+MONTAR ELETRÔNICA
+          ↓
+INSTALAR ESP32 / CONTROLADOR
+          ↓
+INSTALAR FIRMWARE
+          ↓
+REGISTRAR HARDWARE PROFILE
+          ↓
+CONECTAR AO ATLAS
+          ↓
+🤖 NOVO CORPO ATLAS
+```
+
+> **Atlas não será definido pelo corpo que utiliza.**
+>
+> **O corpo poderá mudar.**
+>
+> **A tecnologia poderá mudar.**
+>
+> **A identidade deverá continuar.**
 
 # 💰 Acesso ao Atlas
 
