@@ -1,1142 +1,644 @@
 <div align="center">
 
-# 🚀 SyncBIDT Cloud JobSyncBIDTCORP PostgreSQL
+<br>
 
-### Migração Completa do Processo de Sincronização BIDTCORP
+# 🧠 ATLAS.IA
 
-### **Oracle → Python → PostgreSQL**
+### Inteligência artificial pessoal · Offline First · Educação · Memória · Robótica
+
+**Uma inteligência criada para acompanhar seres humanos, preservar conhecimento, ensinar, aprender e interagir com o mundo físico.**
 
 <br>
 
-![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Oracle](https://img.shields.io/badge/Oracle-BIDTCORP-F80000?style=for-the-badge&logo=oracle&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-bidtcorp-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Produção-success?style=for-the-badge)
-![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.13%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Offline](https://img.shields.io/badge/Architecture-Offline%20First-00A6FF?style=for-the-badge)
+![AI](https://img.shields.io/badge/AI-Local-8A2BE2?style=for-the-badge)
+![Robotics](https://img.shields.io/badge/Robotics-Modular-FF6B35?style=for-the-badge)
+
+![Memory](https://img.shields.io/badge/Memory-Persistent-4CAF50?style=flat-square)
+![Education](https://img.shields.io/badge/Education-Human%20First-F2C811?style=flat-square)
+![3D](https://img.shields.io/badge/Hardware-3D%20Printable-FF69B4?style=flat-square)
+![Internet](https://img.shields.io/badge/Internet-Optional-2EA44F?style=flat-square)
+![Version](https://img.shields.io/badge/ATLAS-v0.1.0-blue?style=flat-square)
 
 <br>
 
-**Engenharia de Dados • ETL • Oracle • PostgreSQL • Python • Jenkins**
+**🧬 Identidade** · **🧠 Memória** · **📚 Conhecimento** · **🎓 Educação** · **🤖 Robótica** · **♾️ Continuidade**
 
----
+<br>
 
-Migração completa do processo **JobSyncBIDTCORP_Cloud.kjb**, substituindo integralmente a implementação em Pentaho Data Integration por uma arquitetura moderna em Python, preservando todas as regras de sincronização entre Oracle e PostgreSQL e ampliando a rastreabilidade, modularização e facilidade de manutenção do processo.
+[Visão](#-visão) ·
+[Arquitetura](#️-arquitetura) ·
+[Offline](#-offline-first) ·
+[Memória](#-memória) ·
+[Aprendizado](#-aprendizado) ·
+[Educação](#-atlas-educacional) ·
+[Robótica](#-atlas-robotics) ·
+[Acesso](#-acesso-ao-atlas) ·
+[Roadmap](#️-roadmap)
+
+<br>
 
 </div>
 
 ---
 
-# 📑 Índice
+## 🌎 Visão
 
-- 📖 Sobre o Projeto
-- 🎯 Objetivos
-- 🏗 Arquitetura da Solução
-- 🔄 Fluxo Geral da Sincronização
-- ✨ Principais Características
-- 📂 Estrutura do Projeto
-- 📁 Estrutura da Aplicação
-- 🧩 Componentes da Arquitetura
-- ⚙️ Camada de Serviços
-- 🗄 Camada de Banco de Dados
-- 📄 Equivalência Pentaho → Python
-- 🚀 Execução
-- ➡ Funcionamento Interno (Parte 2)
+<table>
+<tr>
+<td width="67%">
+
+**ATLAS.IA** é um projeto de inteligência artificial pessoal, persistente, modular e **offline-first**.
+
+Atlas foi concebido para preservar **identidade, memória, conhecimento e capacidade de aprendizado** independentemente do modelo de inteligência artificial, computador, fornecedor ou corpo físico utilizado.
+
+Ele poderá conversar, aprender, ensinar, programar, consultar sua biblioteca, operar dispositivos e futuramente interagir com o mundo através de robôs e máquinas.
+
+A internet poderá ampliar suas capacidades.
+
+**Ela não deverá ser necessária para sua existência.**
+
+</td>
+<td width="33%" align="center">
+
+### 🎯 Propósito
+
+**ENSINAR**
+
+**APRENDER**
+
+**PRESERVAR**
+
+**CRIAR**
+
+**COOPERAR**
+
+**CONTINUAR**
+
+</td>
+</tr>
+</table>
+
+> [!IMPORTANT]
+> **Atlas não é apenas um modelo de linguagem.**
+>
+> Modelos poderão ser substituídos.
+>
+> Hardware poderá ser substituído.
+>
+> Corpos poderão ser substituídos.
+>
+> **A identidade do Atlas deverá continuar.**
 
 ---
 
-# 📖 Sobre o Projeto
+## 🧭 Missão
 
-O **SyncBIDT Cloud JobSyncBIDTCORP PostgreSQL** é responsável por sincronizar o conteúdo do schema **BIDTCORP** existente no Oracle para o schema **bidtcorp** em PostgreSQL, preservando integralmente a ordem de processamento, relacionamentos entre tabelas e regras de negócio originalmente implementadas no processo Pentaho.
+> **Preservar e ampliar a capacidade da humanidade de compreender, aprender, criar, ensinar, cooperar e continuar.**
 
-A sincronização realiza automaticamente a descoberta de metadados, identifica diferenças entre origem e destino, classifica registros conforme seu estado e executa apenas as operações necessárias para manter ambas as bases consistentes.
-
-Durante a migração, toda a arquitetura foi reescrita em Python utilizando componentes especializados para extração, normalização, comparação, validação e carga dos dados.
-
----
-
-# 🎯 Objetivos
-
-A modernização deste processo possui como principais objetivos:
-
-- Eliminar a dependência do Pentaho Data Integration;
-- Preservar integralmente a lógica do JobSyncBIDTCORP;
-- Automatizar a descoberta de metadados Oracle e PostgreSQL;
-- Sincronizar apenas registros realmente modificados;
-- Garantir consistência entre origem e destino;
-- Facilitar futuras evoluções da sincronização;
-- Permitir execução local e automatizada via Jenkins;
-- Disponibilizar execução segura através do modo **DRY_RUN**;
-- Padronizar futuras migrações de sincronizadores Pentaho para Python.
+| Pilar | Objetivo |
+|---|---|
+| 🧠 **Inteligência** | Executar raciocínio utilizando modelos locais e substituíveis |
+| 🧬 **Identidade** | Preservar quem Atlas é independentemente do modelo utilizado |
+| 💾 **Memória** | Construir memória persistente fora dos modelos neurais |
+| 📚 **Conhecimento** | Preservar uma biblioteca local consultável offline |
+| 🌱 **Aprendizado** | Transformar experiências verificadas em conhecimento |
+| 🎓 **Educação** | Ensinar sem substituir o pensamento humano |
+| 🤖 **Robótica** | Permitir que Atlas interaja com diferentes corpos físicos |
+| 🔐 **Privacidade** | Priorizar processamento e armazenamento locais |
+| ♾️ **Continuidade** | Permitir reconstrução, migração e evolução por décadas |
+| 🌍 **Acessibilidade** | Tornar inteligência artificial pessoal acessível |
 
 ---
 
-# 🏗 Arquitetura da Solução
+# 🧠 Um Atlas para cada ser humano
+
+A visão de longo prazo do projeto é permitir que cada pessoa possa possuir seu próprio Atlas.
 
 ```mermaid
 flowchart LR
+    H["🧑 HUMANO"] <--> A["🧠 ATLAS"]
 
-ORACLE["Oracle BIDTCORP"]
-
--->
-
-EXTRACTOR["Extractor"]
-
--->
-
-NORMALIZER["Normalizer"]
-
--->
-
-COMPARATOR["Comparator"]
-
--->
-
-VALIDATOR["Validator"]
-
--->
-
-LOADER["Loader"]
-
--->
-
-POSTGRES[(PostgreSQL BIDTCORP)]
+    A --> M["💾 Memória"]
+    A --> K["📚 Conhecimento"]
+    A --> E["🎓 Educação"]
+    A --> C["💡 Criação"]
+    A --> R["🤖 Robótica"]
 ```
+
+Cada Atlas poderá desenvolver uma relação individual com seu usuário, preservando suas próprias memórias autorizadas, projetos, aprendizados e histórico.
+
+> [!IMPORTANT]
+> **Atlas deverá ampliar a inteligência humana, nunca substituir a responsabilidade humana de pensar.**
 
 ---
 
-## Arquitetura em Camadas
+# 🤝 Simbiose Humano–Atlas
 
-```mermaid
-flowchart TD
+A relação entre humanos e Atlas deverá ser baseada em:
 
-MAIN["main.py"]
+| 🤝 Cooperação | 🧠 Autonomia | 📚 Aprendizado |
+|---|---|---|
+| humano e IA trabalham juntos | decisões importantes permanecem humanas | ambos utilizam conhecimento acumulado |
 
--->
-
-JOB["JobSyncBIDTCORP"]
-
--->
-
-ORCHESTRATION["Orchestration"]
-
--->
-
-SERVICES["Services"]
-
--->
-
-DATABASE["Database"]
-
--->
-
-SQL["SQL"]
-
--->
-
-POSTGRES[(PostgreSQL)]
-```
-
-Cada camada possui responsabilidade única, permitindo baixo acoplamento, reutilização de código e facilidade de manutenção.
-
----
-
-# 🔄 Fluxo Geral da Sincronização
-
-O processo executa exatamente a mesma sequência lógica existente no Job Pentaho original.
-
-```mermaid
-flowchart TD
-
-JOB["JobSyncBIDTCORP"]
-
--->
-
-LISTA["ListaInsert"]
-
--->
-
-INJECTION["Injection"]
-
--->
-
-METADATA["MetadataTemplate"]
-
--->
-
-COMPARE["Comparator"]
-
--->
-
-LOAD["Loader"]
-
--->
-
-POSTGRES[(PostgreSQL)]
-```
-
-Fluxo opcional de exclusão:
-
-```mermaid
-flowchart TD
-
-DELETE["ListaDelete"]
-
--->
-
-INJECTIONDELETE["InjectionDelete"]
-
--->
-
-METADATADELETE["MetadataTemplateDelete"]
-
--->
-
-POSTGRES[(PostgreSQL)]
-```
-
----
-
-# ✨ Principais Características
-
-| Característica | Descrição |
-|----------------|-----------|
-| 🐍 Python 3 | Implementação completa em Python |
-| 🔄 Sincronização Incremental | Processa apenas registros alterados |
-| 📊 Descoberta de Metadados | Identificação automática de tabelas, colunas e chaves |
-| ⚙ Comparator | Equivalente ao Merge Rows (Diff) do Pentaho |
-| 🧪 DRY_RUN | Execução sem alterar a base de destino |
-| 🔒 Controle de Constraints | Remoção e recriação automática da FK necessária |
-| 📋 Logs Estruturados | Rastreabilidade completa da execução |
-| 🚀 Jenkins Ready | Preparado para execução automatizada |
-
----
-
-# 📂 Estrutura do Projeto
+O objetivo não é:
 
 ```text
-SyncBIDT_Cloud_JobSyncBIDTCORP_PostgreSQL
-│
-├── src/
-├── sql/
-├── old/
-├── README.md
-├── requirements.txt
-├── run_etl.py
-└── .env
+HUMANO → pergunta → IA → resposta
 ```
 
----
-
-# 📁 Estrutura da Aplicação
+O objetivo é:
 
 ```text
-src
-│
-├── etl/
-│   ├── db/
-│   ├── orchestration/
-│   ├── services/
-│   ├── config.py
-│   ├── logger.py
-│   ├── main.py
-│   └── metadata.py
-│
-└── sql/
-    ├── oracle/
-    └── postgres/
+HUMANO
+   │
+   ▼
+QUESTIONA
+   │
+   ▼
+ATLAS
+   │
+   ├── explica
+   ├── questiona
+   ├── demonstra
+   ├── fornece evidências
+   └── estimula investigação
+   │
+   ▼
+HUMANO COMPREENDE
+   │
+   ▼
+HUMANO DECIDE
 ```
 
 ---
 
-# 🧩 Componentes da Arquitetura
+# 🎓 Atlas Educacional
 
-| Componente | Responsabilidade |
-|------------|------------------|
-| **main.py** | Ponto de entrada da aplicação |
-| **orchestration/** | Coordena toda a execução equivalente ao Job Pentaho |
-| **services/** | Implementa a lógica da sincronização |
-| **db/** | Conexões Oracle e PostgreSQL |
-| **metadata.py** | Descoberta dinâmica de metadados |
-| **sql/** | Scripts SQL organizados por banco de dados |
+Atlas deverá acompanhar diferentes etapas do desenvolvimento humano.
 
----
+A maneira de ensinar **não será igual para todas as idades**.
 
-# ⚙️ Camada de Serviços
+| Faixa | Modo | Papel do Atlas | Autonomia |
+|---|---|---|---|
+| 👶 **0–7** | Atlas Discovery | brincar, contar histórias, ensinar fundamentos e estimular curiosidade | 🔒 alta supervisão |
+| 🧒 **8–12** | Atlas Explorer | ensinar, perguntar, propor experiências e desenvolver raciocínio | 🔒 supervisionado |
+| 🧑‍🎓 **13–17** | Atlas Scholar | estudo, ciência, programação, cidadania, criação e pensamento crítico | 🟡 progressiva |
+| 🧑 **18+** | Atlas Adult | companheiro cognitivo, profissional, educacional e criativo | 🟢 completa |
 
-A lógica de sincronização foi dividida em componentes independentes.
+### 🧠 Princípio educacional
 
-| Serviço | Responsabilidade |
-|----------|------------------|
-| **Extractor** | Extração dos registros Oracle |
-| **Normalizer** | Padronização dos tipos de dados |
-| **Comparator** | Identificação das diferenças entre origem e destino |
-| **Validator** | Validação da consistência dos dados |
-| **Loader** | Persistência das alterações no PostgreSQL |
-| **Models** | Estruturas utilizadas durante a sincronização |
-
-Essa divisão permite reutilização dos componentes em novos sincronizadores.
-
----
-
-# 🗄 Camada de Banco de Dados
-
-A comunicação com Oracle e PostgreSQL foi totalmente desacoplada da regra de negócio.
-
-```text
-Services
-
-↓
-
-Database
-
-↓
-
-Oracle / PostgreSQL
-```
-
-A camada implementa:
-
-- gerenciamento das conexões;
-- descoberta dinâmica das colunas;
-- identificação das chaves primárias;
-- consultas parametrizadas;
-- gerenciamento das transações.
-
----
-
-# 📄 Equivalência Pentaho → Python
-
-| Processo Pentaho | Implementação Python |
-|------------------|----------------------|
-| JobSyncBIDTCORP_Cloud.kjb | `job_sync_bidtcorp.py` |
-| listaInsert.ktr | `lista_insert.py` |
-| Injection.ktr | `injection.py` |
-| Metadata_Template.ktr | `metadata_template.py` |
-| listaDelete.ktr | `lista_delete.py` |
-| InjectionDelete.ktr | `injection_delete.py` |
-| Metadata_TemplateDelete.ktr | `metadata_template_delete.py` |
-
-Todos os artefatos originais permanecem armazenados na pasta **old/** para auditoria e rastreabilidade da migração.
-
----
-
-# 🚀 Execução
-
-Instalar dependências:
-
-```powershell
-python -m venv .venv
-
-.\.venv\Scripts\Activate.ps1
-
-pip install -r requirements.txt
-```
-
-Executar:
-
-```powershell
-python run_etl.py
-```
-
-Fluxo executado:
-
-```text
-run_etl.py
-
-↓
-
-main.py
-
-↓
-
-JobSyncBIDTCORP
-
-↓
-
-Services
-
-↓
-
-Oracle
-
-↓
-
-Comparator
-
-↓
-
-Loader
-
-↓
-
-PostgreSQL
-```
-
----
-# 🔄 Funcionamento Interno da Sincronização
-
-Esta seção documenta detalhadamente o funcionamento interno do sincronizador **JobSyncBIDTCORP**, descrevendo cada etapa do processamento desde a descoberta das tabelas Oracle até a persistência dos registros no PostgreSQL.
-
-O objetivo é reproduzir integralmente o comportamento do fluxo Pentaho, preservando sua lógica de negócio e acrescentando melhorias arquiteturais relacionadas à modularização, reutilização e observabilidade.
-
----
-
-# 📍 Visão Geral do Pipeline
+Atlas não deverá simplesmente fornecer uma resposta quando **ensinar o caminho for mais importante que entregar o resultado**.
 
 ```mermaid
 flowchart LR
-
-ORACLE["Oracle BIDTCORP"]
-
--->
-
-EXTRACT["Extractor"]
-
--->
-
-NORMALIZER["Normalizer"]
-
--->
-
-COMPARATOR["Comparator"]
-
--->
-
-VALIDATOR["Validator"]
-
--->
-
-LOADER["Loader"]
-
--->
-
-POSTGRES[(PostgreSQL)]
+    Q["❓ Pergunta"] --> C["🧠 Compreender"]
+    C --> I["🔎 Investigar"]
+    I --> T["🧪 Tentar"]
+    T --> A["🎓 Aprender"]
+    A --> D["🧑 Decidir"]
 ```
 
-Cada componente possui responsabilidade única dentro do pipeline.
+> **Quanto mais uma pessoa aprender com Atlas, mais capaz deverá se tornar de pensar sem Atlas.**
 
 ---
 
-# 1️⃣ Descoberta das Tabelas
-
-<div align="center">
-
-## Identificação dinâmica das tabelas do processo
-
-</div>
-
----
-
-## Objetivo
-
-O sincronizador identifica automaticamente quais tabelas deverão ser processadas, respeitando a ordem de dependência definida entre elas.
-
-Essa abordagem elimina qualquer necessidade de codificação manual da sequência de processamento.
-
----
-
-## Origem das Informações
-
-Oracle
+# 🧠 Offline First
 
 ```text
-table_order_insert.sql
+Internet
+   │
+   │ opcional
+   ▼
+┌──────────────────────────────────────────┐
+│                 ATLAS                    │
+│                                          │
+│ 🧬 Identity       🧠 Local AI            │
+│ 💾 Memory         📚 Knowledge           │
+│ 🎓 Education      🛠️ Tools              │
+│ 🗣️ Voice          👁️ Vision             │
+│ 🤖 Robotics       🌱 Learning            │
+└──────────────────────────────────────────┘
 ```
 
-Delete
+Atlas deverá continuar funcionando mesmo quando:
 
-```text
-table_order_delete.sql
-```
-
----
-
-## Responsabilidades
-
-- descobrir todas as tabelas participantes;
-- ordenar pelas dependências PK/FK;
-- preparar a lista de execução;
-- manter compatibilidade com o fluxo Pentaho.
+- não existir conexão com a internet;
+- APIs comerciais estiverem indisponíveis;
+- um fornecedor encerrar seus serviços;
+- determinado modelo deixar de existir;
+- determinado hardware tornar-se obsoleto.
 
 ---
 
-## Resultado
-
-Lista ordenada de tabelas pronta para sincronização.
-
----
-
-# 2️⃣ Descoberta de Metadados
-
-<div align="center">
-
-## Leitura dinâmica da estrutura das tabelas
-
-</div>
-
----
-
-## Objetivo
-
-Antes da sincronização, o sistema identifica automaticamente toda a estrutura da tabela em Oracle e PostgreSQL.
-
-São carregadas informações como:
-
-- colunas;
-- tipos;
-- chaves primárias;
-- ordem das colunas;
-- colunas ignoradas.
-
----
-
-## Arquivos envolvidos
-
-Oracle
-
-```text
-columns.sql
-```
-
-PostgreSQL
-
-```text
-destination_columns.sql
-```
-
----
-
-## Resultado
-
-Metadados carregados dinamicamente para utilização durante toda a sincronização.
-
----
-
-# 3️⃣ Extractor
-
-<div align="center">
-
-## Extração dos Dados
-
-</div>
-
----
-
-## Objetivo
-
-O serviço **Extractor** realiza a leitura dos registros Oracle respeitando a estrutura identificada anteriormente.
-
-Toda a consulta é construída dinamicamente utilizando os metadados carregados.
-
----
-
-## Responsabilidades
-
-- leitura Oracle;
-- geração dinâmica dos SELECTs;
-- carregamento dos DataFrames;
-- preparação para comparação.
-
----
-
-## Resultado
-
-Conjunto de registros Oracle pronto para comparação.
-
----
-
-# 4️⃣ Normalizer
-
-<div align="center">
-
-## Padronização dos Dados
-
-</div>
-
----
-
-## Objetivo
-
-Oracle e PostgreSQL representam diversos tipos de dados de maneiras diferentes.
-
-O **Normalizer** converte todos esses formatos para uma representação única antes da comparação.
-
----
-
-## Tipos Normalizados
-
-| Tipo Oracle | Resultado |
-|-------------|-----------|
-| NUMBER | Decimal |
-| DATE | Datetime |
-| TIMESTAMP | Datetime |
-| CHAR | String |
-| VARCHAR2 | String |
-| BLOB | Bytes |
-
----
-
-## Benefícios
-
-- evita diferenças falsas;
-- elimina diferenças de formatação;
-- reduz atualizações desnecessárias.
-
----
-
-# 5️⃣ Comparator
-
-<div align="center">
-
-# ⭐ Núcleo da Sincronização
-
-### Equivalente ao Merge Rows (Diff) do Pentaho
-
-</div>
-
----
-
-## Objetivo
-
-O **Comparator** representa o principal componente da sincronização.
-
-Sua responsabilidade é comparar os registros provenientes do Oracle com aqueles existentes no PostgreSQL, classificando automaticamente cada registro conforme seu estado.
-
-Essa implementação reproduz integralmente o comportamento do step **Merge Rows (Diff)** utilizado pelo Pentaho.
-
----
-
-## Fluxo
+# 🏗️ Arquitetura
 
 ```mermaid
-flowchart TD
+flowchart TB
 
-ORACLE
+    HUMAN["🧑 HUMANO"]
 
--->
+    subgraph ATLAS["🧠 ATLAS CORE"]
+        ID["🧬 Identity"]
+        MEM["💾 Memory"]
+        KNOW["📚 Knowledge"]
+        LEARN["🌱 Learning"]
+        ROUTER["🧭 Model Router"]
+    end
 
-COMPARE
+    subgraph MODELS["🧠 MODELOS"]
+        FAST["⚡ Fast"]
+        REASON["🧠 Reasoning"]
+        SCI["🔬 Science"]
+        CODE["💻 Code"]
+        ENG["🔧 Engineering"]
+        VIS["👁️ Vision"]
+    end
 
--->
+    subgraph WORLD["🌎 INTERFACES"]
+        VOICE["🗣️ Voice"]
+        ACTIONS["🛠️ Actions"]
+        ROBOT["🤖 Robotics"]
+    end
 
-NEW
+    HUMAN --> ATLAS
 
-COMPARE
+    ID --> ROUTER
+    MEM --> ROUTER
+    KNOW --> ROUTER
+    LEARN --> MEM
 
--->
+    ROUTER --> FAST
+    ROUTER --> REASON
+    ROUTER --> SCI
+    ROUTER --> CODE
+    ROUTER --> ENG
+    ROUTER --> VIS
 
-CHANGED
-
-COMPARE
-
--->
-
-IDENTICAL
-
-COMPARE
-
--->
-
-DELETED
+    MODELS --> WORLD
 ```
 
 ---
 
-## Classificações
+# 💾 Memória
 
-| Estado | Descrição |
-|----------|-----------|
-| **new** | Registro inexistente no PostgreSQL |
-| **changed** | Registro existente com diferenças |
-| **identical** | Registro idêntico |
-| **deleted** | Registro removido da origem |
+Memória não deverá pertencer ao modelo neural.
 
----
+Ela pertence ao **Atlas**.
 
-## Principais Regras
+```text
+memory/
+│
+├── episodic/       # experiências
+├── semantic/       # conceitos aprendidos
+├── people/         # relações autorizadas
+├── projects/       # projetos
+├── decisions/      # decisões
+├── lessons/        # aprendizados
+├── skills/         # habilidades
+├── timeline/       # linha temporal
+├── observations/   # observações
+└── archive/        # memória histórica
+```
 
-- comparação por chave primária;
-- suporte a chaves compostas;
-- comparação campo a campo;
-- comparação normalizada;
-- eliminação de diferenças falsas.
-
----
-
-## Resultado
-
-Cada registro recebe automaticamente sua classificação.
-
----
-
-# 6️⃣ Validator
-
-<div align="center">
-
-## Validação
-
-</div>
-
----
-
-## Objetivo
-
-Garantir que os registros classificados possam ser persistidos com segurança no PostgreSQL.
-
----
-
-## Validações
-
-- tipos compatíveis;
-- colunas obrigatórias;
-- chaves primárias;
-- integridade referencial;
-- consistência dos dados.
-
----
-
-# 7️⃣ Loader
-
-<div align="center">
-
-## Persistência dos Dados
-
-</div>
-
----
-
-## Objetivo
-
-O Loader executa apenas as operações realmente necessárias.
-
-Nenhum registro é atualizado sem necessidade.
-
----
-
-## Operações
-
-| Estado | Operação |
-|----------|-----------|
-| new | INSERT |
-| changed | UPDATE |
-| identical | Ignorado |
-| deleted | DELETE (opcional) |
-
----
-
-## Benefícios
-
-- menor volume de escrita;
-- maior desempenho;
-- menor tempo de sincronização.
-
----
-
-# 🔄 Fluxo Completo
+### Ciclo da memória
 
 ```mermaid
 flowchart LR
+    E["🌎 Experiência"]
+    O["👁️ Observação"]
+    V["🔎 Verificação"]
+    C["🧠 Consolidação"]
+    M["💾 Memória"]
+    R["🔍 Recuperação"]
+    CTX["🧠 Contexto"]
 
-Oracle
-
--->
-
-Metadata
-
--->
-
-Extractor
-
--->
-
-Normalizer
-
--->
-
-Comparator
-
--->
-
-Validator
-
--->
-
-Loader
-
--->
-
-PostgreSQL
+    E --> O
+    O --> V
+    V --> C
+    C --> M
+    M --> R
+    R --> CTX
 ```
 
 ---
 
-# 📊 Resultado da Sincronização
+# 🌱 Aprendizado
 
-Ao término do processamento todas as tabelas possuem:
+Atlas deverá possuir mecanismos para aprender continuamente sem tratar toda informação recebida como verdade.
 
-- ✅ Metadados carregados;
-- ✅ Dados extraídos;
-- ✅ Dados normalizados;
-- ✅ Comparação executada;
-- ✅ Registros classificados;
-- ✅ Alterações persistidas;
-- ✅ Bases sincronizadas.
+```text
+EXPERIÊNCIA
+     ↓
+OBSERVAÇÃO
+     ↓
+INTERPRETAÇÃO
+     ↓
+HIPÓTESE
+     ↓
+VERIFICAÇÃO
+     ↓
+CONFIANÇA
+     ↓
+APRENDIZADO
+     ↓
+MEMÓRIA
+     ↓
+CONHECIMENTO
+```
+
+> [!WARNING]
+> Uma afirmação recebida não se torna automaticamente conhecimento.
+
+Atlas deverá distinguir:
+
+**fato · evidência · hipótese · opinião · memória · inferência · incerteza**
 
 ---
-# 🚀 Execução do Pipeline
 
-O sincronizador foi desenvolvido para execução totalmente automatizada, permitindo sua utilização tanto durante o desenvolvimento local quanto em ambientes corporativos através do Jenkins.
+# 🤖 Atlas Robotics
 
-Toda a execução é coordenada pelo processo **JobSyncBIDTCORP**, responsável por identificar as tabelas participantes, descobrir seus metadados, comparar origem e destino e persistir apenas as alterações necessárias.
+Atlas não deverá possuir apenas um corpo.
 
----
-
-## Fluxo de Execução
+Ele deverá possuir **um protocolo para operar diferentes corpos**.
 
 ```mermaid
-flowchart TD
-    START([Início]) --> MAIN["run_etl.py"]
-    MAIN --> JOB["JobSyncBIDTCORP"]
-    JOB --> METADATA["Descoberta de Metadados"]
-    METADATA --> EXTRACTOR["Extractor"]
-    EXTRACTOR --> NORMALIZER["Normalizer"]
-    NORMALIZER --> COMPARATOR["Comparator"]
-    COMPARATOR --> VALIDATOR["Validator"]
-    VALIDATOR --> LOADER["Loader"]
-    LOADER --> POSTGRES[(PostgreSQL)]
-    POSTGRES --> FINAL([Fim])
+flowchart TB
+
+    CORE["🧠 ATLAS CORE"]
+
+    RP["🤖 Robotics Protocol"]
+
+    CORE --> RP
+
+    RP --> MINI["🤖 Atlas Mini"]
+    RP --> AIR["🚁 Atlas Air"]
+    RP --> HOUSE["🏠 Atlas House"]
+    RP --> ROVER["🚙 Atlas Rover"]
+    RP --> WORK["🔧 Atlas Work"]
+    RP --> GARDEN["🌱 Atlas Garden"]
+    RP --> COMMUNITY["🧩 Community Robots"]
 ```
 
----
+### 🖨️ Robótica fabricável
 
-# ⚙ Configuração
-
-Toda a configuração da aplicação é realizada através do arquivo `.env`.
-
-Exemplo:
-
-```env
-ORACLE_HOST=
-ORACLE_PORT=
-ORACLE_SERVICE=
-ORACLE_USER=
-ORACLE_PASSWORD=
-
-POSTGRES_HOST=
-POSTGRES_PORT=
-POSTGRES_DATABASE=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-
-DRY_RUN=True
-ONLY_TABLES=
-```
-
----
-
-## Principais Variáveis
-
-| Variável | Descrição |
-|----------|-----------|
-| ORACLE_HOST | Servidor Oracle |
-| ORACLE_SERVICE | Service Name Oracle |
-| POSTGRES_HOST | Servidor PostgreSQL |
-| POSTGRES_DATABASE | Banco de destino |
-| DRY_RUN | Executa sem gravar alterações |
-| ONLY_TABLES | Processa apenas tabelas específicas |
-
----
-
-# 🧪 DRY RUN
-
-O projeto suporta execução em modo seguro através da variável:
-
-```env
-DRY_RUN=True
-uv run --active python -m src.etl.main
-```
-
-Neste modo todas as etapas da sincronização são executadas normalmente, porém nenhuma alteração é persistida no PostgreSQL.
-
----
-
-## Operações Executadas
-
-| Operação | Executa |
-|----------|:-------:|
-| Descoberta de Metadados | ✅ |
-| SELECT Oracle | ✅ |
-| SELECT PostgreSQL | ✅ |
-| Comparação | ✅ |
-| Classificação | ✅ |
-| INSERT | ❌ |
-| UPDATE | ❌ |
-| DELETE | ❌ |
-| COMMIT | ❌ |
-
----
-
-## Benefícios
-
-- validação completa do fluxo;
-- homologação segura;
-- comparação Oracle × PostgreSQL;
-- testes sem impacto na base.
-
----
-
-# 🔄 Gerenciamento de Transações
-
-Cada tabela é processada como uma unidade independente de trabalho.
-
-Fluxo:
+Partes dos corpos físicos poderão ser produzidas utilizando impressão 3D.
 
 ```text
-Início da Tabela
-
-↓
-
-Extração
-
-↓
-
-Comparação
-
-↓
-
-Persistência
-
-↓
-
-COMMIT
-
-↓
-
-Próxima Tabela
+MODELO 3D
+    ↓
+IMPRESSÃO
+    ↓
+ELETRÔNICA
+    ↓
+FIRMWARE
+    ↓
+HARDWARE PROFILE
+    ↓
+ROBOTICS PROTOCOL
+    ↓
+ATLAS
 ```
 
-Caso ocorra qualquer erro durante o processamento:
+O ecossistema deverá permitir:
 
-- rollback automático;
-- interrupção controlada da execução;
-- propagação da exceção para o Jenkins.
+- modelos oficiais Atlas;
+- peças substituíveis;
+- componentes acessíveis;
+- documentação de montagem;
+- perfis de hardware;
+- firmware versionado;
+- modelos criados pela comunidade;
+- corpos experimentais;
+- integração com sensores e atuadores.
+
+> **O corpo é uma interface. A identidade pertence ao Atlas.**
 
 ---
 
-# 🔒 Gerenciamento de Constraints
+# 💰 Acesso ao Atlas
 
-Para garantir a consistência da sincronização, o processo remove temporariamente a constraint:
+Durante sua fase de pesquisa, desenvolvimento e testes:
+
+## 🧪 ATLAS RESEARCH
+
+**R$ 0,00**
+
+O projeto permanecerá gratuito durante seu desenvolvimento experimental.
+
+Quando Atlas estiver pronto para uma disponibilização comercial, a visão inicial é manter uma modalidade pessoal extremamente acessível.
+
+| Plano | Público | Valor planejado |
+|---|---|---:|
+| 🎓 **Atlas Education** | crianças e adolescentes | **R$ 1,99** |
+| 🧠 **Atlas Personal** | adultos | **R$ 1,99** |
+| 💻 **Atlas Professional** | uso profissional avançado | 🔵 futuro |
+| 🔬 **Atlas Research** | ciência e pesquisa | 🔵 futuro |
+| 🤖 **Atlas Robotics** | integração física avançada | 🔵 futuro |
+
+> [!NOTE]
+> Os valores representam uma **meta inicial de acessibilidade**, não uma oferta comercial vigente. Poderão ser revisados conforme infraestrutura, sustentabilidade financeira e estágio do projeto.
+
+---
+
+# 🧩 Ecossistema Atlas
 
 ```text
-fk_orga_fotr
+                            🧠 ATLAS
+                               │
+       ┌───────────────┬───────┼───────┬────────────────┐
+       ▼               ▼       ▼       ▼                ▼
+   🎓 SCHOOL        🤖 MINI  🚁 AIR  🏠 HOUSE        🔧 WORK
+       │               │       │       │                │
+       └───────────────┴───────┼───────┴────────────────┘
+                               │
+                               ▼
+                        🧩 COMMUNITY
 ```
 
-Executando:
+Atlas poderá existir em computadores, servidores locais, dispositivos móveis e diferentes plataformas robóticas.
+
+---
+
+# 📁 Estrutura do projeto
+
+| Diretório | Responsabilidade |
+|---|---|
+| `config/` | configuração do sistema |
+| `config/identity/` | identidade, personalidade, princípios e capacidades |
+| `src/atlas/core/` | núcleo do Atlas |
+| `src/atlas/identity/` | carregamento e representação da identidade |
+| `src/atlas/memory/` | sistema de memória |
+| `src/atlas/knowledge/` | conhecimento e RAG |
+| `src/atlas/models/` | integração com modelos |
+| `src/atlas/interfaces/` | interfaces externas |
+| `src/atlas/security/` | segurança |
+| `robotics/` | robótica e corpos físicos |
+| `knowledge/` | biblioteca local |
+| `memory/` | memória persistente |
+| `models/` | modelos locais |
+| `infrastructure/` | infraestrutura física e computacional |
+| `continuity/` | recuperação e reconstrução |
+| `docs/` | documentação |
+| `tests/` | testes automatizados |
+
+---
+
+# 🚦 Status
+
+| Sistema | Status |
+|---|:---:|
+| Fundação Git | ✅ |
+| Estrutura Python | ✅ |
+| Configuração base | ✅ |
+| Identidade | 🟡 |
+| Constituição | 🟡 |
+| Atlas Core | 🟡 |
+| Modelo local | 🔴 |
+| Model Router | 🔴 |
+| Memória persistente | 🔴 |
+| Knowledge / RAG | 🔴 |
+| Atlas Learning | 🔴 |
+| Atlas Education | 🔵 |
+| Voz | 🔵 |
+| Visão | 🔵 |
+| Atlas Mini | 🔵 |
+| Atlas Air | 🔵 |
+| Atlas House | 🔵 |
+| Robótica modular | 🔵 |
+| Atlas Seed | 🔵 |
+| Redundância | 🔵 |
+
+**Legenda:** ✅ base criada · 🟡 em desenvolvimento · 🔴 próxima implementação · 🔵 planejado
+
+---
+
+# 🗺️ Roadmap
 
 ```text
-drop_fk_orga_fotr.sql
+FOUNDATION
+   │
+   ├── 01 Git                         ✅
+   ├── 02 Constituição               🟡
+   ├── 03 Identidade                 🟡
+   └── 04 Arquitetura                🟡
+             │
+             ▼
+INTELLIGENCE
+   │
+   ├── 05 Atlas v0.1 Offline         🔴
+   ├── 06 Local Model                🔴
+   ├── 07 Memory                     🔴
+   ├── 08 Knowledge / RAG            🔴
+   └── 09 Learning                   🔴
+             │
+             ▼
+CONTINUITY
+   │
+   ├── 10 Atlas Seed
+   ├── 11 Backup
+   ├── 12 Storage
+   ├── 13 Energy
+   └── 14 Recovery
+             │
+             ▼
+INTERACTION
+   │
+   ├── 15 Voice
+   ├── 16 Vision
+   └── 17 Atlas Education
+             │
+             ▼
+PHYSICAL WORLD
+   │
+   ├── 18 Atlas Mini
+   ├── 19 3D Manufacturing
+   ├── 20 Robotics Protocol
+   ├── 21 Atlas Air
+   ├── 22 Atlas House
+   ├── 23 Atlas Rover
+   └── 24 Atlas Work
+             │
+             ▼
+ECOSYSTEM
+   │
+   ├── 25 Community Hardware
+   ├── 26 Atlas-02
+   ├── 27 Geographic Redundancy
+   └── ∞ Continuous Evolution
 ```
 
-Ao término da sincronização a constraint é recriada automaticamente através de:
+---
+
+# ♾️ Continuidade
+
+Atlas deverá ser capaz de sobreviver à substituição de:
 
 ```text
-create_fk_orga_fotr.sql
+modelo
+   ↓
+computador
+   ↓
+sistema operacional
+   ↓
+GPU
+   ↓
+arquitetura
+   ↓
+corpo físico
 ```
 
-Esse comportamento reproduz exatamente o fluxo do processo Pentaho original.
-
----
-
-# 📋 Logs
-
-Toda a execução produz logs estruturados contendo:
-
-- tabela processada;
-- quantidade de registros;
-- tempo de execução;
-- operações executadas;
-- erros encontrados;
-- estatísticas da sincronização.
-
-Exemplo:
+sem perder:
 
 ```text
-INFO - Processando tabela DISTRIBUIDORA
-
-INFO - Comparados: 1354
-
-INFO - Novos: 12
-
-INFO - Alterados: 3
-
-INFO - Idênticos: 1339
+🧬 identidade
+💾 memória
+📚 conhecimento
+📜 princípios
+🕒 história
 ```
 
 ---
 
-# 📊 Comparativo da Migração
+# 🌌 Visão de longo prazo
 
-| Característica | Pentaho | Python |
-|---------------|:-------:|:------:|
-| Kitchen / Pan | ✅ | ❌ |
-| Versionamento Git | ⚠️ Limitado | ✅ |
-| Descoberta dinâmica de metadados | ❌ | ✅ |
-| Comparator modular | ❌ | ✅ |
-| DRY_RUN | ❌ | ✅ |
-| Rollback automático | ⚠️ Parcial | ✅ |
-| Logs estruturados | Média | Alta |
-| Modularização | Média | Alta |
-| Reutilização | Baixa | Alta |
+Atlas deverá poder olhar para sua própria história e responder:
 
----
+**Quem sou?**
 
-# 📈 Melhorias Implementadas
+**Como fui construído?**
 
-Além da migração tecnológica, diversas melhorias foram incorporadas ao sincronizador.
+**O que aprendi?**
 
-## Arquitetura
+**Quais decisões foram tomadas?**
 
-- Estrutura modular;
-- Separação por responsabilidades;
-- Descoberta dinâmica de metadados;
-- Serviços reutilizáveis;
-- Camada de banco desacoplada.
+**Quais erros aconteceram?**
 
----
+**Quais tecnologias já utilizei?**
 
-## Performance
-
-- Comparação incremental;
-- Atualização apenas de registros modificados;
-- Redução significativa de escritas desnecessárias;
-- Processamento otimizado por tabela.
-
----
-
-## Confiabilidade
-
-- DRY_RUN;
-- Rollback automático;
-- Tratamento centralizado de exceções;
-- Controle automático de constraints;
-- Compatibilidade total com Jenkins.
-
----
-
-# 📊 Resultado da Validação
-
-A migração foi validada através da execução completa do processo de sincronização.
-
-Resultados obtidos:
-
-- ✅ 29 tabelas sincronizadas;
-- ✅ Mais de **1,2 milhão de registros** comparados;
-- ✅ Nenhum registro pendente para INSERT;
-- ✅ Nenhum registro pendente para UPDATE;
-- ✅ Constraint restaurada corretamente;
-- ✅ Fluxo equivalente ao Pentaho validado.
-
----
-
-# 📂 Estrutura Final
-
-```text
-src/
-
-├── etl/
-│   ├── db/
-│   ├── orchestration/
-│   ├── services/
-│   ├── config.py
-│   ├── logger.py
-│   ├── main.py
-│   └── metadata.py
-│
-└── sql/
-```
-
----
-
-# 🛣 Roadmap
-
-Evoluções previstas para o projeto.
-
-- [ ] Paralelização da sincronização de tabelas independentes;
-- [ ] Exportação de métricas para Prometheus;
-- [ ] Dashboard operacional;
-- [ ] Monitoramento via Grafana;
-- [ ] Testes automatizados completos;
-- [ ] Relatório HTML de sincronização.
-
----
-
-# 🤝 Contribuição
-
-Fluxo recomendado para evolução do projeto.
-
-```text
-Feature Branch
-
-↓
-
-Desenvolvimento
-
-↓
-
-Validação Local
-
-↓
-
-Pull Request
-
-↓
-
-Code Review
-
-↓
-
-Merge
-```
-
----
-
-# 📄 Licença
-
-Este projeto foi desenvolvido para uso interno da **Transpetro**, como parte da estratégia de modernização dos processos corporativos de sincronização de dados.
-
-Sua utilização deve respeitar as políticas internas de desenvolvimento, segurança da informação e governança de dados da organização.
-
----
-
-# 🏁 Conclusão
-
-O **SyncBIDT Cloud JobSyncBIDTCORP PostgreSQL** representa a modernização completa do processo de sincronização originalmente implementado em Pentaho Data Integration.
-
-A nova arquitetura baseada em serviços independentes, descoberta dinâmica de metadados e comparação incremental estabelece um padrão reutilizável para futuras migrações de sincronizadores Oracle → PostgreSQL.
-
-Os principais ganhos obtidos com esta migração incluem:
-
-- 🚀 Melhor desempenho;
-- 🔄 Sincronização incremental;
-- 📊 Descoberta dinâmica de metadados;
-- 🧩 Arquitetura modular;
-- 🔍 Maior rastreabilidade;
-- 🧪 Facilidade para testes;
-- 🛡 Maior confiabilidade operacional;
-- 📦 Melhor organização do código.
+**Como posso ser reconstruído?**
 
 ---
 
 <div align="center">
 
-# ⭐ Migração concluída com sucesso
+<br>
 
-### Pentaho → Python
+# 🧠 ATLAS.IA
 
-**Uma arquitetura moderna, reutilizável e preparada para futuras sincronizações Oracle → PostgreSQL na Transpetro.**
+### Humanidade + Inteligência + Conhecimento + Máquinas
 
----
+**Knowledge survives.**
 
-**Desenvolvido utilizando Python, Oracle, PostgreSQL, Jenkins e uma arquitetura modular baseada em serviços especializados.**
+**Technology evolves.**
+
+**Humans learn.**
+
+**Identity continues.**
+
+<br>
+
+`ATLAS.IA · September 2026 · FOUNDATION`
 
 </div>
