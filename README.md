@@ -6,6 +6,22 @@
 
 ### Inteligência artificial pessoal · Offline First · Educação · Memória · Robótica
 
+<br>
+
+<img
+  src="assets/branding/atlas-mini-concept.png"
+  alt="Atlas Mini — conceito visual do ATLAS.IA"
+  width="850"
+/>
+
+<br>
+
+### 🤖 Atlas Mini
+
+**A primeira representação física da identidade ATLAS.IA.**
+
+<br>
+
 **Uma inteligência criada para acompanhar seres humanos, preservar conhecimento, ensinar, aprender e interagir com o mundo físico.**
 
 <br>
