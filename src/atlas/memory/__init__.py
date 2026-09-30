@@ -5,6 +5,11 @@
     MemoryAuthorizationPolicy,
 )
 from atlas.memory.context import build_memory_context
+from atlas.memory.intent import (
+    MemoryIntent,
+    MemoryIntentAction,
+    MemoryIntentDetector,
+)
 from atlas.memory.models import (
     MemoryRecord,
     MemorySource,
@@ -22,6 +27,9 @@ __all__ = [
     "MemoryAuthorizationDecision",
     "MemoryAuthorizationError",
     "MemoryAuthorizationPolicy",
+    "MemoryIntent",
+    "MemoryIntentAction",
+    "MemoryIntentDetector",
     "MemoryRecord",
     "MemorySource",
     "MemoryType",
