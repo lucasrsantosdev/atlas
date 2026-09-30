@@ -1,5 +1,7 @@
 ﻿from __future__ import annotations
 
+import logging
+import time
 from dataclasses import dataclass
 
 from atlas.models.runtime import (
@@ -7,6 +9,9 @@ from atlas.models.runtime import (
     ModelRuntime,
     ModelRuntimeError,
 )
+
+
+logger = logging.getLogger("atlas.models.router")
 
 
 class ModelRouterError(RuntimeError):
@@ -31,14 +36,6 @@ class RouterStatus:
 class ModelRouter:
     """
     Model Router mínimo do Atlas.
-
-    Responsabilidades atuais:
-    - registrar modelos por função;
-    - localizar uma rota;
-    - verificar disponibilidade do runtime;
-    - encaminhar geração para o modelo correto.
-
-    Nesta versão não existe seleção automática por intenção.
     """
 
     def __init__(self) -> None:
@@ -70,12 +67,24 @@ class ModelRouter:
             runtime=runtime,
         )
 
+        logger.info(
+            "Rota registrada: role=%s model=%s provider=%s",
+            normalized_role,
+            normalized_model,
+            runtime.provider,
+        )
+
     def get_route(self, role: str) -> ModelRoute:
         normalized_role = role.strip().lower()
 
         route = self._routes.get(normalized_role)
 
         if route is None:
+            logger.warning(
+                "Rota inexistente solicitada: role=%s",
+                normalized_role,
+            )
+
             raise ModelRouterError(
                 f"Nenhum modelo registrado para a função '{normalized_role}'."
             )
@@ -134,11 +143,36 @@ class ModelRouter:
         health = route.runtime.health()
 
         if not health.available:
+            logger.error(
+                "Runtime indisponível: role=%s model=%s",
+                route.role,
+                route.model_name,
+            )
+
             raise ModelRuntimeError(
                 f"Runtime da função '{route.role}' está indisponível."
             )
 
-        return route.runtime.generate(
+        logger.info(
+            "Iniciando geração: role=%s model=%s",
+            route.role,
+            route.model_name,
+        )
+
+        started_at = time.perf_counter()
+
+        result = route.runtime.generate(
             model=route.model_name,
             prompt=prompt,
         )
+
+        elapsed_seconds = time.perf_counter() - started_at
+
+        logger.info(
+            "Geração concluída: role=%s model=%s duration=%.2fs",
+            route.role,
+            route.model_name,
+            elapsed_seconds,
+        )
+
+        return result

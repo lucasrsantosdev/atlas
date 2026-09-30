@@ -1,11 +1,13 @@
 ﻿from __future__ import annotations
 
 import argparse
+import logging
 import sys
 
 from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
 from atlas.interfaces import print_status, run_chat
+from atlas.logging import configure_logging
 from atlas.models import (
     ModelConfigError,
     ModelRouter,
@@ -15,13 +17,26 @@ from atlas.models import (
 from atlas.models.runtime import OllamaRuntime
 
 
+logger = logging.getLogger("atlas.main")
+
+
 def build_atlas() -> Atlas:
     """
     Constrói a instância principal do Atlas v0.1.
     """
 
+    logger.info("Iniciando construção do Atlas.")
+
     config = load_config()
+    logger.info("Configuração carregada.")
+
     identity = load_identity()
+    logger.info(
+        "Identidade carregada: name=%s version=%s",
+        identity.name,
+        identity.version,
+    )
+
     models_config = load_models_config()
 
     if models_config.runtime.provider != "ollama":
@@ -34,6 +49,12 @@ def build_atlas() -> Atlas:
         timeout_seconds=models_config.runtime.timeout_seconds,
     )
 
+    logger.info(
+        "Runtime configurado: provider=%s host=%s",
+        models_config.runtime.provider,
+        models_config.runtime.host,
+    )
+
     model_router = ModelRouter()
 
     model_router.register(
@@ -42,11 +63,21 @@ def build_atlas() -> Atlas:
         runtime=runtime,
     )
 
-    return Atlas(
+    logger.info(
+        "Modelo registrado: role=%s model=%s",
+        models_config.model.role,
+        models_config.model.name,
+    )
+
+    atlas = Atlas(
         config=config,
         identity=identity,
         model_router=model_router,
     )
+
+    logger.info("Atlas construído com sucesso.")
+
+    return atlas
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -73,6 +104,10 @@ def create_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    configure_logging()
+
+    logger.info("Atlas CLI iniciado.")
+
     parser = create_parser()
     args = parser.parse_args()
 
@@ -86,6 +121,10 @@ def main() -> None:
         ModelRouterError,
         ValueError,
     ) as exc:
+        logger.exception(
+            "Falha ao inicializar Atlas."
+        )
+
         print("=" * 72)
         print("Falha ao inicializar Atlas.")
         print("=" * 72)
@@ -95,9 +134,12 @@ def main() -> None:
         sys.exit(1)
 
     if args.command == "chat":
+        logger.info("Modo chat iniciado.")
         run_chat(atlas)
+        logger.info("Modo chat encerrado.")
         return
 
+    logger.info("Exibindo status do sistema.")
     print_status(atlas)
 
 
