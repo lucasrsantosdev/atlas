@@ -1,9 +1,11 @@
 ﻿from __future__ import annotations
 
+import argparse
 import sys
 
 from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
+from atlas.interfaces import print_status, run_chat
 from atlas.models import (
     ModelConfigError,
     ModelRouter,
@@ -13,37 +15,69 @@ from atlas.models import (
 from atlas.models.runtime import OllamaRuntime
 
 
+def build_atlas() -> Atlas:
+    """
+    Constrói a instância principal do Atlas v0.1.
+    """
+
+    config = load_config()
+    identity = load_identity()
+    models_config = load_models_config()
+
+    if models_config.runtime.provider != "ollama":
+        raise ModelConfigError(
+            "O Atlas v0.1 suporta apenas o runtime 'ollama'."
+        )
+
+    runtime = OllamaRuntime(
+        host=models_config.runtime.host,
+        timeout_seconds=models_config.runtime.timeout_seconds,
+    )
+
+    model_router = ModelRouter()
+
+    model_router.register(
+        role=models_config.model.role,
+        model_name=models_config.model.name,
+        runtime=runtime,
+    )
+
+    return Atlas(
+        config=config,
+        identity=identity,
+        model_router=model_router,
+    )
+
+
+def create_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="atlas",
+        description="ATLAS.IA — agente local offline-first.",
+    )
+
+    subcommands = parser.add_subparsers(
+        dest="command",
+    )
+
+    subcommands.add_parser(
+        "status",
+        help="Exibe o estado do sistema Atlas.",
+    )
+
+    subcommands.add_parser(
+        "chat",
+        help="Inicia a interface conversacional local.",
+    )
+
+    return parser
+
+
 def main() -> None:
+    parser = create_parser()
+    args = parser.parse_args()
+
     try:
-        config = load_config()
-        identity = load_identity()
-        models_config = load_models_config()
-
-        if models_config.runtime.provider != "ollama":
-            raise ModelConfigError(
-                "O Atlas v0.1 suporta apenas o runtime 'ollama'."
-            )
-
-        runtime = OllamaRuntime(
-            host=models_config.runtime.host,
-            timeout_seconds=models_config.runtime.timeout_seconds,
-        )
-
-        model_router = ModelRouter()
-
-        model_router.register(
-            role=models_config.model.role,
-            model_name=models_config.model.name,
-            runtime=runtime,
-        )
-
-        atlas = Atlas(
-            config=config,
-            identity=identity,
-            model_router=model_router,
-        )
-
-        status = atlas.start()
+        atlas = build_atlas()
 
     except (
         AtlasConfigError,
@@ -60,44 +94,11 @@ def main() -> None:
 
         sys.exit(1)
 
-    print("=" * 72)
-    print(f"{status.name} v{status.version}")
-    print("=" * 72)
+    if args.command == "chat":
+        run_chat(atlas)
+        return
 
-    print("Inicialização do núcleo concluída.")
-    print(f"Status de inicialização: {status.startup_status}")
-    print(f"Estado do sistema: {status.system_state.value}")
-    print(f"Ambiente: {status.environment}")
-    print(f"Idioma: {status.language}")
-
-    print(
-        "Offline-first: "
-        f"{'ATIVO' if status.offline_first else 'INATIVO'}"
-    )
-
-    print(
-        "Identidade: "
-        f"{'CARREGADA' if status.identity_loaded else 'NÃO CARREGADA'}"
-    )
-
-    print(f"Tipo: {status.identity_type}")
-    print(f"Princípios carregados: {status.principles_loaded}")
-
-    print(
-        "Componentes prontos: "
-        f"{status.ready_components}/{status.total_components}"
-    )
-
-    print("-" * 72)
-
-    for component in atlas.registry.all():
-        print(
-            f"{component.name:<20} "
-            f"{component.state.value:<12} "
-            f"{component.detail}"
-        )
-
-    print("=" * 72)
+    print_status(atlas)
 
 
 if __name__ == "__main__":
