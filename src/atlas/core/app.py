@@ -5,7 +5,10 @@ from dataclasses import dataclass
 from atlas.core.config import AtlasConfig
 from atlas.core.registry import ComponentRegistry
 from atlas.core.status import ComponentState, SystemState
-from atlas.identity import AtlasIdentity
+from atlas.identity import (
+    AtlasIdentity,
+    build_identity_context,
+)
 from atlas.models.router import (
     ModelRouter,
     ModelRouterError,
@@ -32,21 +35,6 @@ class AtlasStatus:
 class Atlas:
     """
     Núcleo de coordenação do Atlas.
-
-    Responsabilidades atuais:
-    - receber configuração validada;
-    - receber identidade validada;
-    - registrar componentes;
-    - monitorar saúde do sistema;
-    - utilizar o Model Router;
-    - executar modelos através de rotas.
-
-    Ainda não implementado:
-    - seleção automática de modelo por intenção;
-    - memória persistente;
-    - Knowledge/RAG;
-    - ferramentas;
-    - interfaces avançadas.
     """
 
     def __init__(
@@ -64,6 +52,10 @@ class Atlas:
 
         self.name = identity.name
         self.version = identity.version
+
+        self.identity_context = build_identity_context(
+            identity
+        )
 
         self._register_components()
 
@@ -213,4 +205,5 @@ class Atlas:
         return self.model_router.generate(
             prompt,
             role=role,
+            system_prompt=self.identity_context,
         )

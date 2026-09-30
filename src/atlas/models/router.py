@@ -137,6 +137,7 @@ class ModelRouter:
         prompt: str,
         *,
         role: str = "primary",
+        system_prompt: str | None = None,
     ) -> GenerationResult:
         route = self.get_route(role)
 
@@ -164,6 +165,7 @@ class ModelRouter:
         result = route.runtime.generate(
             model=route.model_name,
             prompt=prompt,
+            system_prompt=system_prompt,
         )
 
         elapsed_seconds = time.perf_counter() - started_at
