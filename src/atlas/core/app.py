@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from atlas.core.config import AtlasConfig
 from atlas.core.registry import ComponentRegistry
@@ -8,6 +9,13 @@ from atlas.core.status import ComponentState, SystemState
 from atlas.identity import (
     AtlasIdentity,
     build_identity_context,
+)
+from atlas.memory import (
+    MemoryRecord,
+    MemoryService,
+    MemorySource,
+    MemoryType,
+    MemoryVerification,
 )
 from atlas.models.router import (
     ModelRouter,
@@ -42,10 +50,12 @@ class Atlas:
         config: AtlasConfig,
         identity: AtlasIdentity,
         model_router: ModelRouter | None = None,
+        memory_service: MemoryService | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
         self.model_router = model_router
+        self.memory_service = memory_service
         self.registry = ComponentRegistry()
 
         self._validate_identity_consistency()
@@ -85,12 +95,22 @@ class Atlas:
             detail="Identidade carregada e validada.",
         )
 
-        self.registry.register(
-            "memory",
-            ComponentState.DISABLED,
-            critical=False,
-            detail="Memória persistente ainda não implementada.",
-        )
+        if self.memory_service is None:
+            self.registry.register(
+                "memory",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Memória persistente não configurada.",
+            )
+        else:
+            self.registry.register(
+                "memory",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Memória persistente local disponível."
+                ),
+            )
 
         self.registry.register(
             "knowledge",
@@ -189,6 +209,85 @@ class Atlas:
             principles_loaded=len(self.identity.principles),
             ready_components=system_status.ready_components,
             total_components=system_status.total_components,
+        )
+
+    def remember(
+        self,
+        *,
+        memory_type: MemoryType,
+        content: str,
+        source: MemorySource,
+        explicit_user_authorization: bool = False,
+        system_owned: bool = False,
+        verification: MemoryVerification = MemoryVerification.UNVERIFIED,
+        confidence: float = 1.0,
+        tags: tuple[str, ...] = (),
+        metadata: dict[str, Any] | None = None,
+    ) -> MemoryRecord:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.remember(
+            memory_type=memory_type,
+            content=content,
+            source=source,
+            explicit_user_authorization=(
+                explicit_user_authorization
+            ),
+            system_owned=system_owned,
+            verification=verification,
+            confidence=confidence,
+            tags=tags,
+            metadata=metadata,
+        )
+
+    def recall_by_id(
+        self,
+        memory_id: str,
+    ) -> MemoryRecord | None:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_by_id(
+            memory_id
+        )
+
+    def recall_text(
+        self,
+        query: str,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_text(
+            query,
+            memory_type=memory_type,
+            limit=limit,
+        )
+
+    def recall_recent(
+        self,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_recent(
+            memory_type=memory_type,
+            limit=limit,
         )
 
     def generate(

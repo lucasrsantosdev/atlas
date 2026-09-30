@@ -8,6 +8,7 @@ from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
 from atlas.interfaces import print_status, run_chat
 from atlas.logging import configure_logging
+from atlas.memory import MemoryService
 from atlas.models import (
     ModelConfigError,
     ModelRouter,
@@ -22,7 +23,7 @@ logger = logging.getLogger("atlas.main")
 
 def build_atlas() -> Atlas:
     """
-    Constrói a instância principal do Atlas v0.1.
+    Constrói a instância principal do Atlas.
     """
 
     logger.info("Iniciando construção do Atlas.")
@@ -31,10 +32,17 @@ def build_atlas() -> Atlas:
     logger.info("Configuração carregada.")
 
     identity = load_identity()
+
     logger.info(
         "Identidade carregada: name=%s version=%s",
         identity.name,
         identity.version,
+    )
+
+    memory_service = MemoryService()
+
+    logger.info(
+        "Serviço de memória persistente configurado."
     )
 
     models_config = load_models_config()
@@ -73,6 +81,7 @@ def build_atlas() -> Atlas:
         config=config,
         identity=identity,
         model_router=model_router,
+        memory_service=memory_service,
     )
 
     logger.info("Atlas construído com sucesso.")

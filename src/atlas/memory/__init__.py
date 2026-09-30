@@ -1,4 +1,11 @@
-﻿from atlas.memory.models import (
+﻿from atlas.memory.authorization import (
+    AuthorizationReason,
+    MemoryAuthorizationDecision,
+    MemoryAuthorizationError,
+    MemoryAuthorizationPolicy,
+)
+from atlas.memory.context import build_memory_context
+from atlas.memory.models import (
     MemoryRecord,
     MemorySource,
     MemoryType,
@@ -11,6 +18,10 @@ from atlas.memory.store import (
 )
 
 __all__ = [
+    "AuthorizationReason",
+    "MemoryAuthorizationDecision",
+    "MemoryAuthorizationError",
+    "MemoryAuthorizationPolicy",
     "MemoryRecord",
     "MemorySource",
     "MemoryType",
@@ -18,4 +29,5 @@ __all__ = [
     "MemoryService",
     "JsonlMemoryStore",
     "MemoryStoreError",
+    "build_memory_context",
 ]

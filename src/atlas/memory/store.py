@@ -167,6 +167,10 @@ class JsonlMemoryStore:
         self,
         memory_type: MemoryType,
     ) -> tuple[MemoryRecord, ...]:
+        """
+        Carrega todas as memórias de um único tipo.
+        """
+
         memory_file = self._memory_file(
             memory_type
         )
@@ -195,6 +199,7 @@ class JsonlMemoryStore:
                         data = json.loads(
                             clean_line
                         )
+
                     except json.JSONDecodeError as exc:
                         raise MemoryStoreError(
                             "JSON inválido em "
@@ -219,3 +224,175 @@ class JsonlMemoryStore:
             ) from exc
 
         return tuple(records)
+
+    def load_everything(
+        self,
+    ) -> tuple[MemoryRecord, ...]:
+        """
+        Carrega memórias de todas as categorias conhecidas.
+        """
+
+        records: list[MemoryRecord] = []
+
+        for memory_type in MemoryType:
+            records.extend(
+                self.load_all(memory_type)
+            )
+
+        return tuple(records)
+
+    def get_by_id(
+        self,
+        memory_id: str,
+    ) -> MemoryRecord | None:
+        """
+        Procura uma memória pelo identificador único.
+        """
+
+        clean_id = memory_id.strip()
+
+        if not clean_id:
+            raise ValueError(
+                "ID da memória não pode estar vazio."
+            )
+
+        for record in self.load_everything():
+            if record.id == clean_id:
+                return record
+
+        return None
+
+    def search_text(
+        self,
+        query: str,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        """
+        Busca textual simples, case-insensitive.
+
+        Nesta etapa não utiliza embeddings ou banco vetorial.
+        """
+
+        clean_query = query.strip().casefold()
+
+        if not clean_query:
+            raise ValueError(
+                "Consulta de memória não pode estar vazia."
+            )
+
+        self._validate_limit(limit)
+
+        records = (
+            self.load_all(memory_type)
+            if memory_type is not None
+            else self.load_everything()
+        )
+
+        matches = [
+            record
+            for record in records
+            if clean_query in record.content.casefold()
+        ]
+
+        matches.sort(
+            key=lambda record: record.created_at,
+            reverse=True,
+        )
+
+        return tuple(matches[:limit])
+
+    def search_tags(
+        self,
+        tags: tuple[str, ...],
+        *,
+        memory_type: MemoryType | None = None,
+        match_all: bool = True,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        """
+        Busca memória pelas tags associadas.
+        """
+
+        clean_tags = {
+            tag.strip().casefold()
+            for tag in tags
+            if tag.strip()
+        }
+
+        if not clean_tags:
+            raise ValueError(
+                "Informe pelo menos uma tag."
+            )
+
+        self._validate_limit(limit)
+
+        records = (
+            self.load_all(memory_type)
+            if memory_type is not None
+            else self.load_everything()
+        )
+
+        matches: list[MemoryRecord] = []
+
+        for record in records:
+            record_tags = {
+                tag.casefold()
+                for tag in record.tags
+            }
+
+            if match_all:
+                matched = clean_tags.issubset(
+                    record_tags
+                )
+            else:
+                matched = bool(
+                    clean_tags.intersection(
+                        record_tags
+                    )
+                )
+
+            if matched:
+                matches.append(record)
+
+        matches.sort(
+            key=lambda record: record.created_at,
+            reverse=True,
+        )
+
+        return tuple(matches[:limit])
+
+    def recent(
+        self,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        """
+        Recupera as memórias mais recentes.
+        """
+
+        self._validate_limit(limit)
+
+        records = list(
+            self.load_all(memory_type)
+            if memory_type is not None
+            else self.load_everything()
+        )
+
+        records.sort(
+            key=lambda record: record.created_at,
+            reverse=True,
+        )
+
+        return tuple(records[:limit])
+
+    @staticmethod
+    def _validate_limit(
+        limit: int,
+    ) -> None:
+        if limit <= 0:
+            raise ValueError(
+                "Limit deve ser maior que zero."
+            )

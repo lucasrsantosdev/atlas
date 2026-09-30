@@ -886,6 +886,34 @@ Atlas deverá poder olhar para sua própria história e responder:
 
 ---
 
+# 🧪 Atlas funcionando hoje
+
+O desenvolvimento do Atlas já ultrapassou a fase exclusivamente conceitual.
+
+Atualmente o protótipo é capaz de:
+
+- executar um modelo de linguagem local;
+- operar sem conexão permanente com a internet;
+- carregar a identidade do Atlas;
+- registrar memórias persistentes;
+- preservar informações entre execuções;
+- manter memória desacoplada do modelo neural.
+
+### Estado atual
+
+Humano
+   │
+   ▼
+Atlas Core
+   │
+   ├── Identity      ✅
+   ├── Local Model   ✅
+   ├── Memory Write  ✅
+   ├── Memory Read   🟡
+   ├── Knowledge     🔴
+   ├── Learning      🔴
+   └── Robotics      🔵
+
 <div align="center">
 
 <br>
