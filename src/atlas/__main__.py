@@ -4,7 +4,12 @@ import sys
 
 from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
-from atlas.models import ModelConfigError, load_models_config
+from atlas.models import (
+    ModelConfigError,
+    ModelRouter,
+    ModelRouterError,
+    load_models_config,
+)
 from atlas.models.runtime import OllamaRuntime
 
 
@@ -24,11 +29,18 @@ def main() -> None:
             timeout_seconds=models_config.runtime.timeout_seconds,
         )
 
+        model_router = ModelRouter()
+
+        model_router.register(
+            role=models_config.model.role,
+            model_name=models_config.model.name,
+            runtime=runtime,
+        )
+
         atlas = Atlas(
             config=config,
             identity=identity,
-            runtime=runtime,
-            model_name=models_config.model.name,
+            model_router=model_router,
         )
 
         status = atlas.start()
@@ -37,6 +49,7 @@ def main() -> None:
         AtlasConfigError,
         AtlasIdentityError,
         ModelConfigError,
+        ModelRouterError,
         ValueError,
     ) as exc:
         print("=" * 72)

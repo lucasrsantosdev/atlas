@@ -6,11 +6,11 @@ from atlas.core.config import AtlasConfig
 from atlas.core.registry import ComponentRegistry
 from atlas.core.status import ComponentState, SystemState
 from atlas.identity import AtlasIdentity
-from atlas.models.runtime import (
-    GenerationResult,
-    ModelRuntime,
-    ModelRuntimeError,
+from atlas.models.router import (
+    ModelRouter,
+    ModelRouterError,
 )
+from atlas.models.runtime import GenerationResult
 
 
 @dataclass(frozen=True)
@@ -38,11 +38,11 @@ class Atlas:
     - receber identidade validada;
     - registrar componentes;
     - monitorar saúde do sistema;
-    - utilizar um runtime cognitivo local;
-    - executar um modelo local.
+    - utilizar o Model Router;
+    - executar modelos através de rotas.
 
     Ainda não implementado:
-    - Model Router;
+    - seleção automática de modelo por intenção;
     - memória persistente;
     - Knowledge/RAG;
     - ferramentas;
@@ -53,13 +53,11 @@ class Atlas:
         self,
         config: AtlasConfig,
         identity: AtlasIdentity,
-        runtime: ModelRuntime | None = None,
-        model_name: str | None = None,
+        model_router: ModelRouter | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
-        self.runtime = runtime
-        self.model_name = model_name
+        self.model_router = model_router
         self.registry = ComponentRegistry()
 
         self._validate_identity_consistency()
@@ -109,56 +107,79 @@ class Atlas:
             detail="Conhecimento/RAG ainda não implementado.",
         )
 
-        if self.runtime is None:
+        if self.model_router is None:
             self.registry.register(
                 "model_runtime",
                 ComponentState.DISABLED,
                 critical=False,
-                detail="Runtime local não configurado.",
+                detail="Nenhum runtime registrado.",
             )
 
             self.registry.register(
                 "local_model",
                 ComponentState.DISABLED,
                 critical=False,
-                detail="Modelo local não configurado.",
+                detail="Nenhum modelo local registrado.",
+            )
+
+            self.registry.register(
+                "model_router",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Model Router não configurado.",
+            )
+
+            return
+
+        router_status = self.model_router.status()
+
+        if router_status.ready:
+            self.registry.register(
+                "model_runtime",
+                ComponentState.READY,
+                critical=False,
+                detail="Runtime de modelo disponível.",
+            )
+
+            self.registry.register(
+                "local_model",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Rotas disponíveis: "
+                    + ", ".join(router_status.available_roles)
+                    + "."
+                ),
+            )
+
+            self.registry.register(
+                "model_router",
+                ComponentState.READY,
+                critical=False,
+                detail=router_status.detail,
             )
 
         else:
-            runtime_health = self.runtime.health()
-
             self.registry.register(
                 "model_runtime",
-                (
-                    ComponentState.READY
-                    if runtime_health.available
-                    else ComponentState.UNAVAILABLE
-                ),
+                ComponentState.UNAVAILABLE,
                 critical=False,
-                detail=runtime_health.detail,
+                detail="Runtime de modelo indisponível.",
             )
 
-            if runtime_health.available and self.model_name:
-                self.registry.register(
-                    "local_model",
-                    ComponentState.READY,
-                    critical=False,
-                    detail=f"Modelo configurado: {self.model_name}.",
-                )
-            else:
-                self.registry.register(
-                    "local_model",
-                    ComponentState.UNAVAILABLE,
-                    critical=False,
-                    detail="Modelo local indisponível.",
-                )
+            self.registry.register(
+                "local_model",
+                ComponentState.UNAVAILABLE,
+                critical=False,
+                detail="Modelo local indisponível.",
+            )
 
-        self.registry.register(
-            "model_router",
-            ComponentState.DISABLED,
-            critical=False,
-            detail="Model Router ainda não implementado.",
-        )
+            self.registry.register(
+                "model_router",
+                ComponentState.UNAVAILABLE,
+                critical=False,
+                detail=router_status.detail,
+            )
 
     def start(self) -> AtlasStatus:
         system_status = self.registry.system_status()
@@ -178,18 +199,18 @@ class Atlas:
             total_components=system_status.total_components,
         )
 
-    def generate(self, prompt: str) -> GenerationResult:
-        if self.runtime is None:
-            raise ModelRuntimeError(
-                "Nenhum runtime cognitivo foi configurado."
+    def generate(
+        self,
+        prompt: str,
+        *,
+        role: str = "primary",
+    ) -> GenerationResult:
+        if self.model_router is None:
+            raise ModelRouterError(
+                "Model Router não configurado."
             )
 
-        if not self.model_name:
-            raise ModelRuntimeError(
-                "Nenhum modelo local foi configurado."
-            )
-
-        return self.runtime.generate(
-            model=self.model_name,
-            prompt=prompt,
+        return self.model_router.generate(
+            prompt,
+            role=role,
         )

@@ -5,6 +5,12 @@
     ModelsConfig,
     load_models_config,
 )
+from atlas.models.router import (
+    ModelRoute,
+    ModelRouter,
+    ModelRouterError,
+    RouterStatus,
+)
 
 __all__ = [
     "LocalModelConfig",
@@ -12,4 +18,8 @@ __all__ = [
     "ModelRuntimeConfig",
     "ModelsConfig",
     "load_models_config",
+    "ModelRoute",
+    "ModelRouter",
+    "ModelRouterError",
+    "RouterStatus",
 ]
