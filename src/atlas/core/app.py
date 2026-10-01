@@ -11,11 +11,13 @@ from atlas.identity import (
     build_identity_context,
 )
 from atlas.memory import (
+    ConversationRole,
     MemoryRecord,
     MemoryService,
     MemorySource,
     MemoryType,
     MemoryVerification,
+    SessionMemory,
 )
 from atlas.models.router import (
     ModelRouter,
@@ -51,11 +53,17 @@ class Atlas:
         identity: AtlasIdentity,
         model_router: ModelRouter | None = None,
         memory_service: MemoryService | None = None,
+        session_memory: SessionMemory | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
         self.model_router = model_router
         self.memory_service = memory_service
+        self.session_memory = (
+            session_memory
+            if session_memory is not None
+            else SessionMemory()
+        )        
         self.registry = ComponentRegistry()
 
         self._validate_identity_consistency()
@@ -289,6 +297,98 @@ class Atlas:
             memory_type=memory_type,
             limit=limit,
         )
+
+
+    def _build_session_prompt(
+        self,
+        user_message: str,
+    ) -> str:
+        """
+        Constrói o contexto temporário da conversa atual.
+
+        Este contexto existe somente em RAM e não representa
+        memória persistente do Atlas.
+        """
+
+        lines = [
+            "Contexto temporário da conversa atual:",
+            "",
+        ]
+
+        for turn in self.session_memory.all():
+            if turn.role == ConversationRole.USER:
+                speaker = "Usuário"
+            elif turn.role == ConversationRole.ASSISTANT:
+                speaker = "Atlas"
+            else:
+                speaker = "Sistema"
+
+            lines.append(
+                f"{speaker}: {turn.content}"
+            )
+
+        lines.extend(
+            [
+                f"Usuário: {user_message}",
+                "",
+                "Instruções sobre este contexto:",
+                (
+                    "- Use os turnos anteriores somente para manter "
+                    "continuidade nesta conversa."
+                ),
+                (
+                    "- Não trate este histórico temporário como "
+                    "memória persistente."
+                ),
+                (
+                    "- Não invente informações que não estejam "
+                    "presentes no contexto."
+                ),
+                "- Responda à última mensagem do usuário.",
+            ]
+        )
+
+        return "\n".join(lines)
+
+    def process_message(
+        self,
+        message: str,
+        *,
+        role: str = "primary",
+    ) -> GenerationResult:
+        """
+        Processa uma mensagem usando memória curta da sessão.
+
+        A conversa é mantida somente em RAM.
+        """
+
+        clean_message = message.strip()
+
+        if not clean_message:
+            raise ValueError(
+                "Mensagem não pode estar vazia."
+            )
+
+        prompt = self._build_session_prompt(
+            clean_message
+        )
+
+        result = self.generate(
+            prompt,
+            role=role,
+        )
+
+        self.session_memory.add(
+            role=ConversationRole.USER,
+            content=clean_message,
+        )
+
+        self.session_memory.add(
+            role=ConversationRole.ASSISTANT,
+            content=result.response,
+        )
+
+        return result
 
     def generate(
         self,

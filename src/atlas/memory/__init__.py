@@ -17,6 +17,11 @@ from atlas.memory.models import (
     MemoryVerification,
 )
 from atlas.memory.service import MemoryService
+from atlas.memory.session import (
+    ConversationRole,
+    ConversationTurn,
+    SessionMemory,
+)
 from atlas.memory.store import (
     JsonlMemoryStore,
     MemoryStoreError,
@@ -35,6 +40,9 @@ __all__ = [
     "MemoryType",
     "MemoryVerification",
     "MemoryService",
+    "ConversationRole",
+    "ConversationTurn",
+    "SessionMemory",
     "JsonlMemoryStore",
     "MemoryStoreError",
     "build_memory_context",

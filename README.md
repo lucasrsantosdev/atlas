@@ -918,6 +918,464 @@ Atlas Core
 
 <br>
 
+# 🌐 Executando o ATLAS.IA
+O Atlas foi projetado seguindo o princípio Offline First.
+Isso significa que suas capacidades fundamentais devem continuar funcionando sem conexão permanente com a internet. Quando houver internet disponível, ela pode ser utilizada como uma extensão das capacidades do sistema. Essa separação já faz parte da arquitetura documentada do projeto.
+
+### 🚀 Iniciar ambiente
+
+Abra o PowerShell:
+cd C:\Users\G2Y8\Documents\atlas
+.\.venv\Scripts\Activate.ps1
+
+Quando estiver ativo:
+(atlas) PS C:\Users\G2Y8\Documents\atlas>
+
+🤖 Conversar com o Atlas
+atlas chat
+
+Caso o comando instalado não esteja disponível, também pode testar a execução pelo módulo:
+python -m atlas chat
+
+# 🌐 Modo ONLINE / OFFLINE
+O Atlas pode operar em dois estados de rede:
+
+```
+ATLAS ONLINE
+     │
+     ├── Internet disponível
+     ├── APIs externas permitidas
+     ├── downloads permitidos
+     ├── consultas externas permitidas
+     │
+     ▼
+  ATLAS CORE
+     │
+     ▼
+Memória / Modelos locais / RAG
+```
+
+ou:
+
+```
+ATLAS OFFLINE
+     │
+     ├── Internet bloqueada para o Atlas
+     ├── rede do Windows continua funcionando
+     ├── modelos locais continuam disponíveis
+     ├── memória local continua disponível
+     │
+     ▼
+  ATLAS CORE
+```
+
+### A arquitetura do projeto inclusive prevê que a rede local possa continuar disponível mesmo quando a internet estiver indisponível.
+
+
+# 🔧 Configuração inicial do controle de internet
+
+Este passo é necessário somente uma vez.
+Abra o PowerShell como Administrador, entre no projeto e execute:
+
+```
+cd C:\Users\G2Y8\Documents\atlas
+
+$AtlasPython = (Resolve-Path ".\.venv\Scripts\python.exe").Path
+
+New-NetFirewallRule `
+    -DisplayName "ATLAS - Internet OFF" `
+    -Direction Outbound `
+    -Program $AtlasPython `
+    -Action Block `
+    -Profile Any `
+    -Enabled False
+```
+
+so cria uma regra chamada:
+ATLAS - Internet OFF
+
+Ela começa desativada, portanto o Atlas continua ONLINE.
+Essa regra não desliga a internet do computador. Ela bloqueia somente conexões externas iniciadas pelo Python da .venv do projeto Atlas.
+
+# 🔴 Deixar Atlas OFFLINE
+
+PowerShell como Administrador:
+
+Enable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+
+Resultado
+
+ATLAS = OFFLINE
+Windows = ONLINE
+
+Para conferir:
+
+python -c "import urllib.request; urllib.request.urlopen('https://example.com', timeout=5)"
+
+No modo offline, a conexão deverá falhar.
+
+# 🟢 Deixar Atlas ONLINE
+
+Disable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+
+Teste:
+
+python -c "import urllib.request; print('ATLAS ONLINE:', urllib.request.urlopen('https://example.com', timeout=10).status)"
+
+Resultado esperado:
+
+ATLAS ONLINE: 200
+
+# 🔍 Conferir modo atual
+
+```
+Get-NetFirewallRule -DisplayName "ATLAS - Internet OFF" |
+Select-Object DisplayName, Enabled, Direction, Action
+```
+
+# ONLINE
+
+Se aparecer:
+
+```
+DisplayName          Enabled Direction Action
+-----------          ------- --------- ------
+ATLAS - Internet OFF False   Outbound  Block
+```
+
+significa:
+
+🟢 ATLAS ONLINE
+
+# OFFLINE
+
+Se aparecer:
+
+```
+DisplayName          Enabled Direction Action
+-----------          ------- --------- ------
+ATLAS - Internet OFF True    Outbound  Block
+```
+
+significa:
+
+🔴 ATLAS OFFLINE
+
+# ⚡ Comandos rápidos
+
+Depois de configurar a regra uma vez, no dia a dia basta lembrar destes dois comandos.
+
+### 🔴 OFFLINE
+
+```powershell
+Enable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+```
+
+### 🟢 ONLINE
+
+```powershell
+Disable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+```
+
+---
+
+# 🧪 Diagnóstico rápido
+
+### Testar internet do Windows
+
+```powershell
+Test-NetConnection github.com -Port 443
+```
+
+Resultado esperado:
+
+```text
+TcpTestSucceeded : True
+```
+
+### Testar internet especificamente pelo Atlas/Python
+
+```powershell
+python -c "import urllib.request; print(urllib.request.urlopen('https://example.com', timeout=10).status)"
+```
+
+### 🟢 ONLINE
+
+```text
+200
+```
+
+### 🔴 OFFLINE
+
+```text
+erro de conexão
+```
+
+---
+
+# 🧠 Conferir configuração do Atlas
+
+```powershell
+Get-Content config\atlas.yaml
+```
+
+A configuração atualmente possui:
+
+```yaml
+offline_first: true
+```
+
+Isso representa um **princípio arquitetural**, e não necessariamente o estado atual da internet.
+
+Portanto:
+
+```yaml
+offline_first: true
+```
+
+pode coexistir perfeitamente com:
+
+```text
+ATLAS ONLINE
+```
+
+A lógica é:
+
+```text
+Offline First ≠ Offline Always
+```
+
+---
+
+# 🛠️ Comandos úteis do projeto
+
+### Entrar no projeto
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas
+```
+
+### Ativar ambiente virtual
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### Conferir Python utilizado
+
+```powershell
+Get-Command python
+```
+
+Ou:
+
+```powershell
+python -c "import sys; print(sys.executable)"
+```
+
+Deve apontar para algo parecido com:
+
+```text
+C:\Users\G2Y8\Documents\atlas\.venv\Scripts\python.exe
+```
+
+### Conferir versão do Python
+
+```powershell
+python --version
+```
+
+### Conferir instalação do Atlas
+
+```powershell
+pip show atlas
+```
+
+### Reinstalar projeto em modo desenvolvimento
+
+Na raiz do projeto:
+
+```powershell
+pip install -e .
+```
+
+### Ver ajuda do Atlas
+
+```powershell
+atlas --help
+```
+
+Ou:
+
+```powershell
+python -m atlas --help
+```
+
+### Iniciar conversa
+
+```powershell
+atlas chat
+```
+
+### Executar testes
+
+```powershell
+python -m pytest
+```
+
+Se o `pytest` não estiver instalado:
+
+```powershell
+pip install pytest
+```
+
+Depois:
+
+```powershell
+python -m pytest
+```
+
+### Executar um teste específico
+
+Exemplo:
+
+```powershell
+python -m pytest tests\test_config.py -v
+```
+
+### Ver estrutura do projeto
+
+```powershell
+tree /F
+```
+
+Para salvar a estrutura em um arquivo:
+
+```powershell
+tree /F > estrutura_atlas.txt
+```
+
+### Ver alterações Git
+
+```powershell
+git status
+```
+
+### Ver arquivos modificados
+
+```powershell
+git diff
+```
+
+### Ver histórico recente
+
+```powershell
+git log --oneline -10
+```
+
+### Conferir branch atual
+
+```powershell
+git branch --show-current
+```
+
+### Conferir Ollama
+
+```powershell
+ollama list
+```
+
+### Conferir se Ollama está respondendo
+
+```powershell
+Invoke-RestMethod http://localhost:11434/api/tags
+```
+
+### Conferir processos Ollama
+
+```powershell
+Get-Process ollama -ErrorAction SilentlyContinue
+```
+
+---
+
+# 🚀 Inicialização rápida diária
+
+Na prática, para voltar a trabalhar no projeto:
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas
+.\.venv\Scripts\Activate.ps1
+atlas chat
+```
+
+Ou tudo de uma vez:
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas; .\.venv\Scripts\Activate.ps1; atlas chat
+```
+
+---
+
+# 🌐 Inicialização rápida ONLINE
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas
+.\.venv\Scripts\Activate.ps1
+Disable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+atlas chat
+```
+
+---
+
+# 📴 Inicialização rápida OFFLINE
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas
+.\.venv\Scripts\Activate.ps1
+Enable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+atlas chat
+```
+
+---
+
+# 💡 Melhoria futura
+
+Hoje será necessário lembrar destes comandos:
+
+```powershell
+Enable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+```
+
+e:
+
+```powershell
+Disable-NetFirewallRule -DisplayName "ATLAS - Internet OFF"
+```
+
+Mais para frente, esses comandos poderão ser transformados em comandos próprios do Atlas:
+
+```text
+atlas online
+atlas offline
+atlas network
+atlas chat
+atlas status
+```
+
+A experiência poderá ficar assim:
+
+```text
+PS> atlas online
+🌐 ATLAS ONLINE
+
+PS> atlas chat
+🤖 ATLAS iniciado.
+
+PS> atlas offline
+📴 ATLAS OFFLINE
+```
+
 # 🧠 ATLAS.IA
 
 ### Humanidade + Inteligência + Conhecimento + Máquinas

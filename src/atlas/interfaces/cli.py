@@ -83,7 +83,7 @@ def run_chat(atlas: Atlas) -> None:
             return
 
         try:
-            result = atlas.generate(
+            result = atlas.process_message(
                 user_input,
                 role="primary",
             )
