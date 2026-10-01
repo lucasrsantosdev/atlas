@@ -1,44 +1,44 @@
 # MOSAIC
 
-## Version
+## Versão
 
 **Target:** v0.1  
-**Project:** ATLAS.IA  
-**Status:** Initial Development
+**Projeto:** ATLAS.IA  
+**Status:** Desenvolvimento Inicial
 
 ---
 
-## Purpose
+## Propósito
 
-Mosaic is the context comprehension and preparation engine of Atlas.
+Mosaic é a engine de compreensão e preparação de contexto do Atlas.
 
-Its responsibility is to understand what the user is asking before a language model is invoked.
+Sua responsabilidade é entender o que o usuário está solicitando antes que um modelo de linguagem seja acionado.
 
-Mosaic should help Atlas reduce unnecessary model calls, reduce context size, select relevant information and preserve modularity between the Atlas Core and language models.
+O Mosaic deve ajudar o Atlas a reduzir chamadas desnecessárias aos modelos, reduzir o tamanho do contexto, selecionar informações relevantes e preservar a modularidade entre o Atlas Core e os modelos de linguagem.
 
-The language model is not Mosaic.
+O modelo de linguagem não é o Mosaic.
 
-Mosaic is not Atlas.
+O Mosaic não é o Atlas.
 
-Mosaic is a component of Atlas.
+O Mosaic é um componente do Atlas.
 
 ---
 
-# Core Principle
+# Princípio Central
 
-The basic flow should be:
+O fluxo básico deve ser:
 
 ```text
-User
+Usuário
   |
   v
 Mosaic
   |
-  |-- Intent
-  |-- Task Classification
-  |-- Entities
-  |-- Relevance
-  |-- Context
+  |-- Intenção
+  |-- Classificação da Tarefa
+  |-- Entidades
+  |-- Relevância
+  |-- Contexto
   |
   v
 MosaicResult
@@ -50,4 +50,4 @@ Atlas Core
 Model Router
   |
   v
-Selected Model
+Modelo Selecionado
