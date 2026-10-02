@@ -15,3 +15,4 @@ __all__ = [
     "DocumentIngestionError",
     "DocumentIngestor",
 ]
+from atlas.knowledge.index import KnowledgeHit, KnowledgeIndex

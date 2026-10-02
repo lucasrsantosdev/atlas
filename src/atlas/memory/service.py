@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from typing import Any
 
@@ -29,7 +29,7 @@ class MemoryService:
 
     def __init__(
         self,
-        store: JsonlMemoryStore | None = None,
+        store: Any | None = None,
         authorization_policy: MemoryAuthorizationPolicy | None = None,
     ) -> None:
         self.store = store or JsonlMemoryStore()
