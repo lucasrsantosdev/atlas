@@ -12,20 +12,12 @@ class VectorStoreError(RuntimeError):
 
 @dataclass(frozen=True)
 class IndexedChunk:
-    """
-    Chunk associado ao seu vetor semântico.
-    """
-
     chunk: KnowledgeChunk
     vector: tuple[float, ...]
 
 
 @dataclass(frozen=True)
 class VectorSearchResult:
-    """
-    Resultado de uma busca vetorial.
-    """
-
     chunk: KnowledgeChunk
     score: float
 
@@ -33,8 +25,6 @@ class VectorSearchResult:
 class LocalVectorStore:
     """
     Vector Store local e em memória do Atlas.
-
-    Não depende de banco vetorial externo.
     """
 
     def __init__(self) -> None:
@@ -48,6 +38,13 @@ class LocalVectorStore:
     def __len__(self) -> int:
         return len(self._items)
 
+    def all_items(
+        self,
+    ) -> tuple[IndexedChunk, ...]:
+        return tuple(
+            self._items
+        )
+
     def add(
         self,
         *,
@@ -60,11 +57,17 @@ class LocalVectorStore:
             )
 
         if self._dimension is None:
-            self._dimension = len(vector)
+            self._dimension = len(
+                vector
+            )
 
-        elif len(vector) != self._dimension:
+        elif (
+            len(vector)
+            != self._dimension
+        ):
             raise VectorStoreError(
-                "Dimensão do vetor incompatível com o Vector Store."
+                "Dimensão do vetor incompatível "
+                "com o Vector Store."
             )
 
         self._items.append(
@@ -103,7 +106,10 @@ class LocalVectorStore:
         if self._dimension is None:
             return ()
 
-        if len(query_vector) != self._dimension:
+        if (
+            len(query_vector)
+            != self._dimension
+        ):
             raise VectorStoreError(
                 "Dimensão da consulta incompatível "
                 "com o Vector Store."
@@ -151,7 +157,10 @@ class LocalVectorStore:
             sum(y * y for y in b)
         )
 
-        if norm_a == 0 or norm_b == 0:
+        if (
+            norm_a == 0
+            or norm_b == 0
+        ):
             return 0.0
 
         return dot / (

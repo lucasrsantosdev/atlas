@@ -2,6 +2,7 @@
     DocumentChunker,
     KnowledgeChunk,
 )
+from atlas.knowledge.context import build_rag_context
 from atlas.knowledge.documents import KnowledgeDocument
 from atlas.knowledge.embeddings import (
     EmbeddingError,
@@ -13,6 +14,13 @@ from atlas.knowledge.ingestion import (
     DocumentIngestionError,
     DocumentIngestor,
 )
+from atlas.knowledge.retriever import KnowledgeRetriever
+from atlas.knowledge.service import (
+    KnowledgeIndexReport,
+    KnowledgeService,
+    KnowledgeServiceError,
+    KnowledgeStatus,
+)
 from atlas.knowledge.vector_store import (
     IndexedChunk,
     LocalVectorStore,
@@ -23,6 +31,7 @@ from atlas.knowledge.vector_store import (
 __all__ = [
     "DocumentChunker",
     "KnowledgeChunk",
+    "build_rag_context",
     "KnowledgeDocument",
     "EmbeddingError",
     "EmbeddingProvider",
@@ -30,6 +39,11 @@ __all__ = [
     "OllamaEmbeddingProvider",
     "DocumentIngestionError",
     "DocumentIngestor",
+    "KnowledgeRetriever",
+    "KnowledgeIndexReport",
+    "KnowledgeService",
+    "KnowledgeServiceError",
+    "KnowledgeStatus",
     "IndexedChunk",
     "LocalVectorStore",
     "VectorSearchResult",
