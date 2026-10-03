@@ -13,12 +13,20 @@ from atlas.knowledge.embeddings import (
     EmbeddingProvider,
     OllamaEmbeddingProvider,
 )
+from atlas.knowledge.hybrid_retriever import (
+    HybridKnowledgeRetriever,
+    HybridSearchResult,
+)
 from atlas.knowledge.ingestion import DocumentIngestor
-from atlas.knowledge.retriever import KnowledgeRetriever
+from atlas.knowledge.lexical_index import (
+    LexicalKnowledgeIndex,
+)
+from atlas.knowledge.retriever import (
+    KnowledgeRetriever,
+)
 from atlas.knowledge.vector_store import (
     IndexedChunk,
     LocalVectorStore,
-    VectorSearchResult,
 )
 
 
@@ -49,13 +57,16 @@ class KnowledgeIndexReport:
 class KnowledgeStatus:
     indexed_documents: int
     indexed_chunks: int
+    lexical_chunks: int
     dimension: int | None
+    fts_available: bool
     index_path: str
 
 
 class KnowledgeService:
     """
-    Coordena a biblioteca e o RAG local do Atlas.
+    Coordena ingestão, embeddings, busca híbrida
+    e RAG local do Atlas.
     """
 
     SUPPORTED_SUFFIXES = frozenset(
@@ -72,6 +83,7 @@ class KnowledgeService:
         chunker: DocumentChunker | None = None,
         embedding_provider: EmbeddingProvider | None = None,
         vector_store: LocalVectorStore | None = None,
+        lexical_index: LexicalKnowledgeIndex | None = None,
         index_path: str | Path | None = None,
     ) -> None:
         self.ingestor = (
@@ -101,12 +113,27 @@ class KnowledgeService:
             else LocalVectorStore()
         )
 
-        self.retriever = KnowledgeRetriever(
-            embedding_provider=self.embedding_provider,
-            vector_store=self.vector_store,
+        self.lexical_index = (
+            lexical_index
+            if lexical_index is not None
+            else LexicalKnowledgeIndex()
         )
 
-        self.index_path = Path(
+        self.semantic_retriever = (
+            KnowledgeRetriever(
+                embedding_provider=self.embedding_provider,
+                vector_store=self.vector_store,
+            )
+        )
+
+        self.retriever = (
+            HybridKnowledgeRetriever(
+                semantic_retriever=self.semantic_retriever,
+                lexical_index=self.lexical_index,
+            )
+        )
+
+        self.index_file_path = Path(
             index_path
             if index_path is not None
             else DEFAULT_INDEX_PATH
@@ -137,7 +164,7 @@ class KnowledgeService:
 
             return (target,)
 
-        files = tuple(
+        return tuple(
             sorted(
                 candidate
                 for candidate in target.rglob("*")
@@ -148,8 +175,6 @@ class KnowledgeService:
                 )
             )
         )
-
-        return files
 
     def index_document(
         self,
@@ -174,6 +199,7 @@ class KnowledgeService:
             self._indexed_paths.add(
                 resolved_path
             )
+
             return 0
 
         embeddings = (
@@ -201,6 +227,10 @@ class KnowledgeService:
             indexed
         )
 
+        self.lexical_index.add_many(
+            chunks
+        )
+
         self._indexed_paths.add(
             resolved_path
         )
@@ -225,6 +255,7 @@ class KnowledgeService:
 
             if chunks > 0:
                 total_chunks += chunks
+
                 indexed_paths.append(
                     str(document_path)
                 )
@@ -240,7 +271,7 @@ class KnowledgeService:
         query: str,
         *,
         limit: int = 5,
-    ) -> tuple[VectorSearchResult, ...]:
+    ) -> tuple[HybridSearchResult, ...]:
         return self.retriever.search(
             query,
             limit=limit,
@@ -263,7 +294,9 @@ class KnowledgeService:
             max_chars=max_chars,
         )
 
-    def status(self) -> KnowledgeStatus:
+    def status(
+        self,
+    ) -> KnowledgeStatus:
         return KnowledgeStatus(
             indexed_documents=len(
                 self._indexed_paths
@@ -271,14 +304,22 @@ class KnowledgeService:
             indexed_chunks=len(
                 self.vector_store
             ),
+            lexical_chunks=len(
+                self.lexical_index
+            ),
             dimension=self.vector_store.dimension,
+            fts_available=(
+                self.lexical_index.fts_available
+            ),
             index_path=str(
-                self.index_path
+                self.index_file_path
             ),
         )
 
-    def save_index(self) -> None:
-        self.index_path.parent.mkdir(
+    def save_index(
+        self,
+    ) -> None:
+        self.index_file_path.parent.mkdir(
             parents=True,
             exist_ok=True,
         )
@@ -289,7 +330,7 @@ class KnowledgeService:
             "unknown",
         )
 
-        with self.index_path.open(
+        with self.index_file_path.open(
             "w",
             encoding="utf-8",
         ) as file:
@@ -330,8 +371,10 @@ class KnowledgeService:
 
                 file.write("\n")
 
-    def load_index(self) -> int:
-        if not self.index_path.exists():
+    def load_index(
+        self,
+    ) -> int:
+        if not self.index_file_path.exists():
             return 0
 
         self.vector_store.clear()
@@ -339,7 +382,7 @@ class KnowledgeService:
 
         loaded = 0
 
-        with self.index_path.open(
+        with self.index_file_path.open(
             "r",
             encoding="utf-8",
         ) as file:
@@ -393,6 +436,10 @@ class KnowledgeService:
                 self.vector_store.add(
                     chunk=chunk,
                     vector=vector,
+                )
+
+                self.lexical_index.add(
+                    chunk
                 )
 
                 self._indexed_paths.add(
