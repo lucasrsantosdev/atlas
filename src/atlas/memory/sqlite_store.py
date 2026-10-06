@@ -30,10 +30,14 @@ class SqliteMemoryStore:
     def search_text(self,query,*,memory_type=None,limit=10):
         sql="SELECT * FROM memories WHERE status='active'";args=[]
         if memory_type:sql+=' AND memory_type=?';args.append(memory_type.value)
-        with self._connect() as c:rows=c.execute(sql,args).fetchall()
+        with self._connect() as c:
+            rows=c.execute(sql,args).fetchall(); fts={}
+            try:
+                for rid,rank in c.execute("SELECT id,bm25(memories_fts) FROM memories_fts WHERE memories_fts MATCH ? LIMIT 100",(query,)): fts[rid]=1/(1+abs(float(rank)))
+            except sqlite3.OperationalError: pass
         qt=_terms(query); ranked=[]
         for row in rows:
-            r=self._record(row); terms=_terms(r.content+' '+' '.join(r.tags)); lexical=len(qt&terms)/max(1,len(qt)); importance=float(r.metadata.get('importance',.5)); score=.45*lexical+.20*_recency(r.created_at)+.20*r.confidence+.15*importance
+            r=self._record(row); terms=_terms(r.content+' '+' '.join(r.tags)); lexical=len(qt&terms)/max(1,len(qt)); importance=float(r.metadata.get('importance',.5)); score=.25*lexical+.20*fts.get(r.id,0.0)+.20*_recency(r.created_at)+.20*r.confidence+.15*importance
             if lexical>0 or query.casefold() in r.content.casefold():ranked.append((score,r))
         return tuple(r for _,r in sorted(ranked,key=lambda x:x[0],reverse=True)[:limit])
     def supersede(self,old_id,new_record):
@@ -49,3 +53,12 @@ class SqliteMemoryStore:
         sql+=' ORDER BY created_at DESC LIMIT ?';args.append(limit)
         with self._connect() as c:rows=c.execute(sql,args).fetchall()
         return tuple(self._record(r) for r in rows)
+
+    def consolidate(self, limit=1000):
+        records=self.recent(limit=limit);seen={};merged=[]
+        for r in records:
+            key=r.content.strip().casefold()
+            if key in seen:
+                self.forget(r.id);merged.append(r.id)
+            else:seen[key]=r.id
+        return tuple(merged)

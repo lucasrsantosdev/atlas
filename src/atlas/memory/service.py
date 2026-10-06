@@ -149,3 +149,7 @@ class MemoryService:
         if not hasattr(self.store, 'supersede'):
             raise NotImplementedError('Store does not support lifecycle operations')
         self.store.supersede(old_id, new_record)
+
+    def consolidate(self) -> tuple[str, ...]:
+        if not hasattr(self.store, 'consolidate'): raise NotImplementedError('Store does not support consolidation')
+        return self.store.consolidate()
