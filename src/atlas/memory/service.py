@@ -139,3 +139,13 @@ class MemoryService:
             memory_type=memory_type,
             limit=limit,
         )
+
+    def forget(self, memory_id: str) -> None:
+        if not hasattr(self.store, 'forget'):
+            raise NotImplementedError('Store does not support lifecycle operations')
+        self.store.forget(memory_id)
+
+    def supersede(self, old_id: str, new_record: MemoryRecord) -> None:
+        if not hasattr(self.store, 'supersede'):
+            raise NotImplementedError('Store does not support lifecycle operations')
+        self.store.supersede(old_id, new_record)

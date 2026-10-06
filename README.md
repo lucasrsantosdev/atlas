@@ -1393,3 +1393,6 @@ PS> atlas offline
 `ATLAS.IA · September 2026 · FOUNDATION`
 
 </div>
+## Evolution runtime (0.3.0-dev)
+
+Atlas now includes an integrated bounded agent foundation: Mosaic planning, ranked local memory retrieval, hybrid local knowledge retrieval with citations, model execution, evaluation/retry tracing, policy-governed tools, capability discovery, and an MCP integration contract. See `docs/architecture/EVOLUTION_10_TARGET.md` for the completion criteria and remaining external gates.
