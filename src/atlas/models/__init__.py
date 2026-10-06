@@ -1,4 +1,4 @@
-﻿from atlas.models.config import (
+from atlas.models.config import (
     LocalModelConfig,
     ModelConfigError,
     ModelRuntimeConfig,
@@ -23,3 +23,5 @@ __all__ = [
     "ModelRouterError",
     "RouterStatus",
 ]
+
+from atlas.models.runtime import ModelRequest

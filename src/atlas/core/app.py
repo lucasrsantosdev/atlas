@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
@@ -24,6 +24,9 @@ from atlas.models.router import (
     ModelRouterError,
 )
 from atlas.models.runtime import GenerationResult
+from atlas.knowledge import KnowledgeIndex
+from atlas.mosaic import MosaicService
+from atlas.agent import AgentLoop, AgentResponse
 
 
 @dataclass(frozen=True)
@@ -54,11 +57,15 @@ class Atlas:
         model_router: ModelRouter | None = None,
         memory_service: MemoryService | None = None,
         session_memory: SessionMemory | None = None,
+        knowledge_index: KnowledgeIndex | None = None,
+        mosaic_service: MosaicService | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
         self.model_router = model_router
         self.memory_service = memory_service
+        self.knowledge_index = knowledge_index
+        self.mosaic_service = mosaic_service or MosaicService()
         self.session_memory = (
             session_memory
             if session_memory is not None
@@ -122,9 +129,9 @@ class Atlas:
 
         self.registry.register(
             "knowledge",
-            ComponentState.DISABLED,
+            ComponentState.READY if self.knowledge_index is not None else ComponentState.DISABLED,
             critical=False,
-            detail="Conhecimento/RAG ainda não implementado.",
+            detail="Knowledge index local disponível." if self.knowledge_index is not None else "Knowledge index não configurado.",
         )
 
         if self.model_router is None:
@@ -389,6 +396,17 @@ class Atlas:
         )
 
         return result
+
+
+    def run_agent(self, message: str) -> AgentResponse:
+        if self.model_router is None:
+            raise ModelRouterError("Model Router não configurado.")
+        return AgentLoop(
+            self.model_router,
+            mosaic=self.mosaic_service,
+            memory=self.memory_service,
+            knowledge=self.knowledge_index,
+        ).run(message)
 
     def generate(
         self,

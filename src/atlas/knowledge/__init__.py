@@ -49,3 +49,4 @@ __all__ = [
     "VectorSearchResult",
     "VectorStoreError",
 ]
+from atlas.knowledge.index import KnowledgeHit, KnowledgeIndex

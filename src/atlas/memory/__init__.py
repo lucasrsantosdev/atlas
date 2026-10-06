@@ -1,4 +1,4 @@
-﻿from atlas.memory.authorization import (
+from atlas.memory.authorization import (
     AuthorizationReason,
     MemoryAuthorizationDecision,
     MemoryAuthorizationError,
@@ -47,3 +47,5 @@ __all__ = [
     "MemoryStoreError",
     "build_memory_context",
 ]
+
+from atlas.memory.sqlite_store import SqliteMemoryStore

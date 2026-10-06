@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from typing import Any
 
@@ -29,7 +29,7 @@ class MemoryService:
 
     def __init__(
         self,
-        store: JsonlMemoryStore | None = None,
+        store: Any | None = None,
         authorization_policy: MemoryAuthorizationPolicy | None = None,
     ) -> None:
         self.store = store or JsonlMemoryStore()
@@ -139,3 +139,17 @@ class MemoryService:
             memory_type=memory_type,
             limit=limit,
         )
+
+    def forget(self, memory_id: str) -> None:
+        if not hasattr(self.store, 'forget'):
+            raise NotImplementedError('Store does not support lifecycle operations')
+        self.store.forget(memory_id)
+
+    def supersede(self, old_id: str, new_record: MemoryRecord) -> None:
+        if not hasattr(self.store, 'supersede'):
+            raise NotImplementedError('Store does not support lifecycle operations')
+        self.store.supersede(old_id, new_record)
+
+    def consolidate(self) -> tuple[str, ...]:
+        if not hasattr(self.store, 'consolidate'): raise NotImplementedError('Store does not support consolidation')
+        return self.store.consolidate()
