@@ -8,6 +8,7 @@ from atlas.core import Atlas, AtlasConfigError, load_config
 from atlas.identity import AtlasIdentityError, load_identity
 from atlas.interfaces import print_status, run_chat
 from atlas.logging import configure_logging
+from atlas.knowledge import KnowledgeService
 from atlas.memory import MemoryService
 from atlas.models import (
     ModelConfigError,
@@ -40,6 +41,12 @@ def build_atlas() -> Atlas:
     )
 
     memory_service = MemoryService()
+
+    knowledge_service = KnowledgeService()
+
+    logger.info(
+        "Serviço de conhecimento local configurado."
+    )
 
     logger.info(
         "Serviço de memória persistente configurado."
@@ -82,7 +89,16 @@ def build_atlas() -> Atlas:
         identity=identity,
         model_router=model_router,
         memory_service=memory_service,
+        knowledge_service=knowledge_service,
     )
+
+    loaded_vectors = atlas.load_knowledge_index()
+
+    if loaded_vectors:
+        logger.info(
+            "Índice de conhecimento carregado: vectors=%s",
+            loaded_vectors,
+        )
 
     logger.info("Atlas construído com sucesso.")
 
@@ -154,3 +170,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+

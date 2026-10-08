@@ -1,17 +1,17 @@
 ﻿from __future__ import annotations
 
-from atlas.knowledge.vector_store import (
-    VectorSearchResult,
+from atlas.knowledge.hybrid_retriever import (
+    HybridSearchResult,
 )
 
 
 def build_rag_context(
-    results: tuple[VectorSearchResult, ...],
+    results: tuple[HybridSearchResult, ...],
     *,
     max_chars: int = 6000,
 ) -> str:
     """
-    Constrói contexto documental para o modelo local.
+    Constrói contexto documental híbrido para o modelo local.
     """
 
     if max_chars <= 0:
@@ -30,18 +30,21 @@ def build_rag_context(
         "Knowledge context:",
         "",
         (
-            "Use os trechos abaixo como fontes locais "
+            "Os trechos abaixo foram recuperados "
+            "da biblioteca local do Atlas."
+        ),
+        (
+            "Use estes trechos como fontes locais "
             "para responder à pergunta."
         ),
         (
-            "Não invente informações que não estejam "
-            "presentes nas fontes quando a pergunta "
-            "depender destes documentos."
+            "Não invente informações documentais "
+            "que não estejam presentes nas fontes."
         ),
         (
-            "Se as fontes forem insuficientes, diga "
-            "claramente que a biblioteca local não "
-            "contém informação suficiente."
+            "Se o contexto for insuficiente, diga "
+            "claramente que a biblioteca local "
+            "não contém informação suficiente."
         ),
         "",
     ]
@@ -52,11 +55,25 @@ def build_rag_context(
     )
 
     for result in results:
+        semantic = (
+            f"{result.semantic_score:.4f}"
+            if result.semantic_score is not None
+            else "N/A"
+        )
+
+        lexical = (
+            f"{result.lexical_score:.4f}"
+            if result.lexical_score is not None
+            else "N/A"
+        )
+
         block = (
-            f"[Documento: {result.chunk.document_name}]\n"
-            f"[Chunk: {result.chunk.chunk_index}]\n"
-            f"[Similaridade: {result.score:.4f}]\n"
-            f"{result.chunk.content.strip()}\n"
+            f"[Documento: {result.document_name}]\n"
+            f"[Chunk: {result.chunk_index}]\n"
+            f"[Semantic: {semantic}]\n"
+            f"[Lexical: {lexical}]\n"
+            f"[Fusion RRF: {result.fusion_score:.6f}]\n"
+            f"{result.content.strip()}\n"
         )
 
         if (
@@ -67,6 +84,7 @@ def build_rag_context(
 
         parts.append(block)
         parts.append("")
+
         current_size += len(block)
 
     return "\n".join(parts).strip()
