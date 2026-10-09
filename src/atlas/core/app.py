@@ -25,6 +25,11 @@ from atlas.models.router import (
 )
 from atlas.models.runtime import GenerationResult
 
+from atlas.knowledge import (
+    KnowledgeIndexReport,
+    KnowledgeService,
+    KnowledgeStatus,
+)
 
 @dataclass(frozen=True)
 class AtlasStatus:
@@ -54,11 +59,13 @@ class Atlas:
         model_router: ModelRouter | None = None,
         memory_service: MemoryService | None = None,
         session_memory: SessionMemory | None = None,
+        knowledge_service: KnowledgeService | None = None,
     ) -> None:
         self.config = config
         self.identity = identity
         self.model_router = model_router
         self.memory_service = memory_service
+        self.knowledge_service = knowledge_service
         self.session_memory = (
             session_memory
             if session_memory is not None
@@ -120,12 +127,26 @@ class Atlas:
                 ),
             )
 
-        self.registry.register(
-            "knowledge",
-            ComponentState.DISABLED,
-            critical=False,
-            detail="Conhecimento/RAG ainda não implementado.",
-        )
+        if self.knowledge_service is None:
+            self.registry.register(
+                "knowledge",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Conhecimento/RAG não configurado.",
+            )
+        else:
+            knowledge_status = self.knowledge_service.status()
+
+            self.registry.register(
+                "knowledge",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Biblioteca local disponível. "
+                    f"chunks={knowledge_status.indexed_chunks} "
+                    f"fts5={knowledge_status.fts_available}"
+                ),
+            )
 
         if self.model_router is None:
             self.registry.register(
@@ -299,6 +320,101 @@ class Atlas:
         )
 
 
+    def index_knowledge(
+        self,
+        path: str,
+    ) -> KnowledgeIndexReport:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.index_path(
+            path
+        )
+
+
+    def save_knowledge_index(
+        self,
+    ) -> None:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        self.knowledge_service.save_index()
+
+
+    def load_knowledge_index(
+        self,
+    ) -> int:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.load_index()
+
+
+    def knowledge_status(
+        self,
+    ) -> KnowledgeStatus:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.status()
+
+
+    def ask_knowledge(
+        self,
+        question: str,
+        *,
+        role: str = "primary",
+        limit: int = 5,
+    ) -> GenerationResult:
+        if self.model_router is None:
+            raise ModelRouterError(
+                "Model Router não configurado."
+            )
+
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        clean_question = question.strip()
+
+        if not clean_question:
+            raise ValueError(
+                "Pergunta não pode estar vazia."
+            )
+
+        rag_context = (
+            self.knowledge_service.build_context(
+                clean_question,
+                limit=limit,
+            )
+        )
+
+        system_prompt = (
+            f"{self.identity_context}\n\n"
+            f"{rag_context}\n\n"
+            "Regras de uso do conhecimento local:\n"
+            "- Priorize os trechos recuperados da biblioteca local.\n"
+            "- Não invente conteúdo documental ausente.\n"
+            "- Diferencie conteúdo recuperado de inferência.\n"
+            "- Se os documentos forem insuficientes, diga isso."
+        )
+
+        return self.model_router.generate(
+            clean_question,
+            role=role,
+            system_prompt=system_prompt,
+        )
+        
+
     def _build_session_prompt(
         self,
         user_message: str,
@@ -406,3 +522,4 @@ class Atlas:
             role=role,
             system_prompt=self.identity_context,
         )
+

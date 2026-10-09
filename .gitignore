@@ -328,3 +328,6 @@ people/private/
 # ============================================================
 # Atlas runtime logs
 logs/
+
+# Dependency lockfile
+!uv.lock
