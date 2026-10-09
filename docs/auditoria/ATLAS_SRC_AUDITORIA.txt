@@ -1,0 +1,1902 @@
+﻿==================================================
+ATLAS.IA - AUDITORIA COMPLETA DO SRC
+==================================================
+Data: 2026-10-09 14:19:42
+Branch: main
+Commit: 3513849 merge: integrate Mosaic pipeline v0.1 into main
+
+STATUS GIT:
+
+========== 01. ARVORE SRC ==========
+Listagem de caminhos de pasta para o volume Windows
+O n·mero de sÚrie do volume Ú 92D2-4E33
+C:\USERS\G2Y8\DOCUMENTS\ATLAS\SRC
++---agents
++---atlas
+|   |   __init__.py
+|   |   __main__.py
+|   |   
+|   +---core
+|   |   |   app.py
+|   |   |   config.py
+|   |   |   registry.py
+|   |   |   status.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           app.cpython-313.pyc
+|   |           config.cpython-313.pyc
+|   |           registry.cpython-313.pyc
+|   |           status.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---identity
+|   |   |   context.py
+|   |   |   loader.py
+|   |   |   models.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           context.cpython-313.pyc
+|   |           loader.cpython-313.pyc
+|   |           models.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---interfaces
+|   |   |   cli.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           cli.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---knowledge
+|   |   |   chunks.py
+|   |   |   context.py
+|   |   |   documents.py
+|   |   |   embeddings.py
+|   |   |   hybrid_retriever.py
+|   |   |   ingestion.py
+|   |   |   lexical_index.py
+|   |   |   retriever.py
+|   |   |   service.py
+|   |   |   vector_store.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           chunks.cpython-313.pyc
+|   |           context.cpython-313.pyc
+|   |           documents.cpython-313.pyc
+|   |           embeddings.cpython-313.pyc
+|   |           hybrid_retriever.cpython-313.pyc
+|   |           index.cpython-313.pyc
+|   |           ingestion.cpython-313.pyc
+|   |           lexical_index.cpython-313.pyc
+|   |           retriever.cpython-313.pyc
+|   |           service.cpython-313.pyc
+|   |           vector_store.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---logging
+|   |   |   setup.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           setup.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---memory
+|   |   |   authorization.py
+|   |   |   context.py
+|   |   |   intent.py
+|   |   |   models.py
+|   |   |   service.py
+|   |   |   session.py
+|   |   |   store.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           authorization.cpython-313.pyc
+|   |           context.cpython-313.pyc
+|   |           intent.cpython-313.pyc
+|   |           models.cpython-313.pyc
+|   |           service.cpython-313.pyc
+|   |           session.cpython-313.pyc
+|   |           sqlite_store.cpython-313.pyc
+|   |           store.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---models
+|   |   |   config.py
+|   |   |   router.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---runtime
+|   |   |   |   base.py
+|   |   |   |   ollama.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---__pycache__
+|   |   |           base.cpython-313.pyc
+|   |   |           ollama.cpython-313.pyc
+|   |   |           __init__.cpython-313.pyc
+|   |   |           
+|   |   \---__pycache__
+|   |           config.cpython-313.pyc
+|   |           router.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---mosaic
+|   |   |   context.py
+|   |   |   entities.py
+|   |   |   intent.py
+|   |   |   models.py
+|   |   |   README.md
+|   |   |   relevance.py
+|   |   |   service.py
+|   |   |   task_classifier.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           context.cpython-313.pyc
+|   |           entities.cpython-313.pyc
+|   |           intent.cpython-313.pyc
+|   |           models.cpython-313.pyc
+|   |           relevance.cpython-313.pyc
+|   |           service.cpython-313.pyc
+|   |           task_classifier.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---security
+|   |   |   policy.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           policy.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---tools
+|   |   |   builtin.py
+|   |   |   registry.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---web
+|   |   |   |   client.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---__pycache__
+|   |   |           client.cpython-313.pyc
+|   |   |           __init__.cpython-313.pyc
+|   |   |           
+|   |   \---__pycache__
+|   |           builtin.cpython-313.pyc
+|   |           registry.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   \---__pycache__
+|           __init__.cpython-313.pyc
+|           __main__.cpython-313.pyc
+|           
++---atlas.egg-info
+|       dependency_links.txt
+|       entry_points.txt
+|       PKG-INFO
+|       requires.txt
+|       SOURCES.txt
+|       top_level.txt
+|       
++---core
++---identity
++---interfaces
++---memory
++---models
++---safety
+\---tools
+
+========== 02. MODULOS ==========
+core | arquivos=5 | linhas=873
+identity | arquivos=4 | linhas=295
+interfaces | arquivos=2 | linhas=277
+knowledge | arquivos=11 | linhas=1726
+logging | arquivos=2 | linhas=59
+memory | arquivos=8 | linhas=1165
+models | arquivos=6 | linhas=588
+mosaic | arquivos=8 | linhas=227
+security | arquivos=2 | linhas=97
+tools | arquivos=5 | linhas=359
+__pycache__ | arquivos=0 | linhas=0
+
+========== 03. INVENTARIO DE ARQUIVOS ==========
+src\atlas\__init__.py | linhas=8 | bytes=153
+src\atlas\__main__.py | linhas=174 | bytes=3983
+src\atlas\core\app.py | linhas=525 | bytes=14950
+src\atlas\core\config.py | linhas=201 | bytes=4329
+src\atlas\core\registry.py | linhas=72 | bytes=1794
+src\atlas\core\status.py | linhas=43 | bytes=905
+src\atlas\core\__init__.py | linhas=32 | bytes=676
+src\atlas\identity\context.py | linhas=86 | bytes=2412
+src\atlas\identity\loader.py | linhas=177 | bytes=4187
+src\atlas\identity\models.py | linhas=19 | bytes=458
+src\atlas\identity\__init__.py | linhas=13 | bytes=304
+src\atlas\interfaces\cli.py | linhas=268 | bytes=5685
+src\atlas\interfaces\__init__.py | linhas=9 | bytes=124
+src\atlas\knowledge\chunks.py | linhas=94 | bytes=2227
+src\atlas\knowledge\context.py | linhas=90 | bytes=2229
+src\atlas\knowledge\documents.py | linhas=46 | bytes=1100
+src\atlas\knowledge\embeddings.py | linhas=176 | bytes=4431
+src\atlas\knowledge\hybrid_retriever.py | linhas=219 | bytes=5598
+src\atlas\knowledge\ingestion.py | linhas=49 | bytes=1173
+src\atlas\knowledge\lexical_index.py | linhas=312 | bytes=7965
+src\atlas\knowledge\retriever.py | linhas=46 | bytes=1122
+src\atlas\knowledge\service.py | linhas=455 | bytes=11333
+src\atlas\knowledge\vector_store.py | linhas=168 | bytes=3739
+src\atlas\knowledge\__init__.py | linhas=71 | bytes=1695
+src\atlas\logging\setup.py | linhas=54 | bytes=1191
+src\atlas\logging\__init__.py | linhas=5 | bytes=94
+src\atlas\memory\authorization.py | linhas=90 | bytes=2369
+src\atlas\memory\context.py | linhas=70 | bytes=1607
+src\atlas\memory\intent.py | linhas=235 | bytes=6431
+src\atlas\memory\models.py | linhas=88 | bytes=2237
+src\atlas\memory\service.py | linhas=141 | bytes=3635
+src\atlas\memory\session.py | linhas=94 | bytes=1951
+src\atlas\memory\store.py | linhas=398 | bytes=9608
+src\atlas\memory\__init__.py | linhas=49 | bytes=1176
+src\atlas\models\config.py | linhas=159 | bytes=3394
+src\atlas\models\router.py | linhas=180 | bytes=4486
+src\atlas\models\__init__.py | linhas=25 | bytes=475
+src\atlas\models\runtime\base.py | linhas=49 | bytes=1002
+src\atlas\models\runtime\ollama.py | linhas=160 | bytes=4282
+src\atlas\models\runtime\__init__.py | linhas=15 | bytes=308
+src\atlas\mosaic\context.py | linhas=16 | bytes=883
+src\atlas\mosaic\entities.py | linhas=26 | bytes=977
+src\atlas\mosaic\intent.py | linhas=30 | bytes=1644
+src\atlas\mosaic\models.py | linhas=59 | bytes=1318
+src\atlas\mosaic\relevance.py | linhas=11 | bytes=409
+src\atlas\mosaic\service.py | linhas=35 | bytes=1685
+src\atlas\mosaic\task_classifier.py | linhas=31 | bytes=1398
+src\atlas\mosaic\__init__.py | linhas=19 | bytes=375
+src\atlas\security\policy.py | linhas=83 | bytes=1785
+src\atlas\security\__init__.py | linhas=14 | bytes=217
+src\atlas\tools\builtin.py | linhas=117 | bytes=2327
+src\atlas\tools\registry.py | linhas=121 | bytes=2558
+src\atlas\tools\__init__.py | linhas=16 | bytes=280
+src\atlas\tools\web\client.py | linhas=94 | bytes=2253
+src\atlas\tools\web\__init__.py | linhas=11 | bytes=168
+
+========== 04. ARQUIVOS COM ATE 15 LINHAS ==========
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\__init__.py ---
+"""
+Atlas.
+
+Agente artificial persistente, offline-first e independente
+de modelo, fornecedor e infraestrutura externa.
+"""
+
+__version__ = "0.1.0"
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\identity\__init__.py ---
+from atlas.identity.context import build_identity_context
+from atlas.identity.loader import (
+    AtlasIdentityError,
+    load_identity,
+)
+from atlas.identity.models import AtlasIdentity
+
+__all__ = [
+    "AtlasIdentity",
+    "AtlasIdentityError",
+    "build_identity_context",
+    "load_identity",
+]
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\__init__.py ---
+from atlas.interfaces.cli import (
+    print_status,
+    run_chat,
+)
+
+__all__ = [
+    "print_status",
+    "run_chat",
+]
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\logging\__init__.py ---
+from atlas.logging.setup import configure_logging
+
+__all__ = [
+    "configure_logging",
+]
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\__init__.py ---
+from atlas.models.runtime.base import (
+    GenerationResult,
+    ModelRuntime,
+    ModelRuntimeError,
+    RuntimeHealth,
+)
+from atlas.models.runtime.ollama import OllamaRuntime
+
+__all__ = [
+    "GenerationResult",
+    "ModelRuntime",
+    "ModelRuntimeError",
+    "RuntimeHealth",
+    "OllamaRuntime",
+]
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\relevance.py ---
+"""Lexical relevance score in the [0, 1] range."""
+from __future__ import annotations
+import re
+from atlas.mosaic.intent import normalize
+
+def relevance_score(query: str, content: str) -> float:
+    q = set(re.findall(r"[a-z0-9]{3,}", normalize(query)))
+    d = set(re.findall(r"[a-z0-9]{3,}", normalize(content)))
+    if not q or not d:
+        return 0.0
+    return round(len(q & d) / len(q), 4)
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\security\__init__.py ---
+from atlas.security.policy import (
+    Permission,
+    PolicyDecision,
+    PolicyEngine,
+    RiskLevel,
+)
+
+
+__all__ = [
+    "Permission",
+    "PolicyDecision",
+    "PolicyEngine",
+    "RiskLevel",
+]
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\__init__.py ---
+from atlas.tools.web.client import (
+    WebClient,
+    WebClientError,
+    WebResponse,
+)
+
+__all__ = [
+    "WebClient",
+    "WebClientError",
+    "WebResponse",
+]
+
+========== 05. PENDENCIAS EXPLICITAS ==========
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:38 | raise NotImplementedError
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:45 | raise NotImplementedError
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:219 | pass
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:63 | ...
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:93 | ...
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:35 | raise NotImplementedError
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:39 | raise NotImplementedError
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:49 | raise NotImplementedError
+
+========== 06. CLASSES E FUNCOES ==========
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:25 | def build_atlas() -> Atlas:
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:108 | def create_parser() -> argparse.ArgumentParser:
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:131 | def main() -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:35 | class AtlasStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:50 | class Atlas:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:55 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:87 | def _validate_identity_consistency(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:98 | def _register_components(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:225 | def start(self) -> AtlasStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:243 | def remember(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:275 | def recall_by_id(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:288 | def recall_text(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:306 | def recall_recent(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:323 | def index_knowledge(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:337 | def save_knowledge_index(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:348 | def load_knowledge_index(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:359 | def knowledge_status(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:370 | def ask_knowledge(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:418 | def _build_session_prompt(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:469 | def process_message(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:509 | def generate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:11 | class AtlasConfigError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:16 | class AtlasInfoConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:22 | class RuntimeConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:29 | class SystemConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:34 | class AtlasConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:40 | def _project_root() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:57 | def default_config_path() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:73 | def _load_yaml(path: Path) -> dict[str, Any]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:99 | def _required_section(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:113 | def _required_string(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:128 | def _required_bool(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py:143 | def load_config(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:11 | class ComponentRegistry:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:16 | def __init__(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:19 | def register(
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:34 | def get(self, name: str) -> ComponentStatus | None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:37 | def all(self) -> tuple[ComponentStatus, ...]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:40 | def system_status(self) -> AtlasSystemStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:7 | class ComponentState(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:14 | class SystemState(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:21 | class ComponentStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:29 | class AtlasSystemStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:34 | def ready_components(self) -> int:
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py:42 | def total_components(self) -> int:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\context.py:6 | def build_identity_context(identity: AtlasIdentity) -> str:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:11 | class AtlasIdentityError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:15 | def _project_root() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:19 | def identity_config_dir() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:23 | def _load_yaml(path: Path) -> dict[str, Any]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:49 | def _required_dict(
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:64 | def _required_list(
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:79 | def _required_string(
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:94 | def load_identity() -> AtlasIdentity:
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\models.py:8 | class AtlasIdentity:
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:8 | def print_status(atlas: Atlas) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:53 | def _print_knowledge_status(
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:85 | def _handle_knowledge_command(
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:192 | def run_chat(atlas: Atlas) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\chunks.py:9 | class KnowledgeChunk:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\chunks.py:22 | class DocumentChunker:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\chunks.py:30 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\chunks.py:54 | def split(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\context.py:8 | def build_rag_context(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\documents.py:8 | class KnowledgeDocument:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\documents.py:20 | def from_text_file(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:10 | class EmbeddingError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:15 | class EmbeddingResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:24 | def dimension(self) -> int:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:28 | class EmbeddingProvider(ABC):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:34 | def embed_text(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:41 | def embed_many(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:48 | class OllamaEmbeddingProvider(EmbeddingProvider):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:53 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:64 | def _request(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:164 | def embed_text(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\embeddings.py:172 | def embed_many(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:17 | class HybridSearchResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:27 | class HybridKnowledgeRetriever:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:33 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:56 | def _key(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:65 | def search(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\ingestion.py:8 | class DocumentIngestionError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\ingestion.py:12 | class DocumentIngestor:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\ingestion.py:26 | def ingest(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:23 | class LexicalIndexError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:28 | class LexicalSearchResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:36 | class LexicalKnowledgeIndex:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:43 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:63 | def fts_available(self) -> bool:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:66 | def _connect(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:73 | def _initialize(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:107 | def _chunk_id(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:115 | def add(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:184 | def add_many(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:193 | def search(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:226 | def _search_fts(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:265 | def _search_like(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:300 | def __len__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\retriever.py:10 | class KnowledgeRetriever:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\retriever.py:15 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\retriever.py:24 | def search(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:45 | class KnowledgeServiceError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:50 | class KnowledgeIndexReport:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:57 | class KnowledgeStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:66 | class KnowledgeService:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:79 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:144 | def _discover(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:179 | def index_document(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:240 | def index_path(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:269 | def search(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:280 | def build_context(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:297 | def status(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:319 | def save_index(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:374 | def load_index(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:9 | class VectorStoreError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:14 | class IndexedChunk:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:20 | class VectorSearchResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:25 | class LocalVectorStore:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:30 | def __init__(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:35 | def dimension(self) -> int | None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:38 | def __len__(self) -> int:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:41 | def all_items(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:48 | def add(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:80 | def add_many(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:90 | def search(
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:138 | def clear(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:143 | def _cosine_similarity(
+C:\Users\G2Y8\Documents\atlas\src\atlas\logging\setup.py:8 | def _project_root() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\logging\setup.py:12 | def _logs_dir() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\logging\setup.py:16 | def configure_logging() -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:12 | class MemoryAuthorizationError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:16 | class AuthorizationReason(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:23 | class MemoryAuthorizationDecision:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:29 | class MemoryAuthorizationPolicy:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:50 | def evaluate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\context.py:6 | def build_memory_context(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:8 | class MemoryIntentAction(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:15 | class MemoryIntent:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:24 | def is_memory_action(self) -> bool:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:28 | def can_write(self) -> bool:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:38 | class MemoryIntentDetector:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:126 | def detect(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\intent.py:223 | def _matches_any(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\models.py:10 | class MemoryType(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\models.py:23 | class MemorySource(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\models.py:30 | class MemoryVerification(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\models.py:38 | class MemoryRecord:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\models.py:53 | def create(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:18 | class MemoryService:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:30 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:42 | def remember(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:96 | def recall_by_id(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:104 | def recall_text(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:117 | def recall_tags(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:132 | def recall_recent(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:8 | class ConversationRole(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:15 | class ConversationTurn:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:21 | def create(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:43 | class SessionMemory:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:52 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:65 | def add(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:85 | def all(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:90 | def clear(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\session.py:93 | def __len__(self) -> int:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:16 | class MemoryStoreError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:20 | class JsonlMemoryStore:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:33 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:44 | def _default_root() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:50 | def _memory_dir(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:56 | def _memory_file(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:65 | def _serialize(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:78 | def _deserialize(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:119 | def save(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:166 | def load_all(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:228 | def load_everything(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:244 | def get_by_id(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:265 | def search_text(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:306 | def search_tags(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:366 | def recent(
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:392 | def _validate_limit(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:10 | class ModelConfigError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:15 | class ModelRuntimeConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:22 | class LocalModelConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:28 | class ModelsConfig:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:33 | def _project_root() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:37 | def default_models_config_path() -> Path:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:41 | def _load_yaml(path: Path) -> dict[str, Any]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:67 | def _required_section(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:81 | def _required_string(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:96 | def _required_positive_int(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\config.py:111 | def load_models_config(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:17 | class ModelRouterError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:22 | class ModelRoute:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:29 | class RouterStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:36 | class ModelRouter:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:41 | def __init__(self) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:44 | def register(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:77 | def get_route(self, role: str) -> ModelRoute:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:94 | def available_roles(self) -> tuple[str, ...]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:97 | def status(self) -> RouterStatus:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:135 | def generate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:7 | class ModelRuntimeError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:12 | class RuntimeHealth:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:19 | class GenerationResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:24 | class ModelRuntime(ABC):
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:34 | def provider(self) -> str:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:38 | def health(self) -> RuntimeHealth:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\base.py:42 | def generate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:15 | class OllamaRuntime(ModelRuntime):
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:25 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:34 | def provider(self) -> str:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:37 | def health(self) -> RuntimeHealth:
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:89 | def generate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\context.py:7 | def select_context(query: str, available: Iterable[ContextItem], *, limit: int = 5, min_score: float = 0.1) -> tuple[ContextItem, ...]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\entities.py:5 | def extract_entities(text: str) -> tuple[str, ...]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\intent.py:7 | def normalize(text: str) -> str:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\intent.py:12 | def classify_intent(text: str) -> IntentType:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:8 | class IntentType(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:18 | class CapabilityType(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:29 | class MosaicRequest:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:35 | class ContextItem:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:43 | class MemoryCandidate:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\models.py:51 | class MosaicResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\relevance.py:6 | def relevance_score(query: str, content: str) -> float:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:10 | class MosaicService:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:13 | def __init__(self, available_context: Iterable[ContextItem] = ()) -> None:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:16 | def analyze(self, request: MosaicRequest) -> MosaicResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\task_classifier.py:6 | def is_task(intent: IntentType) -> bool:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\task_classifier.py:9 | def classify_domain(text: str) -> str:
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\task_classifier.py:22 | def required_capabilities(text: str, intent: IntentType, domain: str) -> tuple[CapabilityType, ...]:
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:7 | class Permission(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:25 | class RiskLevel(str, Enum):
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:33 | class PolicyDecision:
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:40 | class PolicyEngine:
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:48 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\policy.py:56 | def evaluate(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:17 | def register_safe_filesystem(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:30 | def resolve(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:50 | def read(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:81 | def write(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:14 | class ToolManifest:
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:23 | class ToolResult:
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:28 | class ToolRegistry:
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:36 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:50 | def register(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:62 | def execute(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:113 | def manifests(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\client.py:8 | class WebClientError(RuntimeError):
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\client.py:13 | class WebResponse:
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\client.py:20 | class WebClient:
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\client.py:29 | def __init__(
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\client.py:37 | def get(
+
+========== 07. DEPENDENCIAS INTERNAS ==========
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:7 | from atlas.core import Atlas, AtlasConfigError, load_config
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:8 | from atlas.identity import AtlasIdentityError, load_identity
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:9 | from atlas.interfaces import print_status, run_chat
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:10 | from atlas.logging import configure_logging
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:11 | from atlas.knowledge import KnowledgeService
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:12 | from atlas.memory import MemoryService
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:13 | from atlas.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\__main__.py:19 | from atlas.models.runtime import OllamaRuntime
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:6 | from atlas.core.config import AtlasConfig
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:7 | from atlas.core.registry import ComponentRegistry
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:8 | from atlas.core.status import ComponentState, SystemState
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:9 | from atlas.identity import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:13 | from atlas.memory import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:22 | from atlas.models.router import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:26 | from atlas.models.runtime import GenerationResult
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py:28 | from atlas.knowledge import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py:3 | from atlas.core.status import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\__init__.py:1 | from atlas.core.app import Atlas, AtlasStatus
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\__init__.py:2 | from atlas.core.config import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\__init__.py:10 | from atlas.core.registry import ComponentRegistry
+C:\Users\G2Y8\Documents\atlas\src\atlas\core\__init__.py:11 | from atlas.core.status import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\context.py:3 | from atlas.identity.models import AtlasIdentity
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\loader.py:8 | from atlas.identity.models import AtlasIdentity
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\__init__.py:1 | from atlas.identity.context import build_identity_context
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\__init__.py:2 | from atlas.identity.loader import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\identity\__init__.py:6 | from atlas.identity.models import AtlasIdentity
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:3 | from atlas.core import Atlas
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:4 | from atlas.models import ModelRouterError
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\cli.py:5 | from atlas.models.runtime import ModelRuntimeError
+C:\Users\G2Y8\Documents\atlas\src\atlas\interfaces\__init__.py:1 | from atlas.interfaces.cli import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\chunks.py:5 | from atlas.knowledge.documents import KnowledgeDocument
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\context.py:3 | from atlas.knowledge.hybrid_retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:5 | from atlas.knowledge.lexical_index import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:8 | from atlas.knowledge.retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\hybrid_retriever.py:11 | from atlas.knowledge.vector_store import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\ingestion.py:5 | from atlas.knowledge.documents import KnowledgeDocument
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\lexical_index.py:8 | from atlas.knowledge.chunks import KnowledgeChunk
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\retriever.py:3 | from atlas.knowledge.embeddings import EmbeddingProvider
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\retriever.py:4 | from atlas.knowledge.vector_store import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:7 | from atlas.knowledge.chunks import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:11 | from atlas.knowledge.context import build_rag_context
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:12 | from atlas.knowledge.embeddings import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:16 | from atlas.knowledge.hybrid_retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:20 | from atlas.knowledge.ingestion import DocumentIngestor
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:21 | from atlas.knowledge.lexical_index import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:24 | from atlas.knowledge.retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\service.py:27 | from atlas.knowledge.vector_store import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\vector_store.py:6 | from atlas.knowledge.chunks import KnowledgeChunk
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:1 | from atlas.knowledge.chunks import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:5 | from atlas.knowledge.context import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:8 | from atlas.knowledge.documents import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:11 | from atlas.knowledge.embeddings import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:17 | from atlas.knowledge.hybrid_retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:21 | from atlas.knowledge.ingestion import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:25 | from atlas.knowledge.lexical_index import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:30 | from atlas.knowledge.retriever import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:33 | from atlas.knowledge.service import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\knowledge\__init__.py:39 | from atlas.knowledge.vector_store import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\logging\__init__.py:1 | from atlas.logging.setup import configure_logging
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\authorization.py:6 | from atlas.memory.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\context.py:3 | from atlas.memory.models import MemoryRecord
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:5 | from atlas.memory.authorization import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:9 | from atlas.memory.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\service.py:15 | from atlas.memory.store import JsonlMemoryStore
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\store.py:8 | from atlas.memory.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:1 | from atlas.memory.authorization import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:7 | from atlas.memory.context import build_memory_context
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:8 | from atlas.memory.intent import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:13 | from atlas.memory.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:19 | from atlas.memory.service import MemoryService
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:20 | from atlas.memory.session import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\memory\__init__.py:25 | from atlas.memory.store import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\router.py:7 | from atlas.models.runtime import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\__init__.py:1 | from atlas.models.config import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\__init__.py:8 | from atlas.models.router import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\ollama.py:7 | from atlas.models.runtime.base import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\__init__.py:1 | from atlas.models.runtime.base import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\models\runtime\__init__.py:7 | from atlas.models.runtime.ollama import OllamaRuntime
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\context.py:4 | from atlas.mosaic.models import ContextItem
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\context.py:5 | from atlas.mosaic.relevance import relevance_score
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\intent.py:5 | from atlas.mosaic.models import IntentType
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\relevance.py:4 | from atlas.mosaic.intent import normalize
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:4 | from atlas.mosaic.context import select_context
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:5 | from atlas.mosaic.entities import extract_entities
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:6 | from atlas.mosaic.intent import classify_intent
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:7 | from atlas.mosaic.models import ContextItem, IntentType, MosaicRequest, MosaicResult
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\service.py:8 | from atlas.mosaic.task_classifier import classify_domain, is_task, required_capabilities
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\task_classifier.py:3 | from atlas.mosaic.intent import normalize
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\task_classifier.py:4 | from atlas.mosaic.models import CapabilityType, IntentType
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\__init__.py:1 | from atlas.mosaic.models import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\mosaic\__init__.py:9 | from atlas.mosaic.service import MosaicService
+C:\Users\G2Y8\Documents\atlas\src\atlas\security\__init__.py:1 | from atlas.security.policy import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:5 | from atlas.security import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\builtin.py:10 | from atlas.tools.registry import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\registry.py:6 | from atlas.security import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\__init__.py:1 | from atlas.tools.builtin import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\__init__.py:4 | from atlas.tools.registry import (
+C:\Users\G2Y8\Documents\atlas\src\atlas\tools\web\__init__.py:1 | from atlas.tools.web.client import (
+
+========== 08. CODIGO DO CORE ==========
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\core\app.py ---
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any
+
+from atlas.core.config import AtlasConfig
+from atlas.core.registry import ComponentRegistry
+from atlas.core.status import ComponentState, SystemState
+from atlas.identity import (
+    AtlasIdentity,
+    build_identity_context,
+)
+from atlas.memory import (
+    ConversationRole,
+    MemoryRecord,
+    MemoryService,
+    MemorySource,
+    MemoryType,
+    MemoryVerification,
+    SessionMemory,
+)
+from atlas.models.router import (
+    ModelRouter,
+    ModelRouterError,
+)
+from atlas.models.runtime import GenerationResult
+
+from atlas.knowledge import (
+    KnowledgeIndexReport,
+    KnowledgeService,
+    KnowledgeStatus,
+)
+
+@dataclass(frozen=True)
+class AtlasStatus:
+    name: str
+    version: str
+    startup_status: str
+    system_state: SystemState
+    offline_first: bool
+    environment: str
+    language: str
+    identity_loaded: bool
+    identity_type: str
+    principles_loaded: int
+    ready_components: int
+    total_components: int
+
+
+class Atlas:
+    """
+    Núcleo de coordenação do Atlas.
+    """
+
+    def __init__(
+        self,
+        config: AtlasConfig,
+        identity: AtlasIdentity,
+        model_router: ModelRouter | None = None,
+        memory_service: MemoryService | None = None,
+        session_memory: SessionMemory | None = None,
+        knowledge_service: KnowledgeService | None = None,
+    ) -> None:
+        self.config = config
+        self.identity = identity
+        self.model_router = model_router
+        self.memory_service = memory_service
+        self.knowledge_service = knowledge_service
+        self.session_memory = (
+            session_memory
+            if session_memory is not None
+            else SessionMemory()
+        )        
+        self.registry = ComponentRegistry()
+
+        self._validate_identity_consistency()
+
+        self.name = identity.name
+        self.version = identity.version
+
+        self.identity_context = build_identity_context(
+            identity
+        )
+
+        self._register_components()
+
+    def _validate_identity_consistency(self) -> None:
+        if self.config.atlas.name != self.identity.name:
+            raise ValueError(
+                "Nome da configuração e identidade são diferentes."
+            )
+
+        if self.config.atlas.version != self.identity.version:
+            raise ValueError(
+                "Versão da configuração e identidade são diferentes."
+            )
+
+    def _register_components(self) -> None:
+        self.registry.register(
+            "configuration",
+            ComponentState.READY,
+            critical=True,
+            detail="Configuração carregada e validada.",
+        )
+
+        self.registry.register(
+            "identity",
+            ComponentState.READY,
+            critical=True,
+            detail="Identidade carregada e validada.",
+        )
+
+        if self.memory_service is None:
+            self.registry.register(
+                "memory",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Memória persistente não configurada.",
+            )
+        else:
+            self.registry.register(
+                "memory",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Memória persistente local disponível."
+                ),
+            )
+
+        if self.knowledge_service is None:
+            self.registry.register(
+                "knowledge",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Conhecimento/RAG não configurado.",
+            )
+        else:
+            knowledge_status = self.knowledge_service.status()
+
+            self.registry.register(
+                "knowledge",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Biblioteca local disponível. "
+                    f"chunks={knowledge_status.indexed_chunks} "
+                    f"fts5={knowledge_status.fts_available}"
+                ),
+            )
+
+        if self.model_router is None:
+            self.registry.register(
+                "model_runtime",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Nenhum runtime registrado.",
+            )
+
+            self.registry.register(
+                "local_model",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Nenhum modelo local registrado.",
+            )
+
+            self.registry.register(
+                "model_router",
+                ComponentState.DISABLED,
+                critical=False,
+                detail="Model Router não configurado.",
+            )
+
+            return
+
+        router_status = self.model_router.status()
+
+        if router_status.ready:
+            self.registry.register(
+                "model_runtime",
+                ComponentState.READY,
+                critical=False,
+                detail="Runtime de modelo disponível.",
+            )
+
+            self.registry.register(
+                "local_model",
+                ComponentState.READY,
+                critical=False,
+                detail=(
+                    "Rotas disponíveis: "
+                    + ", ".join(router_status.available_roles)
+                    + "."
+                ),
+            )
+
+            self.registry.register(
+                "model_router",
+                ComponentState.READY,
+                critical=False,
+                detail=router_status.detail,
+            )
+
+        else:
+            self.registry.register(
+                "model_runtime",
+                ComponentState.UNAVAILABLE,
+                critical=False,
+                detail="Runtime de modelo indisponível.",
+            )
+
+            self.registry.register(
+                "local_model",
+                ComponentState.UNAVAILABLE,
+                critical=False,
+                detail="Modelo local indisponível.",
+            )
+
+            self.registry.register(
+                "model_router",
+                ComponentState.UNAVAILABLE,
+                critical=False,
+                detail=router_status.detail,
+            )
+
+    def start(self) -> AtlasStatus:
+        system_status = self.registry.system_status()
+
+        return AtlasStatus(
+            name=self.name,
+            version=self.version,
+            startup_status=self.config.system.startup_status,
+            system_state=system_status.state,
+            offline_first=self.config.runtime.offline_first,
+            environment=self.config.runtime.environment,
+            language=self.config.runtime.language,
+            identity_loaded=True,
+            identity_type=self.identity.agent_type,
+            principles_loaded=len(self.identity.principles),
+            ready_components=system_status.ready_components,
+            total_components=system_status.total_components,
+        )
+
+    def remember(
+        self,
+        *,
+        memory_type: MemoryType,
+        content: str,
+        source: MemorySource,
+        explicit_user_authorization: bool = False,
+        system_owned: bool = False,
+        verification: MemoryVerification = MemoryVerification.UNVERIFIED,
+        confidence: float = 1.0,
+        tags: tuple[str, ...] = (),
+        metadata: dict[str, Any] | None = None,
+    ) -> MemoryRecord:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.remember(
+            memory_type=memory_type,
+            content=content,
+            source=source,
+            explicit_user_authorization=(
+                explicit_user_authorization
+            ),
+            system_owned=system_owned,
+            verification=verification,
+            confidence=confidence,
+            tags=tags,
+            metadata=metadata,
+        )
+
+    def recall_by_id(
+        self,
+        memory_id: str,
+    ) -> MemoryRecord | None:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_by_id(
+            memory_id
+        )
+
+    def recall_text(
+        self,
+        query: str,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_text(
+            query,
+            memory_type=memory_type,
+            limit=limit,
+        )
+
+    def recall_recent(
+        self,
+        *,
+        memory_type: MemoryType | None = None,
+        limit: int = 10,
+    ) -> tuple[MemoryRecord, ...]:
+        if self.memory_service is None:
+            raise RuntimeError(
+                "Serviço de memória não configurado."
+            )
+
+        return self.memory_service.recall_recent(
+            memory_type=memory_type,
+            limit=limit,
+        )
+
+
+    def index_knowledge(
+        self,
+        path: str,
+    ) -> KnowledgeIndexReport:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.index_path(
+            path
+        )
+
+
+    def save_knowledge_index(
+        self,
+    ) -> None:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        self.knowledge_service.save_index()
+
+
+    def load_knowledge_index(
+        self,
+    ) -> int:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.load_index()
+
+
+    def knowledge_status(
+        self,
+    ) -> KnowledgeStatus:
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        return self.knowledge_service.status()
+
+
+    def ask_knowledge(
+        self,
+        question: str,
+        *,
+        role: str = "primary",
+        limit: int = 5,
+    ) -> GenerationResult:
+        if self.model_router is None:
+            raise ModelRouterError(
+                "Model Router não configurado."
+            )
+
+        if self.knowledge_service is None:
+            raise RuntimeError(
+                "Serviço de conhecimento não configurado."
+            )
+
+        clean_question = question.strip()
+
+        if not clean_question:
+            raise ValueError(
+                "Pergunta não pode estar vazia."
+            )
+
+        rag_context = (
+            self.knowledge_service.build_context(
+                clean_question,
+                limit=limit,
+            )
+        )
+
+        system_prompt = (
+            f"{self.identity_context}\n\n"
+            f"{rag_context}\n\n"
+            "Regras de uso do conhecimento local:\n"
+            "- Priorize os trechos recuperados da biblioteca local.\n"
+            "- Não invente conteúdo documental ausente.\n"
+            "- Diferencie conteúdo recuperado de inferência.\n"
+            "- Se os documentos forem insuficientes, diga isso."
+        )
+
+        return self.model_router.generate(
+            clean_question,
+            role=role,
+            system_prompt=system_prompt,
+        )
+        
+
+    def _build_session_prompt(
+        self,
+        user_message: str,
+    ) -> str:
+        """
+        Constrói o contexto temporário da conversa atual.
+
+        Este contexto existe somente em RAM e não representa
+        memória persistente do Atlas.
+        """
+
+        lines = [
+            "Contexto temporário da conversa atual:",
+            "",
+        ]
+
+        for turn in self.session_memory.all():
+            if turn.role == ConversationRole.USER:
+                speaker = "Usuário"
+            elif turn.role == ConversationRole.ASSISTANT:
+                speaker = "Atlas"
+            else:
+                speaker = "Sistema"
+
+            lines.append(
+                f"{speaker}: {turn.content}"
+            )
+
+        lines.extend(
+            [
+                f"Usuário: {user_message}",
+                "",
+                "Instruções sobre este contexto:",
+                (
+                    "- Use os turnos anteriores somente para manter "
+                    "continuidade nesta conversa."
+                ),
+                (
+                    "- Não trate este histórico temporário como "
+                    "memória persistente."
+                ),
+                (
+                    "- Não invente informações que não estejam "
+                    "presentes no contexto."
+                ),
+                "- Responda à última mensagem do usuário.",
+            ]
+        )
+
+        return "\n".join(lines)
+
+    def process_message(
+        self,
+        message: str,
+        *,
+        role: str = "primary",
+    ) -> GenerationResult:
+        """
+        Processa uma mensagem usando memória curta da sessão.
+
+        A conversa é mantida somente em RAM.
+        """
+
+        clean_message = message.strip()
+
+        if not clean_message:
+            raise ValueError(
+                "Mensagem não pode estar vazia."
+            )
+
+        prompt = self._build_session_prompt(
+            clean_message
+        )
+
+        result = self.generate(
+            prompt,
+            role=role,
+        )
+
+        self.session_memory.add(
+            role=ConversationRole.USER,
+            content=clean_message,
+        )
+
+        self.session_memory.add(
+            role=ConversationRole.ASSISTANT,
+            content=result.response,
+        )
+
+        return result
+
+    def generate(
+        self,
+        prompt: str,
+        *,
+        role: str = "primary",
+    ) -> GenerationResult:
+        if self.model_router is None:
+            raise ModelRouterError(
+                "Model Router não configurado."
+            )
+
+        return self.model_router.generate(
+            prompt,
+            role=role,
+            system_prompt=self.identity_context,
+        )
+
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\core\config.py ---
+from __future__ import annotations
+
+import os
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+
+class AtlasConfigError(RuntimeError):
+    """Erro de configuraÃ§Ã£o do Atlas."""
+
+
+@dataclass(frozen=True)
+class AtlasInfoConfig:
+    name: str
+    version: str
+
+
+@dataclass(frozen=True)
+class RuntimeConfig:
+    offline_first: bool
+    environment: str
+    language: str
+
+
+@dataclass(frozen=True)
+class SystemConfig:
+    startup_status: str
+
+
+@dataclass(frozen=True)
+class AtlasConfig:
+    atlas: AtlasInfoConfig
+    runtime: RuntimeConfig
+    system: SystemConfig
+
+
+def _project_root() -> Path:
+    """
+    Retorna a raiz atual do projeto Atlas.
+
+    Estrutura esperada:
+
+    project/
+      config/
+      src/
+        atlas/
+          core/
+            config.py
+    """
+
+    return Path(__file__).resolve().parents[3]
+
+
+def default_config_path() -> Path:
+    """
+    Permite sobrescrever o arquivo atravÃ©s da variÃ¡vel
+    de ambiente ATLAS_CONFIG.
+
+    Caso nÃ£o exista, utiliza config/atlas.yaml.
+    """
+
+    custom_path = os.getenv("ATLAS_CONFIG")
+
+    if custom_path:
+        return Path(custom_path).expanduser().resolve()
+
+    return _project_root() / "config" / "atlas.yaml"
+
+
+def _load_yaml(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        raise AtlasConfigError(
+            f"Arquivo de configuraÃ§Ã£o nÃ£o encontrado: {path}"
+        )
+
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            data = yaml.safe_load(file)
+    except yaml.YAMLError as exc:
+        raise AtlasConfigError(
+            f"YAML invÃ¡lido em {path}: {exc}"
+        ) from exc
+    except OSError as exc:
+        raise AtlasConfigError(
+            f"NÃ£o foi possÃ­vel ler {path}: {exc}"
+        ) from exc
+
+    if not isinstance(data, dict):
+        raise AtlasConfigError(
+            f"A configuraÃ§Ã£o raiz deve ser um objeto YAML: {path}"
+        )
+
+    return data
+
+
+def _required_section(
+    data: dict[str, Any],
+    section: str,
+) -> dict[str, Any]:
+    value = data.get(section)
+
+    if not isinstance(value, dict):
+        raise AtlasConfigError(
+            f"SeÃ§Ã£o obrigatÃ³ria ausente ou invÃ¡lida: '{section}'"
+        )
+
+    return value
+
+
+def _required_string(
+    data: dict[str, Any],
+    key: str,
+    section: str,
+) -> str:
+    value = data.get(key)
+
+    if not isinstance(value, str) or not value.strip():
+        raise AtlasConfigError(
+            f"'{section}.{key}' deve ser uma string nÃ£o vazia."
+        )
+
+    return value.strip()
+
+
+def _required_bool(
+    data: dict[str, Any],
+    key: str,
+    section: str,
+) -> bool:
+    value = data.get(key)
+
+    if not isinstance(value, bool):
+        raise AtlasConfigError(
+            f"'{section}.{key}' deve ser true ou false."
+        )
+
+    return value
+
+
+def load_config(
+    path: str | Path | None = None,
+) -> AtlasConfig:
+    config_path = (
+        Path(path).expanduser().resolve()
+        if path is not None
+        else default_config_path()
+    )
+
+    data = _load_yaml(config_path)
+
+    atlas_data = _required_section(data, "atlas")
+    runtime_data = _required_section(data, "runtime")
+    system_data = _required_section(data, "system")
+
+    atlas = AtlasInfoConfig(
+        name=_required_string(
+            atlas_data,
+            "name",
+            "atlas",
+        ),
+        version=_required_string(
+            atlas_data,
+            "version",
+            "atlas",
+        ),
+    )
+
+    runtime = RuntimeConfig(
+        offline_first=_required_bool(
+            runtime_data,
+            "offline_first",
+            "runtime",
+        ),
+        environment=_required_string(
+            runtime_data,
+            "environment",
+            "runtime",
+        ),
+        language=_required_string(
+            runtime_data,
+            "language",
+            "runtime",
+        ),
+    )
+
+    system = SystemConfig(
+        startup_status=_required_string(
+            system_data,
+            "startup_status",
+            "system",
+        ),
+    )
+
+    return AtlasConfig(
+        atlas=atlas,
+        runtime=runtime,
+        system=system,
+    )
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\core\registry.py ---
+from __future__ import annotations
+
+from atlas.core.status import (
+    AtlasSystemStatus,
+    ComponentState,
+    ComponentStatus,
+    SystemState,
+)
+
+
+class ComponentRegistry:
+    """
+    Registro central dos componentes conhecidos pelo Atlas Core.
+    """
+
+    def __init__(self) -> None:
+        self._components: dict[str, ComponentStatus] = {}
+
+    def register(
+        self,
+        name: str,
+        state: ComponentState,
+        *,
+        critical: bool,
+        detail: str = "",
+    ) -> None:
+        self._components[name] = ComponentStatus(
+            name=name,
+            state=state,
+            critical=critical,
+            detail=detail,
+        )
+
+    def get(self, name: str) -> ComponentStatus | None:
+        return self._components.get(name)
+
+    def all(self) -> tuple[ComponentStatus, ...]:
+        return tuple(self._components.values())
+
+    def system_status(self) -> AtlasSystemStatus:
+        components = self.all()
+
+        critical_failure = any(
+            component.critical
+            and component.state
+            not in {
+                ComponentState.READY,
+                ComponentState.DISABLED,
+            }
+            for component in components
+        )
+
+        degraded = any(
+            component.state
+            in {
+                ComponentState.DEGRADED,
+                ComponentState.UNAVAILABLE,
+            }
+            for component in components
+        )
+
+        if critical_failure:
+            state = SystemState.ERROR
+        elif degraded:
+            state = SystemState.DEGRADED
+        else:
+            state = SystemState.READY
+
+        return AtlasSystemStatus(
+            state=state,
+            components=components,
+        )
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\core\status.py ---
+from __future__ import annotations
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+class ComponentState(str, Enum):
+    READY = "READY"
+    DEGRADED = "DEGRADED"
+    UNAVAILABLE = "UNAVAILABLE"
+    DISABLED = "DISABLED"
+
+
+class SystemState(str, Enum):
+    READY = "READY"
+    DEGRADED = "DEGRADED"
+    ERROR = "ERROR"
+
+
+@dataclass(frozen=True)
+class ComponentStatus:
+    name: str
+    state: ComponentState
+    critical: bool
+    detail: str = ""
+
+
+@dataclass(frozen=True)
+class AtlasSystemStatus:
+    state: SystemState
+    components: tuple[ComponentStatus, ...]
+
+    @property
+    def ready_components(self) -> int:
+        return sum(
+            1
+            for component in self.components
+            if component.state == ComponentState.READY
+        )
+
+    @property
+    def total_components(self) -> int:
+        return len(self.components)
+
+--- C:\Users\G2Y8\Documents\atlas\src\atlas\core\__init__.py ---
+from atlas.core.app import Atlas, AtlasStatus
+from atlas.core.config import (
+    AtlasConfig,
+    AtlasConfigError,
+    AtlasInfoConfig,
+    RuntimeConfig,
+    SystemConfig,
+    load_config,
+)
+from atlas.core.registry import ComponentRegistry
+from atlas.core.status import (
+    AtlasSystemStatus,
+    ComponentState,
+    ComponentStatus,
+    SystemState,
+)
+
+__all__ = [
+    "Atlas",
+    "AtlasStatus",
+    "AtlasConfig",
+    "AtlasConfigError",
+    "AtlasInfoConfig",
+    "RuntimeConfig",
+    "SystemConfig",
+    "load_config",
+    "ComponentRegistry",
+    "AtlasSystemStatus",
+    "ComponentState",
+    "ComponentStatus",
+    "SystemState",
+]
+
+========== 09. INTERFACE CLI ==========
+from __future__ import annotations
+
+from atlas.core import Atlas
+from atlas.models import ModelRouterError
+from atlas.models.runtime import ModelRuntimeError
+
+
+def print_status(atlas: Atlas) -> None:
+    """
+    Exibe o estado atual do Atlas.
+    """
+
+    status = atlas.start()
+
+    print("=" * 72)
+    print(f"{status.name} v{status.version}")
+    print("=" * 72)
+    print(f"Status de inicialização: {status.startup_status}")
+    print(f"Estado do sistema: {status.system_state.value}")
+    print(f"Ambiente: {status.environment}")
+    print(f"Idioma: {status.language}")
+
+    print(
+        "Offline-first: "
+        f"{'ATIVO' if status.offline_first else 'INATIVO'}"
+    )
+
+    print(
+        "Identidade: "
+        f"{'CARREGADA' if status.identity_loaded else 'NÃO CARREGADA'}"
+    )
+
+    print(f"Tipo: {status.identity_type}")
+    print(f"Princípios carregados: {status.principles_loaded}")
+
+    print(
+        "Componentes prontos: "
+        f"{status.ready_components}/{status.total_components}"
+    )
+
+    print("-" * 72)
+
+    for component in atlas.registry.all():
+        print(
+            f"{component.name:<20} "
+            f"{component.state.value:<12} "
+            f"{component.detail}"
+        )
+
+    print("=" * 72)
+
+
+def _print_knowledge_status(
+    atlas: Atlas,
+) -> None:
+    status = atlas.knowledge_status()
+
+    print("\nKnowledge:")
+    print(
+        f"  documentos: "
+        f"{status.indexed_documents}"
+    )
+    print(
+        f"  vectors: "
+        f"{status.indexed_chunks}"
+    )
+    print(
+        f"  lexical: "
+        f"{status.lexical_chunks}"
+    )
+    print(
+        f"  dimension: "
+        f"{status.dimension}"
+    )
+    print(
+        f"  fts5: "
+        f"{status.fts_available}"
+    )
+    print(
+        f"  index: "
+        f"{status.index_path}"
+    )
+
+
+def _handle_knowledge_command(
+    atlas: Atlas,
+    user_input: str,
+) -> bool:
+    """
+    Processa comandos /knowledge.
+
+    Retorna True quando o comando foi tratado.
+    """
+
+    if not user_input.startswith(
+        "/knowledge"
+    ):
+        return False
+
+    parts = user_input.split(
+        maxsplit=2
+    )
+
+    if len(parts) == 1:
+        print(
+            "\nUso:"
+            "\n  /knowledge status"
+            "\n  /knowledge index <caminho>"
+            "\n  /knowledge save"
+            "\n  /knowledge ask <pergunta>"
+        )
+        return True
+
+    command = parts[1].lower()
+
+    if command == "status":
+        _print_knowledge_status(
+            atlas
+        )
+        return True
+
+    if command == "save":
+        atlas.save_knowledge_index()
+
+        print(
+            "\nAtlas > "
+            "Índice de conhecimento salvo."
+        )
+
+        return True
+
+    if command == "index":
+        if len(parts) < 3:
+            print(
+                "\nAtlas > "
+                "Informe um caminho."
+            )
+            return True
+
+        path = parts[2].strip()
+
+        report = atlas.index_knowledge(
+            path
+        )
+
+        print(
+            "\nAtlas > "
+            "Indexação concluída."
+        )
+
+        print(
+            "Documentos:",
+            report.documents,
+        )
+
+        print(
+            "Chunks:",
+            report.chunks,
+        )
+
+        return True
+
+    if command == "ask":
+        if len(parts) < 3:
+            print(
+                "\nAtlas > "
+                "Informe uma pergunta."
+            )
+            return True
+
+        question = parts[2].strip()
+
+        result = atlas.ask_knowledge(
+            question
+        )
+
+        print(
+            f"\nAtlas > {result.response}"
+        )
+
+        return True
+
+    print(
+        "\nAtlas > "
+        f"Comando Knowledge desconhecido: "
+        f"{command}"
+    )
+
+    return True
+
+
+def run_chat(atlas: Atlas) -> None:
+    """
+    Interface conversacional mínima do Atlas v0.1.
+    """
+
+    print("=" * 72)
+    print(f"{atlas.name} — CLI local")
+    print("=" * 72)
+    print("Modelo local conectado através do Model Router.")
+    print("Digite /exit para sair.")
+
+    print(
+        "Knowledge:"
+        "\n  /knowledge status"
+        "\n  /knowledge index <caminho>"
+        "\n  /knowledge save"
+        "\n  /knowledge ask <pergunta>"
+    )
+
+    print("=" * 72)
+
+    while True:
+        try:
+            user_input = input(
+                "\nVocê > "
+            ).strip()
+
+        except (
+            EOFError,
+            KeyboardInterrupt,
+        ):
+            print(
+                "\nEncerrando Atlas."
+            )
+            return
+
+        if not user_input:
+            continue
+
+        if user_input.lower() in {
+            "/exit",
+            "/quit",
+            "exit",
+            "quit",
+        }:
+            print(
+                "Atlas > Até mais."
+            )
+            return
+
+        try:
+            if _handle_knowledge_command(
+                atlas,
+                user_input,
+            ):
+                continue
+
+            result = atlas.process_message(
+                user_input,
+                role="primary",
+            )
+
+            print(
+                f"\nAtlas > "
+                f"{result.response}"
+            )
+
+        except (
+            ModelRouterError,
+            ModelRuntimeError,
+            RuntimeError,
+            ValueError,
+        ) as exc:
+            print(
+                "\nAtlas > "
+                f"Erro de execução: {exc}"
+            )
+
+========== 10. AGENT / ROBOTICS / OBSERVABILITY ==========
+NAO ENCONTRADO: src\atlas\agent\loop.py
+NAO ENCONTRADO: src\atlas\robotics\hal.py
+NAO ENCONTRADO: src\atlas\observability\tracing.py
+
+========== 11. RESUMO FINAL ==========
+Total de arquivos Python: 55
+Total de linhas: 5848
+Pendencias explicitas: 8
+Branch analisada: main
+Commit: 3513849 merge: integrate Mosaic pipeline v0.1 into main
+
+========== FIM DA AUDITORIA ==========
