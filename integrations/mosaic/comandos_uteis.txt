@@ -1,0 +1,11 @@
+git
+
+git add .
+git commit -m "Initial Mosaic foundation"
+git push origin main
+
+.venv\Scripts\activate
+uvicorn app.main:app --reload
+
+npm install
+npm run dev
