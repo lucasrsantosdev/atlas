@@ -1,0 +1,431 @@
+﻿:root {
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #eef4ff;
+
+  background:
+    #07111f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 70% 10%,
+      rgba(40, 125, 255, 0.10),
+      transparent 35%
+    ),
+    #07111f;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.atlas-app {
+
+  display: grid;
+
+  grid-template-columns:
+    270px 1fr;
+
+  min-height: 100vh;
+}
+
+.atlas-sidebar {
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 18px;
+
+  border-right:
+    1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(5, 14, 27, .88);
+
+  backdrop-filter:
+    blur(20px);
+}
+
+.atlas-brand {
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    4px 4px 28px;
+}
+
+.atlas-orb,
+.atlas-orb-large {
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid rgba(88,165,255,.65);
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #5fb6ff,
+      #175ed1 48%,
+      #061126 76%
+    );
+
+  box-shadow:
+    0 0 28px rgba(40,130,255,.22);
+
+  color: white;
+  font-weight: 700;
+}
+
+.atlas-orb {
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 14px;
+}
+
+.atlas-orb-large {
+
+  width: 78px;
+  height: 78px;
+
+  margin:
+    0 auto 22px;
+
+  border-radius: 26px;
+
+  font-size: 27px;
+}
+
+.atlas-brand-name {
+
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.atlas-brand-subtitle {
+
+  margin-top: 2px;
+
+  color: #71819a;
+  font-size: 11px;
+}
+
+.atlas-navigation {
+
+  display: grid;
+  gap: 8px;
+}
+
+.atlas-navigation button {
+
+  padding: 11px 14px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #8090a8;
+
+  text-align: left;
+}
+
+.atlas-navigation button:hover,
+.atlas-navigation button.active {
+
+  background:
+    rgba(54, 130, 255, .10);
+
+  color: #e9f2ff;
+}
+
+.atlas-sidebar-footer {
+
+  margin-top: auto;
+}
+
+.atlas-core-status {
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #77879e;
+  font-size: 12px;
+}
+
+.atlas-status-dot {
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #6f7887;
+}
+
+.atlas-core-status.online
+.atlas-status-dot {
+
+  background: #5ad69d;
+}
+
+.atlas-core-status.offline
+.atlas-status-dot {
+
+  background: #ff6b78;
+}
+
+.atlas-main {
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 100vh;
+}
+
+.atlas-header {
+
+  display: flex;
+  align-items: center;
+
+  min-height: 142px;
+
+  padding:
+    28px clamp(24px, 5vw, 72px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.06);
+}
+
+.atlas-header h1 {
+
+  margin:
+    5px 0 7px;
+
+  font-size:
+    clamp(25px, 3vw, 38px);
+
+  font-weight: 600;
+}
+
+.atlas-header p {
+
+  margin: 0;
+
+  color: #8494aa;
+}
+
+.atlas-eyebrow {
+
+  color: #4a9cff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .17em;
+}
+
+.atlas-workspace {
+
+  display: grid;
+  place-items: center;
+
+  flex: 1;
+
+  padding: 48px 24px;
+}
+
+.atlas-welcome {
+
+  width: min(720px, 100%);
+
+  text-align: center;
+}
+
+.atlas-welcome h2 {
+
+  margin:
+    0 0 9px;
+
+  font-size: 27px;
+}
+
+.atlas-welcome p {
+
+  max-width: 540px;
+
+  margin:
+    0 auto 28px;
+
+  color: #8090a8;
+
+  line-height: 1.6;
+}
+
+.atlas-suggestions {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 10px;
+}
+
+.atlas-suggestions button {
+
+  min-height: 58px;
+
+  padding: 14px;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  color: #b9c8db;
+}
+
+.atlas-suggestions button:hover {
+
+  border-color:
+    rgba(61,142,255,.35);
+
+  background:
+    rgba(42,118,226,.08);
+
+  color: #edf5ff;
+}
+
+.atlas-input-area {
+
+  padding:
+    20px clamp(24px, 5vw, 72px)
+    25px;
+
+  border-top:
+    1px solid rgba(255,255,255,.06);
+}
+
+.atlas-input {
+
+  display: flex;
+
+  width:
+    min(850px,100%);
+
+  margin: auto;
+
+  gap: 10px;
+}
+
+.atlas-input textarea {
+
+  flex: 1;
+
+  min-height: 50px;
+
+  resize: none;
+
+  padding: 14px 16px;
+
+  border:
+    1px solid rgba(255,255,255,.11);
+
+  border-radius: 14px;
+
+  outline: none;
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: white;
+}
+
+.atlas-input textarea:focus {
+
+  border-color:
+    rgba(75,151,255,.55);
+}
+
+.atlas-input button {
+
+  padding:
+    0 20px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  background:
+    #256bd9;
+
+  color: white;
+}
+
+.atlas-input-area small {
+
+  display: block;
+
+  margin-top: 9px;
+
+  text-align: center;
+
+  color: #536177;
+}
+
+@media (max-width: 780px) {
+
+  .atlas-app {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-sidebar {
+    display: none;
+  }
+
+  .atlas-suggestions {
+    grid-template-columns: 1fr;
+  }
+
+}
