@@ -918,6 +918,89 @@ Atlas Core
 
 <br>
 
+
+---
+
+# 🌐 ATLAS WEB v0.1 — Interface Oficial
+
+**Marco de desenvolvimento: 15 de outubro de 2026**
+
+O ATLAS.IA passou a possuir uma interface web local, desenvolvida em React e Vite, conectada à API oficial do Atlas por meio de FastAPI.
+
+A interface permite conversar com o Atlas diretamente pelo navegador, utilizando o modelo de inteligência artificial local através do Atlas Core.
+
+## 🏗️ Arquitetura Atlas Web
+
+```mermaid
+flowchart TD
+    U["👤 Usuário"] --> W["🌐 ATLAS WEB"]
+    W --> API["🔌 ATLAS API"]
+    API --> CORE["🧠 ATLAS CORE"]
+
+    CORE --> ID["🧬 Identity"]
+    CORE --> SEC["🔐 Security"]
+    CORE --> MEM["💾 Memory"]
+    CORE --> KNOW["📚 Knowledge"]
+    CORE --> ROUTER["🧭 Model Router"]
+
+    CORE -.-> MOSAIC["🧩 Mosaic — Igor"]
+    CORE -.-> TOOLS["🛠️ Tools / MCP — Fernando"]
+
+    ROUTER --> OLLAMA["🤖 Ollama — Modelo Local"]
+```
+
+As linhas contínuas representam a arquitetura principal. As linhas pontilhadas representam integrações complementares ainda em validação.
+
+### 🧬 Princípio de identidade
+
+O Atlas Web é uma interface substituível.
+
+A identidade, a memória, os princípios, a segurança e a continuidade do Atlas permanecem sob responsabilidade do Atlas Core.
+
+A interface não deve depender diretamente de um modelo específico nem assumir responsabilidades pertencentes ao Core.
+
+**Atlas poderá mudar de interface, modelo, computador ou corpo físico sem deixar de ser Atlas.**
+
+## ✅ Funcionalidades validadas
+
+- Interface React/Vite executada localmente.
+- API FastAPI respondendo na porta 8000.
+- Identidade oficial `atlas.core.app.Atlas` validada.
+- Integração entre frontend e API por HTTP.
+- Criação de conversas e envio de mensagens.
+- Respostas reais do modelo local pelo navegador.
+- Compilação de produção do frontend.
+- 61 testes Python aprovados na etapa de integração.
+
+## 🟡 Funcionalidades em validação
+
+- Persistência do histórico de conversas após reinicialização.
+- Isolamento de sessões e múltiplos usuários.
+- Recuperação e utilização da memória persistente pela interface web.
+- Integração contextual Mosaic — Igor.
+- Integração de ferramentas e MCP — Fernando.
+- Observabilidade e auditoria das operações.
+- Testes de integração e ponta a ponta.
+- Controles de segurança específicos para crianças e adolescentes.
+
+## 🎓 Atlas Educacional
+
+O Atlas Web representa uma base inicial para o Atlas Educacional brasileiro.
+
+A evolução educacional deverá priorizar:
+
+- Aprendizagem orientada ao desenvolvimento do raciocínio.
+- Diferentes experiências conforme a faixa etária.
+- Privacidade e proteção de dados.
+- Supervisão apropriada para menores.
+- Acessibilidade e funcionamento local.
+- Preservação da autonomia e do pensamento humano.
+
+**O objetivo do Atlas é ajudar pessoas a aprender, e não torná-las dependentes de uma inteligência artificial.**
+
+---
+
+
 # 🌐 Executando o ATLAS.IA
 O Atlas foi projetado seguindo o princípio Offline First.
 Isso significa que suas capacidades fundamentais devem continuar funcionando sem conexão permanente com a internet. Quando houver internet disponível, ela pode ser utilizada como uma extensão das capacidades do sistema. Essa separação já faz parte da arquitetura documentada do projeto.
@@ -1375,6 +1458,70 @@ PS> atlas chat
 PS> atlas offline
 📴 ATLAS OFFLINE
 ```
+
+## 🌐 Executar o Atlas Web
+
+O Atlas Web funciona localmente e utiliza a API oficial do Atlas Core.
+
+### 1. Iniciar a Atlas API
+
+Na raiz do repositório, execute no PowerShell:
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas
+
+$env:PYTHONPATH = (Join-Path (Get-Location).Path "src")
+
+.\.venv\Scripts\python.exe -m uvicorn atlas.interfaces.web:app --host 127.0.0.1 --port 8000
+```
+
+A API ficará disponível em:
+
+- Health: http://127.0.0.1:8000/health
+- Swagger: http://127.0.0.1:8000/docs
+- OpenAPI: http://127.0.0.1:8000/openapi.json
+
+### 2. Iniciar a interface React
+
+Abra outro terminal PowerShell:
+
+```powershell
+cd C:\Users\G2Y8\Documents\atlas\integrations\atlas-web\frontend
+
+npm.cmd install
+npm.cmd run dev -- --host 127.0.0.1 --port 5174 --strictPort
+```
+
+Abra no navegador:
+
+http://127.0.0.1:5174/
+
+O Ollama e o modelo local configurado deverão estar disponíveis para gerar respostas.
+
+### 3. Executar testes
+
+Na raiz do projeto:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q tests
+```
+
+Para compilar o frontend:
+
+```powershell
+cd integrations\atlas-web\frontend
+
+npm.cmd run build
+```
+
+### Observações
+
+- O modo web está em desenvolvimento.
+- A API e o frontend devem permanecer ativos em processos separados.
+- O funcionamento local não exige uma API comercial.
+- A persistência do histórico web e o isolamento de sessões ainda precisam ser validados.
+- O Atlas Core permanece responsável pela identidade e pelas regras do sistema.
+
 
 # 🧠 ATLAS.IA
 
