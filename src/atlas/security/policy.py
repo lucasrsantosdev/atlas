@@ -22,6 +22,21 @@ class AuditLog:
   digest=hashlib.sha256(json.dumps(body,sort_keys=True,default=str).encode()).hexdigest();item={**body,'hash':digest};self._last_hash=digest;self.events.append(item)
   if self.path:self.path.parent.mkdir(parents=True,exist_ok=True);open(self.path,'a',encoding='utf8').write(json.dumps(item,ensure_ascii=False)+'\n')
   return item
+ def verify_file(self):
+  """Validate the persisted JSONL chain, not just the in-memory events."""
+  if self.path is None:raise ValueError('audit path is not configured')
+  prev='0'*64
+  try:
+   with self.path.open(encoding='utf8') as source:
+    for line in source:
+     item=json.loads(line)
+     body={k:v for k,v in item.items() if k!='hash'}
+     if body.get('previous_hash')!=prev:return False
+     digest=hashlib.sha256(json.dumps(body,sort_keys=True,default=str).encode()).hexdigest()
+     if digest!=item.get('hash'):return False
+     prev=digest
+  except (OSError,ValueError,KeyError,TypeError):return False
+  return True
  def verify(self):
   prev='0'*64
   for item in self.events:
@@ -41,6 +56,10 @@ class PolicyEngine:
   if permission not in self.allowed:raise PermissionError('cannot approve denied permission')
   token=ApprovalToken(secrets.token_urlsafe(24),permission,scope,datetime.now(timezone.utc)+timedelta(seconds=ttl_seconds));self._approvals[token.token]=token;self.audit.record(event='approval_issued',permission=permission.value,scope=scope);return token.token
  def consume_approval(self,token,permission,scope='*'):
-  a=self._approvals.pop(token,None);ok=bool(a and a.permission==permission and a.expires_at>=datetime.now(timezone.utc) and (a.scope=='*' or a.scope==scope));self.audit.record(event='approval_consumed',permission=permission.value,scope=scope,allowed=ok);return ok
+  a=self._approvals.get(token)
+  ok=bool(a and a.permission==permission and a.expires_at>=datetime.now(timezone.utc) and (a.scope=='*' or a.scope==scope))
+  if ok:self._approvals.pop(token,None)
+  self.audit.record(event='approval_consumed',permission=permission.value,scope=scope,allowed=ok)
+  return ok
  def host_allowed(self,host):return not self.network_hosts or host in self.network_hosts
  def process_allowed(self,process):return not self.processes or process in self.processes
