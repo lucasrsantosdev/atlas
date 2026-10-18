@@ -37,3 +37,33 @@ class VoiceSession:
         self.history.append((text, answer))
         self.history = self.history[-self.max_turns:]
         return answer, speech
+
+
+from enum import Enum
+
+class SessionState(str, Enum):
+    IDLE = "idle"
+    LISTENING = "listening"
+    THINKING = "thinking"
+    SPEAKING = "speaking"
+    INTERRUPTED = "interrupted"
+    ERROR = "error"
+
+class SessionLifecycle:
+    _allowed = {
+        SessionState.IDLE: {SessionState.LISTENING},
+        SessionState.LISTENING: {SessionState.THINKING, SessionState.INTERRUPTED, SessionState.ERROR},
+        SessionState.THINKING: {SessionState.SPEAKING, SessionState.INTERRUPTED, SessionState.ERROR},
+        SessionState.SPEAKING: {SessionState.IDLE, SessionState.INTERRUPTED, SessionState.ERROR},
+        SessionState.INTERRUPTED: {SessionState.IDLE},
+        SessionState.ERROR: {SessionState.IDLE},
+    }
+
+    def __init__(self):
+        self.state = SessionState.IDLE
+
+    def transition(self, state: SessionState):
+        state = SessionState(state)
+        if state not in self._allowed[self.state]:
+            raise ValueError(f"invalid session transition: {self.state} -> {state}")
+        self.state = state
