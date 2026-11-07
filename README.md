@@ -1513,6 +1513,9 @@ cd integrations\atlas-web\frontend
 
 npm.cmd run build
 .\.venv\Scripts\python.exe -m uvicorn atlas.interfaces.web:app --app-dir src --host 127.0.0.1 --port 8000
+abra outro terminal
+cd C:\Users\G2Y8\Documents\atlas\integrations\atlas-web\frontend
+
 npm run dev -- --host 127.0.0.1 --port 5173
 
 ```
