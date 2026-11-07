@@ -1512,6 +1512,9 @@ Para compilar o frontend:
 cd integrations\atlas-web\frontend
 
 npm.cmd run build
+.\.venv\Scripts\python.exe -m uvicorn atlas.interfaces.web:app --app-dir src --host 127.0.0.1 --port 8000
+npm run dev -- --host 127.0.0.1 --port 5173
+
 ```
 
 ### Observações
