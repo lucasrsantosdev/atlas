@@ -1,0 +1,466 @@
+2026-09-29 23:34:58,703 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-29 23:34:58,707 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-29 23:34:58,709 | INFO | atlas.main | Configuração carregada.
+2026-09-29 23:34:58,719 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-29 23:34:58,720 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-29 23:34:58,721 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-29 23:34:58,721 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-29 23:34:58,810 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-29 23:34:58,811 | INFO | atlas.main | Exibindo status do sistema.
+2026-09-29 23:35:39,013 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-29 23:35:39,018 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-29 23:35:39,024 | INFO | atlas.main | Configuração carregada.
+2026-09-29 23:35:39,043 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-29 23:35:39,046 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-29 23:35:39,047 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-29 23:35:39,047 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-29 23:35:39,185 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-29 23:35:39,185 | INFO | atlas.main | Modo chat iniciado.
+2026-09-29 23:35:49,900 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:35:50,677 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=0.78s
+2026-09-29 23:37:15,448 | INFO | atlas.main | Modo chat encerrado.
+2026-09-29 23:40:24,525 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-29 23:40:24,529 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-29 23:40:24,531 | INFO | atlas.main | Configuração carregada.
+2026-09-29 23:40:24,540 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-29 23:40:24,542 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-29 23:40:24,542 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-29 23:40:24,543 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-29 23:40:24,603 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-29 23:40:24,603 | INFO | atlas.main | Modo chat iniciado.
+2026-09-29 23:40:29,725 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:40:45,452 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=15.73s
+2026-09-29 23:41:45,572 | INFO | atlas.main | Modo chat encerrado.
+2026-09-29 23:42:53,632 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-29 23:42:53,635 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-29 23:42:53,637 | INFO | atlas.main | Configuração carregada.
+2026-09-29 23:42:53,646 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-29 23:42:53,652 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-29 23:42:53,653 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-29 23:42:53,653 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-29 23:42:53,748 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-29 23:42:53,749 | INFO | atlas.main | Modo chat iniciado.
+2026-09-29 23:42:58,722 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:43:01,921 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=3.20s
+2026-09-29 23:43:10,957 | INFO | atlas.main | Modo chat encerrado.
+2026-09-29 23:43:19,180 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-29 23:43:19,183 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-29 23:43:19,185 | INFO | atlas.main | Configuração carregada.
+2026-09-29 23:43:19,195 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-29 23:43:19,197 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-29 23:43:19,197 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-29 23:43:19,197 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-29 23:43:19,261 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-29 23:43:19,261 | INFO | atlas.main | Modo chat iniciado.
+2026-09-29 23:43:21,521 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:43:25,343 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=3.82s
+2026-09-29 23:43:37,880 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:43:39,579 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=1.70s
+2026-09-29 23:43:57,517 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:44:01,434 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=3.92s
+2026-09-29 23:44:15,799 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:44:19,537 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=3.74s
+2026-09-29 23:44:43,028 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:44:57,656 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=14.63s
+2026-09-29 23:48:21,960 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-29 23:48:53,065 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=31.10s
+2026-09-29 23:53:22,242 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 00:01:52,262 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 00:01:52,265 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 00:01:52,267 | INFO | atlas.main | Configuração carregada.
+2026-09-30 00:01:52,277 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 00:01:52,279 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 00:01:52,279 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 00:01:52,279 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 00:01:52,355 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 00:01:52,355 | INFO | atlas.main | Exibindo status do sistema.
+2026-09-30 00:02:02,121 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 00:02:02,124 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 00:02:02,127 | INFO | atlas.main | Configuração carregada.
+2026-09-30 00:02:02,137 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 00:02:02,138 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 00:02:02,138 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 00:02:02,138 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 00:02:02,218 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 00:02:02,219 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 00:02:05,643 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 00:02:28,113 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=22.47s
+2026-09-30 00:03:43,281 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 00:03:44,959 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=1.68s
+2026-09-30 00:03:57,853 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 00:04:05,329 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=7.48s
+2026-09-30 00:05:10,130 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:05:13,111 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:05:13,114 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:05:13,115 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:05:13,120 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:05:13,120 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:05:13,121 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:05:13,122 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:05:13,122 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:05:13,187 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:05:13,188 | INFO | atlas.main | Exibindo status do sistema.
+2026-09-30 01:06:56,609 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:06:56,611 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:06:56,612 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:06:56,617 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:06:56,617 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:06:56,618 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:06:56,618 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:06:56,618 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:06:56,679 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:06:56,679 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:07:45,454 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:08:05,423 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=19.97s
+2026-09-30 01:09:04,396 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:09:08,808 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=4.41s
+2026-09-30 01:10:20,404 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:11:07,669 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:11:07,672 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:11:07,673 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:11:07,678 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:11:07,678 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:11:07,679 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:11:07,679 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:11:07,679 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:11:07,763 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:11:07,763 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:11:17,935 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:11:20,787 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=2.85s
+2026-09-30 01:11:34,500 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:12:24,358 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:12:24,361 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:12:24,362 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:12:24,368 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:12:24,368 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:12:24,369 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:12:24,369 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:12:24,370 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:12:24,432 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:12:24,432 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:12:30,745 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:12:35,832 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.09s
+2026-09-30 01:13:23,387 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:14:01,013 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:14:01,015 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:14:01,016 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:14:01,023 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:14:01,024 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:14:01,027 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:14:01,028 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:14:01,028 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:14:01,087 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:14:01,087 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:14:27,369 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:14:46,125 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=18.76s
+2026-09-30 01:15:42,148 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:15:48,814 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=6.67s
+2026-09-30 01:16:51,370 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:41:33,178 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:41:33,182 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:41:33,184 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:41:33,194 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:41:33,195 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:41:33,198 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:41:33,198 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:41:33,199 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:41:33,265 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:41:33,266 | INFO | atlas.main | Exibindo status do sistema.
+2026-09-30 01:42:46,439 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:42:46,444 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:42:46,446 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:42:46,457 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:42:46,458 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:42:46,459 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:42:46,459 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:42:46,459 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:42:46,536 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:42:46,537 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:42:52,186 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:43:25,398 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=33.21s
+2026-09-30 01:43:59,296 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:44:00,855 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=1.56s
+2026-09-30 01:44:11,089 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:45:16,691 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:45:16,695 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:45:16,700 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:45:16,721 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:45:16,722 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:45:16,724 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:45:16,724 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:45:16,725 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:45:16,811 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:45:16,811 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:45:19,685 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:45:33,761 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:45:33,764 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:45:33,766 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:45:33,775 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:45:33,775 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:45:33,777 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:45:33,777 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:45:33,777 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:45:33,847 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:45:33,847 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:45:35,241 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 01:46:22,744 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 01:46:22,747 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 01:46:22,749 | INFO | atlas.main | Configuração carregada.
+2026-09-30 01:46:22,762 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 01:46:22,763 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 01:46:22,764 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 01:46:22,764 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 01:46:22,765 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 01:46:22,828 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 01:46:22,829 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 01:46:26,773 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:46:29,690 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=2.92s
+2026-09-30 01:46:29,701 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 01:46:35,007 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.30s
+2026-09-30 01:47:48,068 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 15:04:29,179 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 15:04:29,182 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 15:04:29,183 | INFO | atlas.main | Configuração carregada.
+2026-09-30 15:04:29,192 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 15:04:29,192 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 15:04:29,193 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 15:04:29,193 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 15:04:29,194 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 15:04:29,289 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 15:04:29,289 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 15:08:48,199 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:09:01,932 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=13.73s
+2026-09-30 15:09:51,276 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:09:56,866 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.59s
+2026-09-30 15:13:13,509 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:13:19,418 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.91s
+2026-09-30 15:13:48,443 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:14:12,014 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=23.57s
+2026-09-30 15:33:24,271 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:45:47,825 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 15:45:47,829 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 15:45:47,832 | INFO | atlas.main | Configuração carregada.
+2026-09-30 15:45:47,845 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 15:45:47,848 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 15:45:47,853 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 15:45:47,854 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 15:45:47,855 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 15:45:47,973 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 15:45:47,973 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 15:46:09,061 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 15:46:31,996 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=22.93s
+2026-09-30 18:51:04,641 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 18:51:44,300 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 18:51:44,302 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 18:51:44,304 | INFO | atlas.main | Configuração carregada.
+2026-09-30 18:51:44,309 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 18:51:44,309 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 18:51:44,310 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 18:51:44,311 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 18:51:44,311 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 18:51:44,393 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 18:51:44,393 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 18:52:26,429 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 18:52:33,876 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=7.45s
+2026-09-30 18:54:21,646 | INFO | atlas.main | Modo chat encerrado.
+2026-09-30 18:55:47,753 | INFO | atlas.main | Atlas CLI iniciado.
+2026-09-30 18:55:47,756 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-09-30 18:55:47,758 | INFO | atlas.main | Configuração carregada.
+2026-09-30 18:55:47,768 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-09-30 18:55:47,769 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-09-30 18:55:47,770 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-09-30 18:55:47,771 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-09-30 18:55:47,771 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-09-30 18:55:47,850 | INFO | atlas.main | Atlas construído com sucesso.
+2026-09-30 18:55:47,850 | INFO | atlas.main | Modo chat iniciado.
+2026-09-30 18:56:07,751 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-09-30 18:56:19,250 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=11.50s
+2026-09-30 18:58:40,546 | INFO | atlas.main | Modo chat encerrado.
+2026-10-01 14:05:39,723 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-01 14:05:39,727 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-01 14:05:39,729 | INFO | atlas.main | Configuração carregada.
+2026-10-01 14:05:39,744 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-01 14:05:39,745 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-01 14:05:39,746 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-01 14:05:39,747 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-01 14:05:39,747 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-01 14:05:39,857 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-01 14:05:39,858 | INFO | atlas.main | Modo chat iniciado.
+2026-10-01 14:05:51,483 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:06:17,471 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=25.99s
+2026-10-01 14:06:24,538 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:06:31,538 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=7.00s
+2026-10-01 14:06:48,372 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:06:53,645 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.27s
+2026-10-01 14:06:56,060 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:07:02,150 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=6.09s
+2026-10-01 14:07:43,447 | INFO | atlas.main | Modo chat encerrado.
+2026-10-01 14:07:50,300 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-01 14:07:50,304 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-01 14:07:50,306 | INFO | atlas.main | Configuração carregada.
+2026-10-01 14:07:50,317 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-01 14:07:50,318 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-01 14:07:50,319 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-01 14:07:50,319 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-01 14:07:50,319 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-01 14:07:50,420 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-01 14:07:50,420 | INFO | atlas.main | Modo chat iniciado.
+2026-10-01 14:07:56,443 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:08:01,240 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=4.80s
+2026-10-01 14:08:19,991 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-01 14:08:25,912 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=5.92s
+2026-10-01 14:08:34,823 | INFO | atlas.main | Modo chat encerrado.
+2026-10-02 23:25:49,186 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-02 23:25:49,190 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-02 23:25:49,191 | INFO | atlas.main | Configuração carregada.
+2026-10-02 23:25:49,199 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-02 23:25:49,201 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-02 23:25:49,201 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-02 23:25:49,202 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-02 23:25:49,202 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-02 23:25:49,202 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-02 23:25:49,713 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-02 23:25:49,713 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-02 23:25:49,714 | INFO | atlas.main | Modo chat iniciado.
+2026-10-02 23:29:21,090 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-02 23:30:59,596 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=98.50s
+2026-10-03 00:22:53,996 | INFO | atlas.main | Modo chat encerrado.
+2026-10-03 07:08:15,307 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-03 07:08:15,311 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-03 07:08:15,313 | INFO | atlas.main | Configuração carregada.
+2026-10-03 07:08:15,326 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-03 07:08:15,330 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-03 07:08:15,330 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-03 07:08:15,332 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-03 07:08:15,332 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-03 07:08:15,332 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-03 07:08:15,910 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-03 07:08:15,910 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-03 07:08:15,911 | INFO | atlas.main | Modo chat iniciado.
+2026-10-03 07:08:46,470 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-03 07:09:14,079 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=27.61s
+2026-10-03 07:09:38,994 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-03 07:09:47,420 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=8.43s
+2026-10-03 07:10:41,402 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-03 07:11:00,257 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=18.86s
+2026-10-03 07:11:50,669 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-03 07:12:40,178 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=49.51s
+2026-10-03 07:13:35,092 | INFO | atlas.main | Modo chat encerrado.
+2026-10-03 15:42:15,273 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-03 15:42:15,277 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-03 15:42:15,279 | INFO | atlas.main | Configuração carregada.
+2026-10-03 15:42:15,290 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-03 15:42:15,295 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-03 15:42:15,295 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-03 15:42:15,298 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-03 15:42:15,298 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-03 15:42:15,298 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-03 15:42:15,806 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-03 15:42:15,806 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-03 15:42:15,806 | INFO | atlas.main | Modo chat iniciado.
+2026-10-03 21:11:24,481 | INFO | atlas.main | Modo chat encerrado.
+2026-10-06 17:32:34,917 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-06 17:32:34,921 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-06 17:32:34,922 | INFO | atlas.main | Configuração carregada.
+2026-10-06 17:32:34,930 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-06 17:32:34,935 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-06 17:32:34,935 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-06 17:32:34,938 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-06 17:32:34,938 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-06 17:32:34,938 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-06 17:32:35,627 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-06 17:32:35,628 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-06 17:32:35,628 | INFO | atlas.main | Modo chat iniciado.
+2026-10-06 17:32:42,821 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-06 17:33:00,382 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=17.56s
+2026-10-06 17:34:40,280 | INFO | atlas.main | Modo chat encerrado.
+2026-10-06 17:35:43,727 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-06 17:35:43,732 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-06 17:35:43,734 | INFO | atlas.main | Configuração carregada.
+2026-10-06 17:35:43,741 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-06 17:35:43,743 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-06 17:35:43,744 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-06 17:35:43,746 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-06 17:35:43,747 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-06 17:35:43,747 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-06 17:35:44,230 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-06 17:35:44,230 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-06 17:35:44,230 | INFO | atlas.main | Modo chat iniciado.
+2026-10-06 17:36:15,967 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-06 17:36:25,389 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=9.42s
+2026-10-06 17:36:59,745 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-06 17:37:10,227 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=10.48s
+2026-10-06 17:37:45,930 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-06 17:37:56,694 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=10.76s
+2026-10-06 19:19:23,128 | INFO | atlas.main | Modo chat encerrado.
+2026-10-08 12:27:00,244 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-08 12:27:00,247 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-08 12:27:00,248 | INFO | atlas.main | Configuração carregada.
+2026-10-08 12:27:00,255 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-08 12:27:00,271 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-08 12:27:00,271 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-08 12:27:00,272 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-08 12:27:00,272 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-08 12:27:00,272 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-08 12:27:00,824 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-08 12:27:00,824 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-08 12:27:00,825 | INFO | atlas.main | Modo chat iniciado.
+2026-10-08 12:27:03,377 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-08 12:27:33,219 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=29.84s
+2026-10-08 12:28:01,515 | INFO | atlas.main | Modo chat encerrado.
+2026-10-09 13:38:46,680 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-09 13:45:17,019 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-09 13:45:17,022 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-09 13:45:17,023 | INFO | atlas.main | Configuração carregada.
+2026-10-09 13:45:17,031 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-09 13:45:17,035 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-09 13:45:17,035 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-09 13:45:17,037 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-09 13:45:17,038 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-09 13:45:17,038 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-09 13:45:17,626 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-09 13:45:17,626 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-09 13:45:17,626 | INFO | atlas.main | Exibindo status do sistema.
+2026-10-15 11:47:06,121 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-15 11:47:06,124 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-15 11:47:06,125 | INFO | atlas.main | Configuração carregada.
+2026-10-15 11:47:06,130 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-15 11:47:06,133 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-15 11:47:06,133 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-15 11:47:06,134 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-15 11:47:06,134 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-15 11:47:06,135 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-15 11:47:06,768 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-15 11:47:06,769 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-15 11:47:06,769 | INFO | atlas.main | Modo chat iniciado.
+2026-10-15 11:47:25,761 | INFO | atlas.main | Modo chat encerrado.
+2026-10-15 12:38:42,956 | INFO | atlas.main | Atlas CLI iniciado.
+2026-10-15 12:38:42,960 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-10-15 12:38:42,961 | INFO | atlas.main | Configuração carregada.
+2026-10-15 12:38:42,970 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-10-15 12:38:42,973 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-10-15 12:38:42,973 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-10-15 12:38:42,974 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-10-15 12:38:42,974 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-10-15 12:38:42,974 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-10-15 12:38:43,468 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-10-15 12:38:43,468 | INFO | atlas.main | Atlas construído com sucesso.
+2026-10-15 12:38:43,468 | INFO | atlas.main | Modo chat iniciado.
+2026-10-15 12:38:46,951 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-15 12:39:08,164 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=21.21s
+2026-10-15 12:39:32,985 | INFO | atlas.models.router | Iniciando geração: role=primary model=qwen2.5:3b
+2026-10-15 12:39:35,462 | INFO | atlas.models.router | Geração concluída: role=primary model=qwen2.5:3b duration=2.48s
+2026-10-15 12:39:41,542 | INFO | atlas.main | Modo chat encerrado.
+2026-11-07 15:24:44,040 | INFO | atlas.main | Atlas CLI iniciado.
+2026-11-07 15:24:44,044 | INFO | atlas.main | Iniciando construção do Atlas.
+2026-11-07 15:24:44,048 | INFO | atlas.main | Configuração carregada.
+2026-11-07 15:24:44,064 | INFO | atlas.main | Identidade carregada: name=Atlas version=0.1.0
+2026-11-07 15:24:44,084 | INFO | atlas.main | Serviço de conhecimento local configurado.
+2026-11-07 15:24:44,084 | INFO | atlas.main | Serviço de memória persistente configurado.
+2026-11-07 15:24:44,085 | INFO | atlas.main | Runtime configurado: provider=ollama host=http://127.0.0.1:11434
+2026-11-07 15:24:44,086 | INFO | atlas.models.router | Rota registrada: role=primary model=qwen2.5:3b provider=ollama
+2026-11-07 15:24:44,086 | INFO | atlas.main | Modelo registrado: role=primary model=qwen2.5:3b
+2026-11-07 15:24:44,750 | INFO | atlas.main | Índice de conhecimento carregado: vectors=33
+2026-11-07 15:24:44,751 | INFO | atlas.main | Atlas construído com sucesso.
+2026-11-07 15:24:44,751 | INFO | atlas.main | Modo chat iniciado.
+2026-11-07 15:25:27,587 | INFO | atlas.main | Modo chat encerrado.
