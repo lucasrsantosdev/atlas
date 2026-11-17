@@ -331,3 +331,6 @@ logs/
 
 # Dependency lockfile
 !uv.lock
+
+# Memoria privada do Atlas
+/data/memory/chatgpt/
